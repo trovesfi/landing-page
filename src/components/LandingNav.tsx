@@ -54,25 +54,33 @@ const LandingNav: React.FC = () => {
               </Link>
             ))}
 
-            <div className="flex items-center gap-3">
+           
+          </div>
+
+          <div className="hidden lg:flex h-full items-center space-x-4">
+          <div className="flex items-center gap-3">
+            <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
+              <Icons.discord className='size-7' />
+              <span className="sr-only">Discord</span>
+            </Link>
+
+
               <Link
                 href="https://t.me/+kNCm2Q_kj7I1ZTll"
                 target='_blank'
                 className="text-sm text-white opacity-80"
               >
-                <Icons.tg />
+                <Icons.tg className='size-7' />
               </Link>
 
               <Link href="https://twitter.com/strkfarm"
                 target='_blank'
                 className="text-sm text-white opacity-80"
               >
-                <Icons.x />
+                <Icons.x className='size-7' />
               </Link>
             </div>
-          </div>
-
-          <div className="hidden lg:flex h-full items-center space-x-4">
+            
             <Link
               href="https://app.strkfarm.xyz"
               className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-bold text-[#111119]"
