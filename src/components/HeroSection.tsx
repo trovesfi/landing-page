@@ -61,7 +61,7 @@ const HeroSection: React.FC = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["apys"],
     queryFn: async () => {
-      const { data } = await axios.get('https://beta.strkfarm.xyz/api/strategies')
+      const { data } = await axios.get('https://app.strkfarm.xyz/api/strategies')
       return data
     }
   });
@@ -77,6 +77,11 @@ const HeroSection: React.FC = () => {
       let usdcStrategy = data?.strategies?.filter((strategy: any) => strategy.depositToken[0] === usdcTokenAddress).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
 
       let ethStrategy = data?.strategies?.filter((strategy: any) => strategy.depositToken[0] === ethTokenAddress).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
+
+
+      console.log(strkStrategy, 'strkStrategy')
+      console.log(usdcStrategy, 'usdcStrategy')
+      console.log(ethStrategy, 'ethStrategy')
 
       setTickerApys([
         { token: "STRK", apy: strkStrategy?.apy, href: `https://app.strkfarm.xyz/strategy/${strkStrategy?.id}` },
