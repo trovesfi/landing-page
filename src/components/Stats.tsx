@@ -29,7 +29,7 @@ const Stats = () => {
     const { data: tvlData, isLoading: tvlLoading } = useQuery({
         queryKey: ["tvl"],
         queryFn: async () => {
-            const { data } = await axios.get('https://starkfarm-client.vercel.app/api/stats')
+            const { data } = await axios.get('https://app.strkfarm.xyz/api/stats')
             return data?.tvl
         }
     });
