@@ -1,3 +1,4 @@
+import { getHosturl } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
@@ -29,13 +30,26 @@ const Stats = () => {
     const { data: tvlData, isLoading: tvlLoading } = useQuery({
         queryKey: ["tvl"],
         queryFn: async () => {
-            const { data } = await axios.get('https://starkfarm-client.vercel.app/api/stats')
+            const { data } = await axios.get(`https:/app.${getHosturl()}/api/stats`)
             return data?.tvl
         }
     });
 
     if (error) {
         console.error(error);
+    }
+
+    function formatCurrency(amount: number) {
+        // if < 1k, show as is
+        // if < 1m, show as k
+        // else show as m
+        if (amount < 1000) {
+            return `$${amount}`;
+        } else if (amount < 1000000) {
+            return `$${(amount / 1000).toFixed(2)}k`;
+        } else {
+            return `$${(amount / 1000000).toFixed(2)}m`;
+        }
     }
 
     return (
@@ -47,7 +61,7 @@ const Stats = () => {
                     <div className='h-12 w-32 animate-pulse bg-gradient-to-r from-[#36735e] to-[#295446] rounded-lg' />
                 ) : (
                     <span className="font-bold text-[#61EDAA] text-5xl">
-                        ${(tvlData / 1000).toFixed(1)}k
+                        {formatCurrency(tvlData)}
                     </span>
                 )}
             </div>
