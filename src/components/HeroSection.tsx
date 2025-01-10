@@ -2,6 +2,7 @@
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { TOKENS } from "@/constants";
+import { getHosturl } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import "keen-slider/keen-slider.min.css";
@@ -61,7 +62,7 @@ const HeroSection: React.FC = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["apys"],
     queryFn: async () => {
-      const { data } = await axios.get('https://app.strkfarm.xyz/api/strategies')
+      const { data } = await axios.get(`https://app.${getHosturl()}/api/strategies`)
       return data
     }
   });
@@ -84,9 +85,9 @@ const HeroSection: React.FC = () => {
       console.log(ethStrategy, 'ethStrategy')
 
       setTickerApys([
-        { token: "STRK", apy: strkStrategy?.apy, href: `https://app.strkfarm.xyz/strategy/${strkStrategy?.id}` },
-        { token: "USDC", apy: usdcStrategy?.apy, href: `https://app.strkfarm.xyz/strategy/${usdcStrategy?.id}` },
-        { token: "ETH", apy: ethStrategy?.apy, href: `https://app.strkfarm.xyz/strategy/${ethStrategy?.id}` },
+        { token: "STRK", apy: strkStrategy?.apy, href: `https://app.${getHosturl()}/strategy/${strkStrategy?.id}` },
+        { token: "USDC", apy: usdcStrategy?.apy, href: `https://app.${getHosturl()}/strategy/${usdcStrategy?.id}` },
+        { token: "ETH", apy: ethStrategy?.apy, href: `https://app.${getHosturl()}/strategy/${ethStrategy?.id}` },
       ]);
     }
   }, [data, ethTokenAddress, strkTokenAddress, usdcTokenAddress])

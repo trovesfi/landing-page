@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { cn } from "@/lib/utils";
+import { cn, getHosturl } from "@/lib/utils";
 import { Icons } from "./Icons";
 
 const navLinks = [
@@ -12,7 +12,7 @@ const navLinks = [
     links: [
       {
         label: "Launch Dapp",
-        href: "https://app.strkfarm.xyz",
+        href: `https://app.${getHosturl()}`,
       },
       {
         label: "Defi Spring",
@@ -50,7 +50,7 @@ const navLinks = [
       },
       {
         label: "Status page",
-        href: "https://status.strkfarm.xyz/",
+        href: `https://status.${getHosturl()}`,
       },
     ],
   },

@@ -11,6 +11,7 @@ import { Menu } from 'lucide-react';
 import { Icons } from './Icons';
 import MaxWidthWrapper from './MaxWidthWrapper';
 import RunningBanner from './RunningBanner';
+import { getHosturl } from '@/lib/utils';
 
 const navLinks = [
   {
@@ -19,15 +20,15 @@ const navLinks = [
   },
   {
     label: 'Community Programs',
-    href: 'https://docs.strkfarm.xyz/p/community',
+    href: `https://docs.${getHosturl()}/p/community`,
   },
   {
     label: 'Docs',
-    href: 'https://docs.strkfarm.xyz/',
+    href: `https://docs.${getHosturl()}/`,
   },
   {
     label: 'FAQ',
-    href: 'https://docs.strkfarm.xyz/p/faq',
+    href: `https://docs.${getHosturl()}/p/faq`
   },
 ];
 
@@ -82,7 +83,7 @@ const LandingNav: React.FC = () => {
             </div>
             
             <Link
-              href="https://app.strkfarm.xyz"
+              href={`https://app.${getHosturl()}`}
               className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-bold text-[#111119]"
             >
               Launch Dapp

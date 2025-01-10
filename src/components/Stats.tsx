@@ -1,3 +1,4 @@
+import { getHosturl } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
@@ -29,7 +30,7 @@ const Stats = () => {
     const { data: tvlData, isLoading: tvlLoading } = useQuery({
         queryKey: ["tvl"],
         queryFn: async () => {
-            const { data } = await axios.get('https://app.strkfarm.xyz/api/stats')
+            const { data } = await axios.get(`https:/app.${getHosturl()}/api/stats`)
             return data?.tvl
         }
     });
@@ -38,15 +39,18 @@ const Stats = () => {
         console.error(error);
     }
 
-    const formattedTvlData = (tvlData: number) => {
-        if (tvlData >= 1000000) {
-          return `$${(tvlData / 1000000).toFixed(2)}m`;
-        } else if (tvlData >= 1000) {
-          return `$${(tvlData / 1000).toFixed(2)}k`;
+    function formatCurrency(amount: number) {
+        // if < 1k, show as is
+        // if < 1m, show as k
+        // else show as m
+        if (amount < 1000) {
+            return `$${amount}`;
+        } else if (amount < 1000000) {
+            return `$${(amount / 1000).toFixed(2)}k`;
         } else {
-          return `$${tvlData.toString()}`;
+            return `$${(amount / 1000000).toFixed(2)}m`;
         }
-      };
+    }
 
     return (
         <div className="mt-32 flex flex-col gap-10 lg:flex-row justify-around rounded-2xl bg-opacity-80 bg-gradient-to-r from-[#2E2C5C] to-[#295446] py-8">
@@ -57,7 +61,7 @@ const Stats = () => {
                     <div className='h-12 w-32 animate-pulse bg-gradient-to-r from-[#36735e] to-[#295446] rounded-lg' />
                 ) : (
                     <span className="font-bold text-[#61EDAA] text-5xl">
-                        {formattedTvlData(tvlData)}
+                        {formatCurrency(tvlData)}
                     </span>
                 )}
             </div>

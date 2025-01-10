@@ -6,6 +6,7 @@ import { useKeenSlider } from 'keen-slider/react';
 import Link from 'next/link';
 
 import { animation } from './HeroSection';
+import { getHosturl } from '@/lib/utils';
 
 const RunningBanner = () => {
   const width = useWindowWidth()
@@ -55,15 +56,15 @@ const RunningBanner = () => {
       ref={ref}
       className="keen-slider h-10 bg-gradient-to-r from-[#B0F6FF] to-[#61FCAE] text-black"
     >
-      <Link target='_blank' href='https://docs.strkfarm.xyz/p/community/og-farmer-nft-campaign' className="keen-slider__slide flex items-center text-nowrap hover:underline">
+      <Link target='_blank' href={`https://docs.${getHosturl()}/p/community/og-farmer-nft-campaign`} className="keen-slider__slide flex items-center text-nowrap hover:underline">
         🏞️ OG Farmer Limited edition NFT Campaign is live 📢
       </Link>
 
-      <Link target='_blank' href='https://docs.strkfarm.xyz/p/community/og-farmer-nft-campaign' className="keen-slider__slide items-center text-nowrap hover:underline hidden lg:flex">
+      <Link target='_blank' href={`https://docs.${getHosturl()}/p/community/og-farmer-nft-campaign`} className="keen-slider__slide items-center text-nowrap hover:underline hidden lg:flex">
         🏞️ OG Farmer Limited edition NFT Campaign is live 📢
       </Link>
 
-      <Link target='_blank' href='https://docs.strkfarm.xyz/p/community/og-farmer-nft-campaign' className="keen-slider__slide items-center text-nowrap hover:underline hidden lg:flex" >
+      <Link target='_blank' href={`https://docs.${getHosturl()}/p/community/og-farmer-nft-campaign`} className="keen-slider__slide items-center text-nowrap hover:underline hidden lg:flex" >
         🏞️ OG Farmer Limited edition NFT Campaign is live 📢
       </Link>
     </div >
