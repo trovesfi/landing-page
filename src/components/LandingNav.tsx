@@ -67,7 +67,7 @@ const LandingNav: React.FC = () => {
 
 
               <Link
-                href="https://t.me/+kNCm2Q_kj7I1ZTll"
+                href="/tg"
                 target='_blank'
                 className="text-sm text-white opacity-80"
               >

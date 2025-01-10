@@ -59,7 +59,7 @@ const navLinks = [
     links: [
       {
         label: "Telegram",
-        href: "https://t.me/+kNCm2Q_kj7I1ZTll",
+        href: "/tg",
       },
       {
         label: "Twitter",
@@ -136,14 +136,14 @@ const Footer: React.FC = () => {
               <span className="sr-only">Discord</span>
             </Link>
 
-            <Link target="_blank" href="https://t.me/+kNCm2Q_kj7I1ZTll">
+            <Link target="_blank" href="/tg">
               <Icons.tg />
               <span className="sr-only">Telegram</span>
             </Link>
 
             <Link target="_blank" href="https://twitter.com/strkfarm">
               <Icons.x />
-              <span className="sr-only">Twitter</span>
+              <span className="sr-only">X/Twitter</span>
             </Link>
           </div>
         </div>

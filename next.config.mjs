@@ -8,6 +8,16 @@ const nextConfig = {
             permanent: true,
           },
           {
+            source: '/tg',
+            destination: 'https://t.me/%2BHQ_eHaXmF-1lZDc1',
+            permanent: true,
+          },
+          {
+            source: '/twitter',
+            destination: 'https://twitter.com/strkfarm',
+            permanent: true,
+          },
+          {
             source: '/audit',
             destination: 'https://drive.google.com/file/d/1qgxM4AtyUcrpD7V8fNcB4tFI7V7ajf-V/view?usp=sharing',
             permanent: true,
