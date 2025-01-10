@@ -79,10 +79,15 @@ const HeroSection: React.FC = () => {
 
       let ethStrategy = data?.strategies?.filter((strategy: any) => strategy.depositToken[0] === ethTokenAddress).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
 
+
+      console.log(strkStrategy, 'strkStrategy')
+      console.log(usdcStrategy, 'usdcStrategy')
+      console.log(ethStrategy, 'ethStrategy')
+
       setTickerApys([
-        { token: "STRK", apy: strkStrategy?.apy, href: `https://${getHosturl()}/strategy/${strkStrategy?.id}` },
-        { token: "USDC", apy: usdcStrategy?.apy, href: `https://${getHosturl()}/strategy/${usdcStrategy?.id}` },
-        { token: "ETH", apy: ethStrategy?.apy, href: `https://${getHosturl()}/strategy/${ethStrategy?.id}` },
+        { token: "STRK", apy: strkStrategy?.apy, href: `https://app.${getHosturl()}/strategy/${strkStrategy?.id}` },
+        { token: "USDC", apy: usdcStrategy?.apy, href: `https://app.${getHosturl()}/strategy/${usdcStrategy?.id}` },
+        { token: "ETH", apy: ethStrategy?.apy, href: `https://app.${getHosturl()}/strategy/${ethStrategy?.id}` },
       ]);
     }
   }, [data, ethTokenAddress, strkTokenAddress, usdcTokenAddress])
@@ -98,16 +103,83 @@ const HeroSection: React.FC = () => {
       />
 
       <Image
-        src="/left-grid2.svg"
-        alt="left-grid"
-        width={163}
-        height={163}
-        className="absolute -left-8 top-[25%] lg:hidden"
+        src="/center-grid.svg"
+        alt="center-grid"
+        width={264}
+        height={264}
+        className="absolute top-0 left-[50%] -translate-x-[50%] lg:hidden"
       />
 
-      <div className="w-[793px] h-[787px] absolute -right-[17%] -top-[20%] rounded-full bg-gradient-to-r from-[#61FCAE1A] to-[#1111191A] blur-3xl" />
+      <div className="-z-10 w-[793px] h-[787px] absolute top-[-80%] left-[100%] -translate-x-[50%] sm:left-0 sm:-right-[17%] sm:-top-[20%] sm:-translate-x-0 rounded-full bg-gradient-to-r from-[#61FCAE1A] to-[#1111191A] blur-3xl" />
 
-      <div className="col-span-3 px-6 pt-12 lg:pt-0">
+      <div className="relative col-span-3 px-6 pt-32 lg:pt-0">
+        <div className="sm:hidden absolute left-6 top-[15%] flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-5 rounded-lg border border-[#A1A1ED66] bg-[#A1A1ED1A] pb-3 pt-2 px-6 shadow-2xl backdrop-blur-md">
+          <div className="absolute -top-[22%] left-[75%] -translate-x-[50%]">
+            <div className="relative w-[7.21px] h-[8.01px]">
+              <Image
+                src="/star.svg"
+                fill
+                objectFit="cover"
+                alt="star"
+              />
+            </div>
+          </div>
+
+          <div className="absolute -top-[25%] left-[50%] -translate-x-[50%]">
+            <div className="relative h-[29px] w-[29px] ">
+              <Image
+                src="/hero2.svg"
+                fill
+                objectFit="cover"
+                alt="hero1"
+              />
+            </div>
+          </div>
+
+          <p className="text-sm font-bold text-white mt-4 lg:mt-0">25%</p>
+        </div>
+
+        <div className="sm:hidden absolute top-[10%] right-6 flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-2 rounded-lg border border-[#A1A1ED66] bg-[#A1A1ED1A] px-6 pb-1 pt-2 shadow-2xl backdrop-blur-md">
+          <div className="absolute -right-[4px] top-[20%] -translate-y-[50%]">
+            <div className="relative w-[6.99px] h-[7.76px]">
+              <Image
+                src="/star.svg"
+                fill
+                objectFit="cover"
+                alt="star"
+              />
+            </div>
+          </div>
+
+          <div className="absolute top-3 -left-3 z-10">
+            <div className="relative w-[18px] h-[18px]">
+              <Image
+                src="/coin.svg"
+                fill
+                objectFit="cover"
+                alt="coin1"
+              />
+            </div>
+          </div>
+
+          <div className="absolute top-4 -left-1 z-0 rotate-[80deg]">
+            <div className="relative w-[18px] h-[18px]">
+              <Image
+                src="/coin.svg"
+                fill
+                objectFit="cover"
+                alt="coin2"
+              />
+            </div>
+          </div>
+
+          <div className="relative w-[43px] h-[28px]">
+            <Image src="/hero1.svg" fill objectFit="cover" alt="hero1" />
+          </div>
+
+          <p className="text-sm font-bold text-white">100%</p>
+        </div>
+
         <div className="mx-auto flex flex-col items-center text-center lg:text-left lg:items-start">
           <h1 className="z-20 w-fit text-balance bg-gradient-to-r from-[#6F4FF2] via-[#B0F6FF] to-[#61FCAE] bg-clip-text text-[2rem] leading-9 font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl">
             Starknet&#8217;s Yield Powerhouse
@@ -133,7 +205,16 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="col-span-full -ml-12 lg:ml-0 mt-28 lg:mt-6 mb-7 lg:col-span-2">
+      <div className="col-span-full flex justify-center items-center sm:hidden mt-8">
+        <Link
+          href="https://app.strkfarm.xyz"
+          className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-semibold text-[#111119] z-20"
+        >
+          Launch Dapp
+        </Link>
+      </div>
+
+      <div className="col-span-full hidden sm:block -ml-12 lg:ml-0 mt-28 lg:mt-6 mb-7 lg:col-span-2">
         <div className="relative flex h-[162px] lg:h-[293px] w-full max-w-[250px] lg:max-w-none justify-center rounded-2xl bg-cyan-300 bg-gradient-to-r from-[#AD99FF] to-[#61FCAE]  lg:flex mx-auto">
 
           <div className="absolute -top-[30%] left-4 lg:left-6 xl:left-8 flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-2 lg:gap-5 rounded-xl border border-[#A1A1ED66] bg-[#A1A1ED1A] lg:px-7 lg:py-6 xl:px-10 xl:py-12 px-4 py-6 shadow-2xl backdrop-blur-md">
@@ -257,7 +338,7 @@ const HeroSection: React.FC = () => {
 
       <div
         ref={ref}
-        className="lg:!hidden keen-slider mt-24 flex !w-full items-center !rounded-lg border border-white/20 bg-gradient-to-r from-[#372B70] to-[#4F4875] px-5 py-2 font-semibold mx-auto"
+        className="lg:!hidden keen-slider mt-12 sm:mt-24 flex !w-full items-center !rounded-lg border border-white/20 bg-gradient-to-r from-[#372B70] to-[#4F4875] px-5 py-2 font-semibold mx-auto"
       >
         {tickerApys.map((tickerApy, i) => (
           <Link

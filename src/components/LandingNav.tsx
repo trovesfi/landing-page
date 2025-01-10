@@ -55,25 +55,33 @@ const LandingNav: React.FC = () => {
               </Link>
             ))}
 
-            <div className="flex items-center gap-3">
+           
+          </div>
+
+          <div className="hidden lg:flex h-full items-center space-x-4">
+          <div className="flex items-center gap-3">
+            <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
+              <Icons.discord className='size-7' />
+              <span className="sr-only">Discord</span>
+            </Link>
+
+
               <Link
-                href="https://t.me/+HQ_eHaXmF-1lZDc1"
+                href="https://t.me/+kNCm2Q_kj7I1ZTll"
                 target='_blank'
                 className="text-sm text-white opacity-80"
               >
-                <Icons.tg />
+                <Icons.tg className='size-7' />
               </Link>
 
               <Link href="https://twitter.com/strkfarm"
                 target='_blank'
                 className="text-sm text-white opacity-80"
               >
-                <Icons.x />
+                <Icons.x className='size-7' />
               </Link>
             </div>
-          </div>
-
-          <div className="hidden lg:flex h-full items-center space-x-4">
+            
             <Link
               href={`https://app.${getHosturl()}`}
               className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-bold text-[#111119]"
@@ -84,8 +92,8 @@ const LandingNav: React.FC = () => {
 
 
           <Sheet>
-            <SheetTrigger className='lg:hidden text-white'>
-              <Menu className='text-white dark:text-white' />
+            <SheetTrigger className='lg:hidden'>
+              <Menu className='text-white' />
             </SheetTrigger>
             <SheetContent className='bg-gradient-to-r from-[#111119] to-[#182123] border-[#182123]'>
               <div className="mt-16 flex flex-col items-center gap-4 sm:gap-6">
@@ -98,6 +106,12 @@ const LandingNav: React.FC = () => {
                     {link.label}
                   </Link>
                 ))}
+                <Link
+                  href="https://app.strkfarm.xyz"
+                  className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-semibold text-[#111119]"
+                >
+                  Launch Dapp
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

@@ -1,20 +1,21 @@
 'use client';
 
-import { useWindowSize } from '@/lib/useWindowSize';
+import { useWindowWidth } from '@react-hook/window-size';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import Link from 'next/link';
+
 import { animation } from './HeroSection';
 import { getHosturl } from '@/lib/utils';
 
 const RunningBanner = () => {
-  const size = useWindowSize();
+  const width = useWindowWidth()
 
   const [ref, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: 'free',
     slides: {
-      perView: size.width < 1024 ? 1 : 2,
+      perView: width < 1024 ? 1 : 2,
       spacing: 0,
     },
     renderMode: 'performance',
