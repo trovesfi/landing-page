@@ -30,7 +30,7 @@ const Stats = () => {
     const { data: tvlData, isLoading: tvlLoading } = useQuery({
         queryKey: ["tvl"],
         queryFn: async () => {
-            const { data } = await axios.get(`https:/app.${getHosturl()}/api/stats`)
+            const { data } = await axios.get(`https://app.${getHosturl()}/api/stats`)
             return data?.tvl
         }
     });
