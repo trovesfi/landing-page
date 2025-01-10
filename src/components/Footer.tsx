@@ -122,12 +122,12 @@ const Footer: React.FC = () => {
             </div> */}
           </div>
 
-          <Link target="_blank" href='https://assets.strkfarm.xyz/tnc.pdf' className="text-sm text-gray-500 dark:text-gray-400 hover:underline mt-6 flex items-center justify-center md:hidden">
+          <Link target="_blank" href={`https://assets.${getHosturl()}/tnc.pdf`} className="text-sm text-gray-500 dark:text-gray-400 hover:underline mt-6 flex items-center justify-center md:hidden">
             Terms and Conditions
           </Link>
 
           <div className="mt-6 flex items-center justify-center gap-4 sm:mt-0">
-            <Link target="_blank" href='https://assets.strkfarm.xyz/tnc.pdf' className="text-sm text-gray-500 dark:text-gray-400 hover:underline hidden md:block">
+            <Link target="_blank" href={`https://assets.${getHosturl()}/tnc.pdf`} className="text-sm text-gray-500 dark:text-gray-400 hover:underline hidden md:block">
               Terms and Conditions
             </Link>
 

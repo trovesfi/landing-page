@@ -207,7 +207,7 @@ const HeroSection: React.FC = () => {
 
       <div className="col-span-full flex justify-center items-center sm:hidden mt-8">
         <Link
-          href="https://app.strkfarm.xyz"
+          href={`https://app.${getHosturl()}`}
           className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-semibold text-[#111119] z-20"
         >
           Launch Dapp

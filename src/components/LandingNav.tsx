@@ -107,7 +107,7 @@ const LandingNav: React.FC = () => {
                   </Link>
                 ))}
                 <Link
-                  href="https://app.strkfarm.xyz"
+                  href={`https://app.${getHosturl()}`}
                   className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-semibold text-[#111119]"
                 >
                   Launch Dapp
