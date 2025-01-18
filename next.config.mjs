@@ -52,6 +52,11 @@ const nextConfig = {
             destination: 'https://app.strkfarm.com/usdc',
             permanent: true,
           },
+          {
+            source: '/xstrk',
+            destination: 'https://app.strkfarm.com/strategy/xstrk_sensei',
+            permanent: true,
+          },
         ];
       },
 };
