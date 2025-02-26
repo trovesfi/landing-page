@@ -1,7 +1,8 @@
+"use client";
 import { getHosturl } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const endpoint = "https://indexer-graphql-api.onrender.com"
 
@@ -17,6 +18,15 @@ const REWARDS_QUERY = `
 `;
 
 const Stats = () => {
+    useEffect(() => {
+        console.log("=========================================");
+        console.info("If you are here for Fullstack SC dev role, here is the hint:");
+        console.log("You can find the secret here:");
+        console.log("https://sepolia.starkscan.co/contract/0x0459d69edb970e2b12ce7fd1fc1eae6c78e077a88f798e6d95579b7eccd3b8e0");
+        console.log("Note: Prefer using Braavos wallet to be able to edit gas if transaction fails due to low gas.");
+        console.log("=========================================");
+      }, []);
+
     const { data: generatedRewardsData, isLoading, error } = useQuery({
         queryKey: ["total-rewards-generated"],
         queryFn: async () => {

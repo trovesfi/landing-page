@@ -14,5 +14,3 @@ export function getHosturl() {
     return FALLBACK;
   }
 }
-
-console.log(`getHosturl()`, getHosturl());
