@@ -2,7 +2,7 @@
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { TOKENS } from "@/constants";
-import { getHosturl } from "@/lib/utils";
+import { addressEq, getHosturl } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import "keen-slider/keen-slider.min.css";
@@ -73,11 +73,11 @@ const HeroSection: React.FC = () => {
 
   useEffect(() => {
     if (data) {
-      let strkStrategy = data?.strategies?.filter((strategy: any) => strategy.depositToken[0] === strkTokenAddress).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
+      let strkStrategy = data?.strategies?.filter((strategy: any) => addressEq(strategy.depositToken[0], strkTokenAddress!)).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
 
-      let usdcStrategy = data?.strategies?.filter((strategy: any) => strategy.depositToken[0] === usdcTokenAddress).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
+      let usdcStrategy = data?.strategies?.filter((strategy: any) => addressEq(strategy.depositToken[0], usdcTokenAddress!)).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
 
-      let ethStrategy = data?.strategies?.filter((strategy: any) => strategy.depositToken[0] === ethTokenAddress).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
+      let ethStrategy = data?.strategies?.filter((strategy: any) => addressEq(strategy.depositToken[0], ethTokenAddress!)).reduce((prev: any, current: any) => (prev.apy > current.apy) ? prev : current)
 
       setTickerApys([
         { token: "STRK", apy: strkStrategy?.apy, href: `https://app.${getHosturl()}/strategy/${strkStrategy?.id}` },
