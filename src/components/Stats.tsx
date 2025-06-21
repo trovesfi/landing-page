@@ -63,14 +63,14 @@ const Stats = () => {
     }
 
     return (
-        <div className="mt-32 flex flex-col gap-10 lg:flex-row justify-around rounded-2xl bg-opacity-80 bg-gradient-to-r from-[#2E2C5C] to-[#295446] py-8">
+        <div className="mt-32 flex flex-col gap-10 lg:flex-row justify-around rounded-2xl bg-opacity-80 bg-gradient-to-r from-[#2E2C5C] to-[black] py-8">
             <div className="flex flex-col items-center justify-center gap-3">
                 <h4 className="text-white/90 text-lg">TVL</h4>
 
                 {tvlLoading ? (
-                    <div className='h-12 w-32 animate-pulse bg-gradient-to-r from-[#36735e] to-[#295446] rounded-lg' />
+                    <div className='h-12 w-32 animate-pulse bg-gradient-to-r from-[#9069F0] to-[#9069F0] rounded-lg' />
                 ) : (
-                    <span className="font-bold text-[#61EDAA] text-5xl">
+                    <span className="font-bold text-[#9069F0] text-5xl">
                         {formatCurrency(tvlData)}
                     </span>
                 )}
@@ -82,9 +82,9 @@ const Stats = () => {
                 </h4>
 
                 {isLoading ? (
-                    <div className='h-12 w-28 animate-pulse bg-gradient-to-r from-[#36735e] to-[#295446] rounded-lg' />
+                    <div className='h-12 w-28 animate-pulse bg-gradient-to-r from-[#9069F0] to-[#9069F0] rounded-lg' />
                 ) : (
-                    <span className="font-bold text-[#61EDAA] text-5xl">
+                    <span className="font-bold text-[#9069F0] text-5xl">
                         ${(generatedRewardsData?.totalStrkHarvested?.USDValue / 1000).toFixed(1)}k
                     </span>
                 )}
@@ -95,7 +95,7 @@ const Stats = () => {
                 <h4 className="text-white/90 text-lg">
                     Supported pools
                 </h4>
-                <span className="font-bold text-[#61EDAA] text-5xl">
+                <span className="font-bold text-[#9069F0] text-5xl">
                     50+
                 </span>
             </div>

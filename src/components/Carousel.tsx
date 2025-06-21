@@ -29,7 +29,7 @@ const Carousel: React.FC = () => {
     <MaxWidthWrapper className="z-20 mt-16 lg:mt-56 relative px-0">
       <div className="w-[793px] h-[787px] absolute -left-[25%] -top-[15%] rounded-full bg-gradient-to-r from-[#61FCAE1A] to-[#1111191A] blur-3xl -z-50" />
 
-      <h5 className="mb-8 bg-gradient-to-r from-[#B0F6FF] to-[#61FCAE] bg-clip-text text-center text-2xl font-medium text-transparent">
+      <h5 className="mb-8 bg-gradient-to-r from-[#9069F0] to-[#9069F0] bg-clip-text text-center text-2xl font-medium text-transparent">
         What our community says?
       </h5>
 
@@ -126,9 +126,9 @@ const Carousel: React.FC = () => {
                   instanceRef.current?.moveToIdx(idx)
                 }}
                 className={cn(
-                  'size-3 rounded-full border border-[#A1A1ED66] bg-[#A1A1ED1A] cursor-pointer',
+                  'size-3 rounded-full border border-[#9069F0] bg-[#A1A1ED1A] cursor-pointer',
                   {
-                    'border-[#61FCAE] bg-[#61FCAE]': currentSlide === idx,
+                    'border-[#9069F0] bg-[#9069F0]': currentSlide === idx,
                   },
                 )}
               />

@@ -54,7 +54,7 @@ const RunningBanner = () => {
   return (
     <div
       ref={ref}
-      className="keen-slider h-10 bg-gradient-to-r from-[#B0F6FF] to-[#61FCAE] text-black"
+      className="keen-slider h-10 bg-gradient-to-r from-[black] to-[#9069F0] text-white"
     >
       <Link target='_blank' href={`https://docs.${getHosturl()}/p/community/og-farmer-nft-campaign`} className="keen-slider__slide flex items-center text-nowrap hover:underline">
         🏞️ OG Farmer Limited edition NFT Campaign is live 📢

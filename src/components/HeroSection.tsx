@@ -176,7 +176,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="mx-auto flex flex-col items-center text-center lg:text-left lg:items-start">
-          <h1 className="z-20 w-fit text-balance bg-gradient-to-r from-[#6F4FF2] via-[#B0F6FF] to-[#61FCAE] bg-clip-text text-[2rem] leading-9 font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl">
+          <h1 className="z-20 w-fit text-balance bg-gradient-to-r from-[#9069F0] via-[#9069F0] to-[white] bg-clip-text text-[2rem] leading-9 font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl">
             Starknet&#8217;s Yield Powerhouse
           </h1>
 
@@ -203,7 +203,7 @@ const HeroSection: React.FC = () => {
       <div className="col-span-full flex justify-center items-center sm:hidden mt-8">
         <Link
           href={`https://app.${getHosturl()}`}
-          className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-semibold text-[#111119] z-20"
+          className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#9069F0] px-4 py-2 text-sm font-semibold text-[#111119] z-20"
         >
           Launch Dapp
         </Link>

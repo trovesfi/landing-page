@@ -10,7 +10,7 @@ import Stats from "./Stats";
 const Partners: React.FC = () => {
   return (
     <MaxWidthWrapper className="relative">
-      <h5 className="bg-gradient-to-r from-[#B0F6FF] to-[#61FCAE] bg-clip-text text-center text-2xl font-medium text-transparent">
+      <h5 className="bg-gradient-to-r from-[#9069F0] to-[#C5A6FF] bg-clip-text text-center text-2xl font-medium text-transparent">
         Partners & Backed by
       </h5>
 

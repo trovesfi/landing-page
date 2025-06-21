@@ -63,11 +63,11 @@ const navLinks = [
       },
       {
         label: "Twitter",
-        href: "https://twitter.com/strkfarm",
+        href: "https://twitter.com/troves",
       },
       {
         label: "Github",
-        href: "https://github.com/strkfarm/",
+        href: "https://github.com/troves/",
       },
     ],
   },
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
         <div className="pb-8 sm:flex sm:items-center sm:justify-between">
           <div className="flex flex-col-reverse items-center gap-7 md:flex-row">
             <p className="text-sm text-gray-500 text-center dark:text-gray-400">
-              &copy; 2024 STRKFarm. All right reserved.
+              &copy; 2024 Unwrap Labs. All right reserved.
             </p>
             {/* <div className="flex flex-col items-center gap-7 md:flex-row">
               <p className="cursor-pointer text-sm text-gray-500 hover:underline sm:text-center dark:text-gray-400">
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
               <span className="sr-only">Telegram</span>
             </Link>
 
-            <Link target="_blank" href="https://twitter.com/strkfarm">
+            <Link target="_blank" href="https://twitter.com/troves">
               <Icons.x />
               <span className="sr-only">X/Twitter</span>
             </Link>
