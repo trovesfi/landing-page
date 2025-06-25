@@ -19,7 +19,7 @@ export default function Home() {
 
       <LandingNav />
 
-      <main className="flex bg-[#111119] min-h-[calc(100vh-3.5rem-1px)] flex-col overflow-x-hidden">
+      <main className="flex bg-[black] min-h-[calc(100vh-3.5rem-1px)] flex-col overflow-x-hidden">
         <div className="z-40 flex h-full flex-1 flex-col">
           <HeroSection />
           <Partners />

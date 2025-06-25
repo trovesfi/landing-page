@@ -54,18 +54,18 @@ const RunningBanner = () => {
   return (
     <div
       ref={ref}
-      className="keen-slider h-10 bg-gradient-to-r from-[black] to-[#9069F0] text-white"
+      className="keen-slider h-10 bg-gradient-to-r from-[#19191b] to-[#19191b] text-white text-[14px]"
     >
-      <Link target='_blank' href={`https://docs.${getHosturl()}/p/community/og-farmer-nft-campaign`} className="keen-slider__slide flex items-center text-nowrap hover:underline">
-        🏞️ OG Farmer Limited edition NFT Campaign is live 📢
+      <Link target='_blank' href={`/`} className="keen-slider__slide flex items-center text-nowrap ">
+        ⚡ New name. Bigger vision. STRKFarm is now Troves
       </Link>
 
-      <Link target='_blank' href={`https://docs.${getHosturl()}/p/community/og-farmer-nft-campaign`} className="keen-slider__slide items-center text-nowrap hover:underline hidden lg:flex">
-        🏞️ OG Farmer Limited edition NFT Campaign is live 📢
+      <Link target='_blank' href={`/`} className="keen-slider__slide items-center text-nowrap hidden lg:flex">
+        ⚡ New name. Bigger vision. STRKFarm is now Troves
       </Link>
 
-      <Link target='_blank' href={`https://docs.${getHosturl()}/p/community/og-farmer-nft-campaign`} className="keen-slider__slide items-center text-nowrap hover:underline hidden lg:flex" >
-        🏞️ OG Farmer Limited edition NFT Campaign is live 📢
+      <Link target='_blank' href={`/`} className="keen-slider__slide items-center text-nowrap hidden lg:flex" >
+        ⚡ New name. Bigger vision. STRKFarm is now Troves
       </Link>
     </div >
   );

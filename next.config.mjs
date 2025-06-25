@@ -2,19 +2,24 @@
 const nextConfig = {
     async redirects() {
         return [
-          {
-            source: '/discord',
-            destination: 'https://discord.gg/JA8UnuaZSw',
-            permanent: true,
-          },
+          // {
+          //   source: '/discord',
+          //   destination: 'https://discord.gg/JA8UnuaZSw',
+          //   permanent: true,
+          // },
           {
             source: '/tg',
-            destination: 'https://t.me/%2BHQ_eHaXmF-1lZDc1',
+            destination: 'https://t.me/+gifeFOs7bcI5YmVl',
             permanent: true,
           },
           {
             source: '/twitter',
-            destination: 'https://twitter.com/troves',
+            destination: 'https://x.com/trovesfi',
+            permanent: true,
+          },
+          {
+            source: '/x',
+            destination: 'https://x.com/trovesfi',
             permanent: true,
           },
           {

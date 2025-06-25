@@ -89,23 +89,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <MaxWidthWrapper className="relative grid-cols-5 pb-20 sm:pb-32 lg:pb-52 lg:grid lg:gap-x-8 lg:pt-32">
-      <Image
-        src="/right-grid.svg"
-        alt="right-grid"
-        width={413}
-        height={476}
-        className="absolute -right-[4.5rem] top-[12%] hidden lg:block"
-      />
-
-      <Image
-        src="/center-grid.svg"
-        alt="center-grid"
-        width={264}
-        height={264}
-        className="absolute top-0 left-[50%] -translate-x-[50%] lg:hidden"
-      />
-
-      <div className="-z-10 w-[793px] h-[787px] absolute top-[-80%] left-[100%] -translate-x-[50%] sm:left-0 sm:-right-[17%] sm:-top-[20%] sm:-translate-x-0 rounded-full bg-gradient-to-r from-[#61FCAE1A] to-[#1111191A] blur-3xl" />
+      <div className="-z-10 w-[793px] h-[787px] absolute top-[-80%] left-[100%] -translate-x-[50%] sm:left-0 sm:-right-[17%] sm:-top-[20%] sm:-translate-x-0 rounded-full bg-black blur-3xl" />
 
       <div className="relative col-span-3 px-6 pt-32 lg:pt-0">
         <div className="sm:hidden absolute left-6 top-[15%] flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-5 rounded-lg border border-[#A1A1ED66] bg-[#A1A1ED1A] pb-3 pt-2 px-6 shadow-2xl backdrop-blur-md">
@@ -210,7 +194,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="col-span-full hidden sm:block -ml-12 lg:ml-0 mt-28 lg:mt-6 mb-7 lg:col-span-2">
-        <div className="relative flex h-[162px] lg:h-[293px] w-full max-w-[250px] lg:max-w-none justify-center rounded-2xl bg-cyan-300 bg-gradient-to-r from-[#AD99FF] to-[#61FCAE]  lg:flex mx-auto">
+        <div className="relative flex h-[162px] lg:h-[293px] w-full max-w-[250px] lg:max-w-none justify-center rounded-2xl bg-cyan-300 bg-gradient-to-r from-[#DDD1FA] to-[#9069F0]  lg:flex mx-auto">
 
           <div className="absolute -top-[30%] left-4 lg:left-6 xl:left-8 flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-2 lg:gap-5 rounded-xl border border-[#A1A1ED66] bg-[#A1A1ED1A] lg:px-7 lg:py-6 xl:px-10 xl:py-12 px-4 py-6 shadow-2xl backdrop-blur-md">
             <div className="absolute -left-[4px] lg:-left-[7px] top-[50%] -translate-y-[50%]">

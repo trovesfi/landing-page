@@ -14,7 +14,7 @@ const Partners: React.FC = () => {
         Partners & Backed by
       </h5>
 
-      <div className="w-[793px] h-[787px] absolute -left-[25%] top-[15%] rounded-full bg-gradient-to-r from-[#61FCAE1A] to-[#1111191A] blur-3xl -z-50" />
+      <div className="w-[793px] h-[787px] absolute -left-[25%] top-[15%] rounded-full bg-black blur-3xl -z-50" />
 
 
       <div className="mx-auto mt-6 flex w-full max-w-[50rem] flex-wrap items-center justify-center lg:gap-x-32 gap-x-7 gap-y-5">

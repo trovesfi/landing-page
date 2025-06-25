@@ -28,10 +28,6 @@ const navLinks = [
     category: "Developers",
     links: [
       {
-        label: "Defi Spring",
-        href: "https://defispring.starknet.io/",
-      },
-      {
         label: "Open-source",
         href: "https://app.onlydust.com/p/strkfarm",
       },
@@ -39,11 +35,19 @@ const navLinks = [
         label: "Audit",
         href: "/audit",
       },
+      {
+        label: "Github",
+        href: "https://github.com/trovesfi/",
+      },
     ],
   },
   {
     category: "General",
     links: [
+      {
+        label: "Defi Spring",
+        href: "https://defispring.starknet.io/",
+      },
       {
         label: "Branding kit",
         href: "https://drive.google.com/drive/folders/1-D6uizWgdH2XwbP0f3Fc22wQgxhr_RUY?usp=sharing",
@@ -62,12 +66,8 @@ const navLinks = [
         href: "/tg",
       },
       {
-        label: "Twitter",
-        href: "https://twitter.com/troves",
-      },
-      {
-        label: "Github",
-        href: "https://github.com/troves/",
+        label: "X",
+        href: "/twitter",
       },
     ],
   },
@@ -75,7 +75,7 @@ const navLinks = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="z-20 mt-24 lg:mt-[15.5rem] bg-black">
+    <footer className="z-20 mt-24 lg:mt-[15.5rem] bg-[#201E26]">
       <MaxWidthWrapper>
         <div className="gap-3 space-y-12 py-6 md:flex md:justify-between md:space-y-0 lg:py-8">
           <Image width={246} height={58} alt="logo" src="/full-logo.svg" className="my-8 lg:mt-0 mx-auto sm:mr-auto sm:ml-0" />
@@ -83,12 +83,12 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-16 pl-[16%] sm:pl-0">
             {navLinks.map((navLink, i) => (
               <div key={i}>
-                <h2 className="mb-7 text-sm font-semibold">
+                <h2 className="mb-7 text-xs font-semibold text-white">
                   {navLink.category}
                 </h2>
                 <ul className="text-sm text-gray-400">
                   {navLink.links.map((link) => (
-                    <li className="mb-4" key={link.label}>
+                    <li className="mb-2" key={link.label}>
                       <Link target="_blank" href={link.href} className="hover:underline">
                         {link.label}
                       </Link>
@@ -131,17 +131,17 @@ const Footer: React.FC = () => {
               Terms and Conditions
             </Link>
 
-            <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
+            {/* <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
               <Icons.discord />
               <span className="sr-only">Discord</span>
-            </Link>
+            </Link> */}
 
             <Link target="_blank" href="/tg">
               <Icons.tg />
               <span className="sr-only">Telegram</span>
             </Link>
 
-            <Link target="_blank" href="https://twitter.com/troves">
+            <Link target="_blank" href="https://twitter.com/troves" className="padding-[5px] rounded-full bg-[#9069F0]">
               <Icons.x />
               <span className="sr-only">X/Twitter</span>
             </Link>

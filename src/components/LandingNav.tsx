@@ -35,7 +35,7 @@ const navLinks = [
 const LandingNav: React.FC = () => {
   return (
     <nav className="sticky inset-x-0 top-0 z-50 h-fit w-full bg-black">
-      {/* <RunningBanner /> */}
+      <RunningBanner />
 
       <MaxWidthWrapper className="py-2">
         <div className="flex h-14 items-center justify-between">
@@ -60,10 +60,10 @@ const LandingNav: React.FC = () => {
 
           <div className="hidden lg:flex h-full items-center space-x-4">
           <div className="flex items-center gap-3">
-            <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
+            {/* <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
               <Icons.discord className='size-7' />
               <span className="sr-only">Discord</span>
-            </Link>
+            </Link> */}
 
 
               <Link
@@ -74,7 +74,7 @@ const LandingNav: React.FC = () => {
                 <Icons.tg className='size-7' />
               </Link>
 
-              <Link href="https://twitter.com/troves"
+              <Link href="/twitter"
                 target='_blank'
                 className="text-sm text-white opacity-80"
               >
