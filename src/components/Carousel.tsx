@@ -27,7 +27,7 @@ const Carousel: React.FC = () => {
 
   return (
     <MaxWidthWrapper className="z-20 mt-16 lg:mt-56 relative px-0">
-      <div className="w-[793px] h-[787px] absolute -left-[25%] -top-[15%] rounded-full bg-black blur-3xl -z-50" />
+      <div className="w-[793px] h-auto absolute -left-[25%] -top-[15%] rounded-full bg-black blur-3xl -z-50" />
 
       <h5 className="mb-8 bg-gradient-to-r from-[#9069F0] to-[#9069F0] bg-clip-text text-center text-2xl font-medium text-transparent">
         What our community says?
