@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 // get domain name without subdomain
 export function getHosturl() {
-  const FALLBACK = "strkfarm.com";
+  const FALLBACK = "troves.fi";
   try {
     return (typeof window != 'undefined' ? window.location.hostname.split('.').slice(-2).join('.') : null) || FALLBACK;
   } catch (e) {

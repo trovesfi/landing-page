@@ -9,9 +9,32 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "STRKFarm | Top Yield Aggregator on Starknet",
-  description: "Discover top yield-earning pools and strategies on Starknet. Maximize your crypto earnings with Starknet's DeFi Spring, leveraging cutting-edge decentralized finance opportunities. Start growing your investments today and experience optimized returns this year.",
-  keywords: ['starknet', 'yield', 'aggregator', 'yearn', 'beefy', 'finance', 'crypto', 'defi', 'web3', 'blockchain', 'nostra', 'zklend', 'ekubo', 'vesu', 'braavos', 'argent', 'strategy', 'strategies', 'high yield', 'starkware', 'strk token']
+  title: "Troves | Yield Strategies on Starknet",
+  description: "Troves (Previously STRKFarm) provides automated DeFi Strategies on Starknet. Maximize your crypto earnings with Starknet's DeFi Spring, leveraging cutting-edge decentralized finance opportunities. Start growing your investments today and experience optimized returns this year.",
+  keywords: [
+    'starknet yield aggregator', 'defi strategies on starknet', 'automated crypto yield',
+    'bitcoin yield optimizer', 'usdc yield optimizer', 'eth yield optimizer', 'passive income defi', 'starknet liquidity management',
+    'ekubo liquidity management', 'vesu liquidity management', 'starknet yield farming', 'yield farming starknet',
+    'yearn alternative', 'beefy finance alternative', 'web3 investing starknet',
+    'high yield crypto strategies', 'strk token utility', 'crypto yield tools', 'bitcoin yield', 
+    'bitcoin defi strategies'
+  ],
+  openGraph: {
+    title: 'Troves | Yield strategies on Starknet',
+    description:
+      'Find and invest in high yield pools. Troves is the best Yield strategies on Starknet.',
+    images: ['https://static-assets-8zct.onrender.com/troves/og-img-png.png'],
+    url: 'https://troves.fi',
+    type: 'website',
+  },
+  twitter: {
+    creator: '@trovesfi',
+    title: 'Troves | Yield strategies on Starknet',
+    description:
+      'Find and invest in high yield pools. Troves is the best Yield strategies on Starknet.',
+    card: 'player',
+    images: ['https://static-assets-8zct.onrender.com/troves/og-img-png.png'],
+  },
 };
 
 export default function RootLayout({
@@ -22,9 +45,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#101018" />
+        <link rel="icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        <meta name="theme-color" content="black" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} style={{background: 'black'}}>
         <Providers>
           {children}
         </Providers>

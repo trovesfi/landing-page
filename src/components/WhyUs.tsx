@@ -7,12 +7,12 @@ import React from "react";
 const WhyUs: React.FC = () => {
   return (
     <MaxWidthWrapper>
-      <h5 className="mb-8 mt-28 bg-gradient-to-r from-[#B0F6FF] to-[#61FCAE] bg-clip-text text-center text-2xl font-medium text-transparent">
+      <h5 className="mb-8 mt-28 bg-gradient-to-r from-[#9069F0] to-[#9069F0] bg-clip-text text-center text-2xl font-medium text-transparent">
         Why us?
       </h5>
 
       <div className="flex w-full grid-cols-2 flex-col items-center gap-10 lg:grid">
-        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#2F245A] to-[#295846] p-0.5">
+        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#2F245A] to-[#907CFF] p-0.5">
           <div className="flex h-full w-full flex-col items-center gap-7 rounded-xl bg-gradient-to-r from-[#171626] to-[#171E23] p-7 shadow-xl md:flex-row">
             <Image
               src="/why1.svg"
@@ -28,7 +28,7 @@ const WhyUs: React.FC = () => {
           </div>
         </div>
 
-        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#295846] to-[#2F245A] p-0.5">
+        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#907CFF] to-[#2F245A] p-0.5">
           <div className="flex h-full w-full flex-col items-center gap-7 rounded-xl bg-gradient-to-r from-[#171E23] to-[#171626] p-7 shadow-xl md:flex-row">
             <Image
               src="/why2.svg"
@@ -46,7 +46,7 @@ const WhyUs: React.FC = () => {
       </div>
 
       <div className="mt-10 flex w-full grid-cols-2 flex-col items-center gap-10 lg:grid">
-        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#2F245A] to-[#295846] p-0.5">
+        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#2F245A] to-[#907CFF] p-0.5">
           <div className="flex h-full w-full flex-col items-center gap-7 rounded-xl bg-gradient-to-r from-[#171626] to-[#171E23] p-7 shadow-xl md:flex-row">
             <Image
               src="/why3.svg"
@@ -65,7 +65,7 @@ const WhyUs: React.FC = () => {
           </div>
         </div>
 
-        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#295846] to-[#2F245A] p-0.5">
+        <div className="col-span-1 h-full w-full rounded-xl bg-gradient-to-r from-[#907CFF] to-[#2F245A] p-0.5">
           <div className="flex h-full w-full flex-col items-center gap-7 rounded-xl bg-gradient-to-r from-[#171E23] to-[#171626] p-7 shadow-xl md:flex-row">
             <Image
               src="/why4.svg"
@@ -93,7 +93,7 @@ const WhyUs: React.FC = () => {
         </p>
         <Link
           href={`https://app.${getHosturl()}`}
-          className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-bold text-[#111119]"
+          className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#9069F0] px-4 py-2 text-sm font-bold text-[#111119]"
         >
           Launch Dapp
         </Link>

@@ -10,11 +10,11 @@ import Stats from "./Stats";
 const Partners: React.FC = () => {
   return (
     <MaxWidthWrapper className="relative">
-      <h5 className="bg-gradient-to-r from-[#B0F6FF] to-[#61FCAE] bg-clip-text text-center text-2xl font-medium text-transparent">
+      <h5 className="bg-gradient-to-r from-[#9069F0] to-[#C5A6FF] bg-clip-text text-center text-2xl font-medium text-transparent">
         Partners & Backed by
       </h5>
 
-      <div className="w-[793px] h-[787px] absolute -left-[25%] top-[15%] rounded-full bg-gradient-to-r from-[#61FCAE1A] to-[#1111191A] blur-3xl -z-50" />
+      <div className="w-[793px] h-[787px] absolute -left-[25%] top-[15%] rounded-full bg-black blur-3xl -z-50" />
 
 
       <div className="mx-auto mt-6 flex w-full max-w-[50rem] flex-wrap items-center justify-center lg:gap-x-32 gap-x-7 gap-y-5">

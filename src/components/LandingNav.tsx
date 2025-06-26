@@ -18,10 +18,10 @@ const navLinks = [
     label: 'Home',
     href: '/',
   },
-  {
-    label: 'Community Programs',
-    href: `https://docs.${getHosturl()}/p/community`,
-  },
+  // {
+  //   label: 'Community Programs',
+  //   href: `https://docs.${getHosturl()}/p/community`,
+  // },
   {
     label: 'Docs',
     href: `https://docs.${getHosturl()}/`,
@@ -40,7 +40,7 @@ const LandingNav: React.FC = () => {
       <MaxWidthWrapper className="py-2">
         <div className="flex h-14 items-center justify-between">
           <Link href="/">
-            <Image width={169} height={40} alt="logo" src="/full-logo.svg" />
+            <Image width={130} height={30} alt="logo" src="/full-logo.svg" />
           </Link>
 
           <div className="hidden items-center gap-4 sm:gap-8 lg:flex 2xl:gap-10">
@@ -60,10 +60,10 @@ const LandingNav: React.FC = () => {
 
           <div className="hidden lg:flex h-full items-center space-x-4">
           <div className="flex items-center gap-3">
-            <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
+            {/* <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
               <Icons.discord className='size-7' />
               <span className="sr-only">Discord</span>
-            </Link>
+            </Link> */}
 
 
               <Link
@@ -74,7 +74,7 @@ const LandingNav: React.FC = () => {
                 <Icons.tg className='size-7' />
               </Link>
 
-              <Link href="https://twitter.com/strkfarm"
+              <Link href="/twitter"
                 target='_blank'
                 className="text-sm text-white opacity-80"
               >
@@ -84,7 +84,7 @@ const LandingNav: React.FC = () => {
             
             <Link
               href={`https://app.${getHosturl()}`}
-              className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-bold text-[#111119]"
+              className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#9069F0] px-4 py-2 text-sm font-bold text-[#111119]"
             >
               Launch Dapp
             </Link>
@@ -108,7 +108,7 @@ const LandingNav: React.FC = () => {
                 ))}
                 <Link
                   href={`https://app.${getHosturl()}`}
-                  className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#61FCAE] px-4 py-2 text-sm font-semibold text-[#111119]"
+                  className="rounded-full bg-gradient-to-r from-[#6F4FF2] to-[#9069F0] px-4 py-2 text-sm font-semibold text-[#111119]"
                 >
                   Launch Dapp
                 </Link>
