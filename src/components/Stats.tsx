@@ -63,7 +63,7 @@ const Stats = () => {
     }
 
     return (
-        <div className="mt-32 flex flex-col gap-10 lg:flex-row justify-around rounded-2xl bg-opacity-80 bg-gradient-to-r from-[#2E2C5C] to-[black] py-8">
+        <div className="mt-32 flex flex-col gap-10 lg:flex-row justify-around rounded-2xl bg-[#212121B2] py-8">
             <div className="flex flex-col items-center justify-center gap-3">
                 <h4 className="text-white/90 text-lg">TVL</h4>
 

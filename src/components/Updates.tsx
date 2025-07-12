@@ -1,7 +1,7 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 const Updates = () => {
   return (
@@ -10,8 +10,12 @@ const Updates = () => {
         Updates
       </h5>
 
-      <div className="mt-6 flex flex-col items-center gap-6 md:flex-row md:gap-8 justify-center">
-        <Link target="_blank" href='https://x.com/trovesfi/status/1788558092109775029' className="cursor-pointer relative z-20 w-fit rounded-2xl border border-[#A1A1ED66] bg-[#1F1F2E] px-8 py-6">
+      <div className="mt-6 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-8">
+        <Link
+          target="_blank"
+          href="https://x.com/trovesfi/status/1788558092109775029"
+          className="light-purple-gradient relative z-20 w-fit cursor-pointer rounded-2xl px-8 py-6"
+        >
           <Image
             src="og-farmer.svg"
             width={265}
@@ -21,19 +25,18 @@ const Updates = () => {
           />
           <p className="mt-5 text-center text-white/90">OG farmer NFT launch</p>
 
-          <div className="absolute top-[25%] -left-[7px]">
-            <div className="relative w-[13px] h-[15px] lg:w-[13px] lg:h-[14px]">
-              <Image
-                src="/star.svg"
-                fill
-                objectFit="cover"
-                alt="star"
-              />
+          <div className="absolute -left-[7px] top-[25%]">
+            <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
+              <Image src="/star.svg" fill objectFit="cover" alt="star" />
             </div>
           </div>
         </Link>
 
-        <Link target="_blank" href='https://x.com/trovesfi/status/1787783906982260881' className="cursor-pointer relative z-20 w-fit rounded-2xl border border-[#A1A1ED66] bg-[#1F1F2E] px-8 py-6">
+        <Link
+          target="_blank"
+          href="https://x.com/trovesfi/status/1787783906982260881"
+          className="light-purple-gradient relative z-20 w-fit cursor-pointer rounded-2xl px-8 py-6"
+        >
           <Image
             src="starknet-seed-grant.svg"
             width={265}
@@ -43,19 +46,18 @@ const Updates = () => {
           />
           <p className="mt-5 text-center text-white/90">Starknet seed grant</p>
 
-          <div className="absolute left-[50%] -top-2">
-            <div className="relative w-[13px] h-[15px] lg:w-[13px] lg:h-[14px]">
-              <Image
-                src="/star.svg"
-                fill
-                objectFit="cover"
-                alt="star"
-              />
+          <div className="absolute -top-2 left-[50%]">
+            <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
+              <Image src="/star.svg" fill objectFit="cover" alt="star" />
             </div>
           </div>
         </Link>
 
-        <Link target="_blank" href='https://x.com/trovesfi/status/1817886800318513273' className="cursor-pointer relative z-20 w-fit rounded-2xl border border-[#A1A1ED66] bg-[#1F1F2E] px-8 py-6">
+        <Link
+          target="_blank"
+          href="https://x.com/trovesfi/status/1817886800318513273"
+          className="light-purple-gradient relative z-20 w-fit cursor-pointer rounded-2xl px-8 py-6"
+        >
           <Image
             src="yield-strategy.svg"
             width={265}
@@ -63,16 +65,13 @@ const Updates = () => {
             alt="og-farmer"
             className="rounded-lg bg-black"
           />
-          <p className="mt-5 text-center text-white/90">High yield strategy launch</p>
+          <p className="mt-5 text-center text-white/90">
+            High yield strategy launch
+          </p>
 
-          <div className="absolute bottom-[25%] -right-[7px]">
-            <div className="relative w-[13px] h-[15px] lg:w-[13px] lg:h-[14px]">
-              <Image
-                src="/star.svg"
-                fill
-                objectFit="cover"
-                alt="star"
-              />
+          <div className="absolute -right-[7px] bottom-[25%]">
+            <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
+              <Image src="/star.svg" fill objectFit="cover" alt="star" />
             </div>
           </div>
         </Link>

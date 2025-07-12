@@ -160,7 +160,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="mx-auto flex flex-col items-center text-center lg:text-left lg:items-start">
-          <h1 className="z-20 w-fit text-balance bg-gradient-to-r from-[#9069F0] via-[#9069F0] to-[white] bg-clip-text text-[2rem] leading-9 font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl">
+          <h1 className="z-20 w-fit text-balance bg-gradient-to-r from-[#9069F0] via-[white] to-[white] bg-clip-text text-[2rem] leading-9 font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl">
             Starknet&#8217;s Yield Powerhouse
           </h1>
 
@@ -193,7 +193,13 @@ const HeroSection: React.FC = () => {
         </Link>
       </div>
 
-      <div className="col-span-full hidden sm:block -ml-12 lg:ml-0 mt-28 lg:mt-6 mb-7 lg:col-span-2">
+      <div className="gradient-shadow col-span-full hidden sm:block -ml-12 lg:ml-0 mt-28 lg:mt-6 mb-7 lg:col-span-2 relative">
+        {/* Decorative grid background boxes */}
+        <div className="grid-bg-boxes">
+          {Array.from({ length: 72 }).map((_, i) => (
+            <div className="box" key={i} />
+          ))}
+        </div>
         <div className="relative flex h-[162px] lg:h-[293px] w-full max-w-[250px] lg:max-w-none justify-center rounded-2xl bg-cyan-300 bg-gradient-to-r from-[#DDD1FA] to-[#9069F0]  lg:flex mx-auto">
 
           <div className="absolute -top-[30%] left-4 lg:left-6 xl:left-8 flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-2 lg:gap-5 rounded-xl border border-[#A1A1ED66] bg-[#A1A1ED1A] lg:px-7 lg:py-6 xl:px-10 xl:py-12 px-4 py-6 shadow-2xl backdrop-blur-md">

@@ -18,19 +18,22 @@ const Partners: React.FC = () => {
 
 
       <div className="mx-auto mt-6 flex w-full max-w-[50rem] flex-wrap items-center justify-center lg:gap-x-32 gap-x-7 gap-y-5">
-        <Link href='https://www.starknet.io/' className="relative w-[152px] h-[34px] lg:w-[165px] lg:h-[44px]">
+        <Link href='https://www.starknet.io/' className="relative w-[152px] h-[34px] lg:w-[165px] lg:h-[44px]" target="_blank">
           <Image src="/starknet.svg" alt="starknet" fill objectFit="contain" />
         </Link>
-        <Link href='https://endur.fi/' className="relative w-[190px] lg:w-[190px] h-[45px]">
+        <Link href='https://endur.fi/' className="relative w-[190px] lg:w-[190px] h-[45px]" target="_blank">
           <Image src="/endur.svg" alt="Endur" fill objectFit="contain" />
         </Link>
-        <Link href='https://vesu.xyz/' className="relative w-[140px] lg:w-[95px] h-[24px] lg:h-[34px]">
+        <Link href='https://vesu.xyz/' className="relative w-[140px] lg:w-[95px] h-[24px] lg:h-[34px]" target="_blank">
           <Image src="/vesu.png" alt="Vesu" fill objectFit="contain" />
         </Link>
-        <Link href='https://nostra.finance/' className="relative w-[152px] h-[34px] lg:w-[165px] lg:h-[44px]">
+        <Link href='https://re7labs.xyz/' className="relative w-[190px] lg:w-[190px] h-[24px] lg:h-[34px]" target="_blank">
+          <Image src="/re7.svg" alt="re7" fill objectFit="contain" />
+        </Link>
+        <Link href='https://nostra.finance/' className="relative w-[152px] h-[34px] lg:w-[165px] lg:h-[44px]" target="_blank">
           <Image src="/nostra.svg" alt="zklend" fill objectFit="contain" />
         </Link>
-        <Link href='https://www.pragma.build/' className="relative w-[152px] h-[34px] lg:w-[165px] lg:h-[44px]">
+        <Link href='https://www.pragma.build/' className="relative w-[152px] h-[34px] lg:w-[165px] lg:h-[44px]" target="_blank">
           <Image src="/pragma.svg" alt="zklend" fill objectFit="contain" />
         </Link>
       </div>
