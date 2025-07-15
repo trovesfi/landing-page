@@ -7,11 +7,13 @@ import React from 'react';
 const WhyUs: React.FC = () => {
   return (
     <MaxWidthWrapper>
-      <h5 className="mb-8 mt-28 bg-gradient-to-r from-[#9069F0] to-[#9069F0] bg-clip-text text-center text-2xl font-medium text-transparent">
+      <h5 className="mb-12 mt-28 bg-gradient-to-r from-[#DDD1FA] to-[#9069F0] bg-clip-text text-center text-2xl font-medium text-transparent">
         Why us?
       </h5>
 
-      <div className="flex w-full grid-cols-2 flex-col items-center gap-10 lg:grid">
+      <div className="relative flex w-full grid-cols-2 flex-col items-center gap-10 lg:grid">
+        <div className="gradient-shadow bottom-[-600px] right-[-400px] h-[100%] w-[30%]"></div>
+
         <div className="light-purple-gradient flex h-full w-full flex-col items-center gap-7 rounded-xl p-7 shadow-xl md:flex-row">
           <Image
             src="/why1.svg"

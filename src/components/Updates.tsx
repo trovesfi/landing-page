@@ -6,24 +6,41 @@ import React from 'react';
 const Updates = () => {
   return (
     <MaxWidthWrapper className="relative">
-      <h5 className="mt-24 bg-gradient-to-r from-[#9069F0] to-[#9069F0] bg-clip-text text-center text-2xl font-medium text-transparent">
+      <h5 className="mt-24 bg-gradient-to-r from-[#DDD1FA] to-[#9069F0] bg-clip-text text-center text-2xl font-medium text-transparent">
         Updates
       </h5>
 
-      <div className="mt-6 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-8">
+      <div className="grid-bg-boxes left-[-50px] top-[120px]">
+        {Array.from({ length: 100 }).map((_, i) => (
+          <div className="box" key={i} />
+        ))}
+      </div>
+
+      <div className="grid-bg-boxes right-[-100px] top-[250px]">
+        {Array.from({ length: 80 }).map((_, i) => (
+          <div className="box" key={i} />
+        ))}
+      </div>
+
+      <div className="gradient-shadow absolute left-[-200px] top-[50px] h-[40%] w-[30%]"></div>
+
+      <div className="mt-12 flex w-full flex-col items-center justify-center gap-6 md:flex-row md:gap-8">
         <Link
           target="_blank"
           href="https://x.com/trovesfi/status/1788558092109775029"
-          className="light-purple-gradient relative z-20 w-fit cursor-pointer rounded-2xl px-8 py-6"
+          className="light-purple-gradient relative z-20 w-full cursor-pointer rounded-2xl px-8 py-6"
         >
           <Image
-            src="og-farmer.svg"
-            width={265}
-            height={318}
+            src="ekubo-xstrk-strk.svg"
+            width={320}
+            height={300}
             alt="og-farmer"
-            className="rounded-lg bg-black"
+            className="ml-auto mr-auto self-center rounded-lg"
           />
-          <p className="mt-5 text-center text-white/90">OG farmer NFT launch</p>
+          <p className="mt-5 text-center text-lg text-white/90">
+            EKUBO XSTRK/STRK
+          </p>
+          <p className="text-center text-lg text-white/90">Managed LP Vault</p>
 
           <div className="absolute -left-[7px] top-[25%]">
             <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
@@ -35,16 +52,17 @@ const Updates = () => {
         <Link
           target="_blank"
           href="https://x.com/trovesfi/status/1787783906982260881"
-          className="light-purple-gradient relative z-20 w-fit cursor-pointer rounded-2xl px-8 py-6"
+          className="light-purple-gradient relative z-20 w-full cursor-pointer rounded-2xl px-8 py-6"
         >
           <Image
-            src="starknet-seed-grant.svg"
-            width={265}
-            height={318}
+            src="vesu.svg"
+            width={320}
+            height={300}
             alt="og-farmer"
             className="rounded-lg bg-black"
           />
-          <p className="mt-5 text-center text-white/90">Starknet seed grant</p>
+          <p className="mt-5 text-center text-lg text-white/90">Vesu fusion</p>
+          <p className="text-center text-lg text-white/90">Vaults</p>
 
           <div className="absolute -top-2 left-[50%]">
             <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
@@ -56,18 +74,19 @@ const Updates = () => {
         <Link
           target="_blank"
           href="https://x.com/trovesfi/status/1817886800318513273"
-          className="light-purple-gradient relative z-20 w-fit cursor-pointer rounded-2xl px-8 py-6"
+          className="light-purple-gradient relative z-20 w-full cursor-pointer rounded-2xl px-8 py-6"
         >
           <Image
-            src="yield-strategy.svg"
-            width={265}
-            height={318}
+            src="re7-banner.svg"
+            width={320}
+            height={300}
             alt="og-farmer"
             className="rounded-lg bg-black"
           />
-          <p className="mt-5 text-center text-white/90">
-            High yield strategy launch
+          <p className="mt-5 text-center text-lg text-white/90">
+            Collaboration
           </p>
+          <p className="text-center text-lg text-white/90">with Re7</p>
 
           <div className="absolute -right-[7px] bottom-[25%]">
             <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
