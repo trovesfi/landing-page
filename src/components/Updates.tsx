@@ -10,19 +10,20 @@ const Updates = () => {
         Updates
       </h5>
 
-      <div className="grid-bg-boxes left-[-50px] top-[120px]">
+      <div className="grid-bg-boxes left-[-50px] top-[120px] hidden lg:grid">
         {Array.from({ length: 100 }).map((_, i) => (
           <div className="box" key={i} />
         ))}
       </div>
 
-      <div className="grid-bg-boxes right-[-100px] top-[250px]">
+      <div className="grid-bg-boxes right-[-100px] top-[250px] hidden lg:grid">
         {Array.from({ length: 80 }).map((_, i) => (
           <div className="box" key={i} />
         ))}
       </div>
 
-      <div className="gradient-shadow absolute left-[-200px] top-[50px] h-[40%] w-[30%]"></div>
+      <div className="gradient-shadow absolute left-[-200px] top-[50px] hidden h-[40%] w-[30%] lg:block"></div>
+      <div className="gradient-shadow absolute right-[-200px] top-[900px] h-[40%] w-[40%] lg:hidden"></div>
 
       <div className="mt-12 flex w-full flex-col items-center justify-center gap-6 md:flex-row md:gap-8">
         <Link
@@ -35,7 +36,7 @@ const Updates = () => {
             width={320}
             height={300}
             alt="og-farmer"
-            className="ml-auto mr-auto self-center rounded-lg"
+            className="ml-auto mr-auto rounded-lg"
           />
           <p className="mt-5 text-center text-lg text-white/90">
             EKUBO XSTRK/STRK
@@ -59,7 +60,7 @@ const Updates = () => {
             width={320}
             height={300}
             alt="og-farmer"
-            className="rounded-lg bg-black"
+            className="ml-auto mr-auto rounded-lg bg-black"
           />
           <p className="mt-5 text-center text-lg text-white/90">Vesu fusion</p>
           <p className="text-center text-lg text-white/90">Vaults</p>
@@ -74,19 +75,19 @@ const Updates = () => {
         <Link
           target="_blank"
           href="https://x.com/trovesfi/status/1817886800318513273"
-          className="light-purple-gradient relative z-20 w-full cursor-pointer rounded-2xl px-8 py-6"
+          className="light-purple-gradient pointer-events-none relative z-20 w-full cursor-pointer select-none rounded-2xl px-8 py-6"
+          tabIndex={-1}
+          aria-disabled="true"
         >
           <Image
             src="re7-banner.svg"
             width={320}
             height={300}
             alt="og-farmer"
-            className="rounded-lg bg-black"
+            className="ml-auto mr-auto rounded-lg bg-black blur-[12px] filter"
           />
-          <p className="mt-5 text-center text-lg text-white/90">
-            Collaboration
-          </p>
-          <p className="text-center text-lg text-white/90">with Re7</p>
+          <p className="mt-5 text-center text-lg text-white/90">Great news</p>
+          <p className="text-center text-lg text-white/90">coming soon!</p>
 
           <div className="absolute -right-[7px] bottom-[25%]">
             <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">

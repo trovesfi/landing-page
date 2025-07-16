@@ -33,16 +33,17 @@ const Carousel: React.FC = () => {
         What our community says?
       </h5>
 
-      <div className="gradient-shadow bottom-[-500px] left-[-300px] h-[60%] w-[30%]"></div>
+      <div className="gradient-shadow bottom-[-500px] left-[-300px] hidden h-[60%] w-[30%] lg:block"></div>
+      <div className="gradient-shadow bottom-[-200px] left-1/2 h-[50%] w-[50%] -translate-x-1/2 lg:hidden"></div>
 
       <div ref={sliderRef} className="keen-slider -z-50">
         <div className="keen-slider__slide number-slide1 flex items-center justify-center">
-          <div className="relative flex h-[400px] w-full items-center justify-center">
+          <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
             <div
               style={{
                 background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
               }}
-              className="h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:h-[290px]"
+              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
             ></div>
 
             <div
@@ -52,24 +53,24 @@ const Carousel: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-              className="absolute left-1/2 top-1/2 h-[200%] w-[75%] -translate-x-1/2 -translate-y-1/2 rounded-2xl sm:h-[300px] lg:h-[320px]"
+              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
             >
               <Link
                 target="_blank"
                 href="https://x.com/IamEnergyI/status/1827746502514544777"
-                className="flex h-[90%] w-full justify-between"
+                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
               >
-                <div className="relative ml-2 flex w-[320px]">
+                <div className="relative h-[350px] w-full lg:h-full lg:w-[60%]">
                   <Image
-                    src="/tweet5.png"
-                    alt="tweet5"
+                    src="/tweet1.png"
+                    alt="tweet1"
                     fill
                     objectFit="contain"
-                    className=""
+                    className="p-3"
                   />
                 </div>
 
-                <div className="relative flex h-full w-[65%] flex-col items-center justify-center gap-4 p-8 text-center">
+                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
                   <h2 className="font-bold italic">IreofGod.web3</h2>
 
                   <p className="font-light">
@@ -81,6 +82,152 @@ const Carousel: React.FC = () => {
                     the best $STRK rewarding pools and maximize your rewards.{' '}
                     <br /> <br /> You can easily track @starknet yield across
                     major Dexs and lending protocol.”
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="keen-slider__slide number-slide2 flex items-center justify-center">
+          <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
+            <div
+              style={{
+                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
+              }}
+              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
+            ></div>
+
+            <div
+              style={{
+                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
+            >
+              <Link
+                target="_blank"
+                href="https://x.com/odin_free/status/1772202995997937850"
+                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
+              >
+                <div className="relative h-[350px] w-full lg:h-full lg:w-[60%]">
+                  <Image
+                    src="/tweet2.png"
+                    alt="tweet2"
+                    fill
+                    objectFit="contain"
+                    className="p-3"
+                  />
+                </div>
+
+                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
+                  <h2 className="font-bold italic">br0th3r 0d1n</h2>
+
+                  <p className="font-light">
+                    nice rates @strkfarm
+                    <br /> <br /> https://strkfarm.xyz
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="keen-slider__slide number-slide3 flex items-center justify-center">
+          <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
+            <div
+              style={{
+                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
+              }}
+              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
+            ></div>
+
+            <div
+              style={{
+                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
+            >
+              <Link
+                target="_blank"
+                href="https://x.com/akashneelesh/status/1814705345555582980"
+                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
+              >
+                <div className="relative h-[270px] w-full lg:h-full lg:w-[100%]">
+                  <Image
+                    src="/tweet3.png"
+                    alt="tweet3"
+                    fill
+                    objectFit="contain"
+                    className="p-3"
+                  />
+                </div>
+
+                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
+                  <h2 className="font-bold italic">
+                    Brother Akash Balasubramani
+                  </h2>
+
+                  <p className="font-light">
+                    Did @strkfarm just hit the 50k STRK limit like under 2
+                    days!!
+                    <br /> <br /> Congratulations to @strkfarm and
+                    @akiraonstarknet for hitting this huge milestone.
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="keen-slider__slide number-slide4 flex items-center justify-center">
+          <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
+            <div
+              style={{
+                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
+              }}
+              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
+            ></div>
+
+            <div
+              style={{
+                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
+            >
+              <Link
+                target="_blank"
+                href="https://x.com/dave_degeen/status/1780644927258423775"
+                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
+              >
+                <div className="relative h-[400px] w-full lg:h-full lg:w-[50%]">
+                  <Image
+                    src="/tweet4.png"
+                    alt="tweet4"
+                    fill
+                    objectFit="contain"
+                    className="p-3"
+                  />
+                </div>
+
+                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
+                  <h2 className="font-bold italic">Degen_Dave.stark</h2>
+
+                  <p className="font-light">
+                    Some are harboring resentment against the @Starknet
+                    ecosystem, while many are reaping juicy rewards by taking
+                    advantage of DeFi Spring.
+                    <br /> <br /> @strkfarm is here to help you make the most of
+                    DeFi Spring.Before we continue, please follow, retweet, and
+                    like.
                   </p>
                 </div>
               </Link>
