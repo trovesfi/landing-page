@@ -140,7 +140,14 @@ const HeroSection: React.FC = () => {
           <p className="mt-4 text-sm font-bold text-white lg:mt-0">25%</p>
         </div>
 
+        <div className="grid-bg-boxes left-1/2 top-[-60px] grid h-[150%] w-[90%] -translate-x-1/2 lg:hidden">
+          {Array.from({ length: 200 }).map((_, i) => (
+            <div className="box" key={i} />
+          ))}
+        </div>
+
         <div className="absolute right-6 top-[10%] flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-2 rounded-lg border border-[#A1A1ED66] bg-[#A1A1ED1A] px-6 pb-1 pt-2 shadow-2xl backdrop-blur-md sm:hidden">
+          <div className="gradient-shadow right-1/2 top-0 h-[200%] w-[350%] lg:hidden"></div>
           <div className="absolute -right-[4px] top-[20%] -translate-y-[50%]">
             <div className="relative h-[7.76px] w-[6.99px]">
               <Image src="/star.svg" fill objectFit="cover" alt="star" />
@@ -212,7 +219,7 @@ const HeroSection: React.FC = () => {
       <div className="relative col-span-full -ml-12 mb-7 mt-28 hidden sm:block lg:col-span-2 lg:ml-0 lg:mt-6">
         <div className="gradient-shadow left-[-50px] top-[-100px] h-[100%] w-[100%]"></div>
 
-        <div className="grid-bg-boxes right-[-200px] top-[-60px] h-[150%] w-[100%]">
+        <div className="grid-bg-boxes right-[-200px] top-[-60px] grid h-[150%] w-[100%]">
           {Array.from({ length: 200 }).map((_, i) => (
             <div className="box" key={i} />
           ))}

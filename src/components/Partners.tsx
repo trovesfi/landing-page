@@ -38,13 +38,13 @@ const Partners: React.FC = () => {
         >
           <Image src="/vesu.png" alt="Vesu" fill objectFit="contain" />
         </Link>
-        <Link
+        {/* <Link
           href="https://re7labs.xyz/"
           className="relative h-[24px] w-[190px] lg:h-[34px] lg:w-[190px]"
           target="_blank"
         >
           <Image src="/re7.svg" alt="re7" fill objectFit="contain" />
-        </Link>
+        </Link> */}
         <Link
           href="https://nostra.finance/"
           className="relative h-[34px] w-[152px] lg:h-[44px] lg:w-[165px]"
@@ -61,6 +61,7 @@ const Partners: React.FC = () => {
         </Link>
       </div>
 
+      <div className="gradient-shadow left-[-250px] top-[200px] h-[50%] w-[70%] lg:hidden"></div>
       <Stats />
     </MaxWidthWrapper>
   );

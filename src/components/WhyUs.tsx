@@ -12,7 +12,8 @@ const WhyUs: React.FC = () => {
       </h5>
 
       <div className="relative flex w-full grid-cols-2 flex-col items-center gap-10 lg:grid">
-        <div className="gradient-shadow bottom-[-600px] right-[-400px] h-[100%] w-[30%]"></div>
+        <div className="gradient-shadow bottom-[-600px] right-[-400px] hidden h-[100%] w-[30%] lg:block"></div>
+        <div className="gradient-shadow left-[-200px] top-[300px] h-[100%] w-[50%] lg:hidden"></div>
 
         <div className="light-purple-gradient flex h-full w-full flex-col items-center gap-7 rounded-xl p-7 shadow-xl md:flex-row">
           <Image
