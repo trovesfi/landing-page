@@ -36,7 +36,7 @@ const Updates = () => {
             width={320}
             height={300}
             alt="og-farmer"
-            className="ml-auto mr-auto self-center rounded-lg"
+            className="ml-auto mr-auto rounded-lg"
           />
           <p className="mt-5 text-center text-lg text-white/90">
             EKUBO XSTRK/STRK
@@ -60,7 +60,7 @@ const Updates = () => {
             width={320}
             height={300}
             alt="og-farmer"
-            className="rounded-lg bg-black"
+            className="ml-auto mr-auto rounded-lg bg-black"
           />
           <p className="mt-5 text-center text-lg text-white/90">Vesu fusion</p>
           <p className="text-center text-lg text-white/90">Vaults</p>
@@ -84,7 +84,7 @@ const Updates = () => {
             width={320}
             height={300}
             alt="og-farmer"
-            className="rounded-lg bg-black blur-[12px] filter"
+            className="ml-auto mr-auto rounded-lg bg-black blur-[12px] filter"
           />
           <p className="mt-5 text-center text-lg text-white/90">Great news</p>
           <p className="text-center text-lg text-white/90">coming soon!</p>

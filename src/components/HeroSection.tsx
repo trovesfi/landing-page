@@ -140,7 +140,7 @@ const HeroSection: React.FC = () => {
           <p className="mt-4 text-sm font-bold text-white lg:mt-0">25%</p>
         </div>
 
-        <div className="grid-bg-boxes left-1/2 top-[-60px] grid h-[150%] w-[90%] -translate-x-1/2 lg:hidden">
+        <div className="grid-bg-boxes left-1/2 top-[-60px] grid h-[150%] w-[90%] -translate-x-1/2 sm:hidden">
           {Array.from({ length: 200 }).map((_, i) => (
             <div className="box" key={i} />
           ))}
@@ -219,7 +219,7 @@ const HeroSection: React.FC = () => {
       <div className="relative col-span-full -ml-12 mb-7 mt-28 hidden sm:block lg:col-span-2 lg:ml-0 lg:mt-6">
         <div className="gradient-shadow left-[-50px] top-[-100px] h-[100%] w-[100%]"></div>
 
-        <div className="grid-bg-boxes right-[-200px] top-[-60px] grid h-[150%] w-[100%]">
+        <div className="grid-bg-boxes right-[-200px] top-[-60px] h-[150%] w-[100%] md:hidden lg:grid">
           {Array.from({ length: 200 }).map((_, i) => (
             <div className="box" key={i} />
           ))}
