@@ -111,7 +111,7 @@ const Carousel: React.FC = () => {
             >
               <Link
                 target="_blank"
-                href="https://x.com/IamEnergyI/status/1827746502514544777"
+                href="https://x.com/odin_free/status/1772202995997937850"
                 className="relative flex h-full w-full flex-col lg:flex-row"
               >
                 <div className="flex w-full justify-center">
