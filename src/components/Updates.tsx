@@ -28,7 +28,7 @@ const Updates = () => {
       <div className="mt-12 flex w-full flex-col items-center justify-center gap-6 md:flex-row md:gap-8">
         <Link
           target="_blank"
-          href="https://x.com/trovesfi/status/1788558092109775029"
+          href="https://x.com/trovesfi/status/1913230041267556386"
           className="light-purple-gradient relative z-20 w-full cursor-pointer rounded-2xl px-8 py-6"
         >
           <Image
@@ -52,7 +52,7 @@ const Updates = () => {
 
         <Link
           target="_blank"
-          href="https://x.com/trovesfi/status/1787783906982260881"
+          href="https://x.com/trovesfi/status/1905576309709046025"
           className="light-purple-gradient relative z-20 w-full cursor-pointer rounded-2xl px-8 py-6"
         >
           <Image
