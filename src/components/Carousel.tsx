@@ -53,24 +53,26 @@ const Carousel: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
+              className="h-full w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row"
             >
               <Link
                 target="_blank"
                 href="https://x.com/IamEnergyI/status/1827746502514544777"
-                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
+                className="relative flex h-full w-full flex-col lg:flex-row"
               >
-                <div className="relative h-[350px] w-full lg:h-full lg:w-[60%]">
+                <div className="flex w-full justify-center">
                   <Image
                     src="/tweet1.png"
                     alt="tweet1"
-                    fill
+                    width={500}
+                    height={330}
                     objectFit="contain"
                     className="p-3"
+                    sizes="(max-width: 1024px) 400px, 500px"
                   />
                 </div>
 
-                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
                   <h2 className="font-bold italic">IreofGod.web3</h2>
 
                   <p className="font-light">
@@ -105,24 +107,26 @@ const Carousel: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
+              className="h-full w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:flex-row"
             >
               <Link
                 target="_blank"
                 href="https://x.com/odin_free/status/1772202995997937850"
-                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
+                className="relative flex h-full w-full flex-col lg:flex-row"
               >
-                <div className="relative h-[350px] w-full lg:h-full lg:w-[60%]">
+                <div className="flex w-full justify-center">
                   <Image
                     src="/tweet2.png"
                     alt="tweet2"
-                    fill
+                    width={500}
+                    height={330}
                     objectFit="contain"
                     className="p-3"
+                    sizes="(max-width: 1024px) 400px, 500px"
                   />
                 </div>
 
-                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
                   <h2 className="font-bold italic">br0th3r 0d1n</h2>
 
                   <p className="font-light">
@@ -151,24 +155,25 @@ const Carousel: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
+              className="h-full w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
             >
               <Link
                 target="_blank"
                 href="https://x.com/akashneelesh/status/1814705345555582980"
-                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
+                className="relative flex h-full w-full flex-col lg:flex-row"
               >
-                <div className="relative h-[270px] w-full lg:h-full lg:w-[100%]">
+                <div className="flex w-full justify-center">
                   <Image
                     src="/tweet3.png"
                     alt="tweet3"
-                    fill
+                    width={500}
+                    height={500}
                     objectFit="contain"
                     className="p-3"
                   />
                 </div>
 
-                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
                   <h2 className="font-bold italic">
                     Brother Akash Balasubramani
                   </h2>
@@ -201,24 +206,25 @@ const Carousel: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-              className="h-fit w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
+              className="h-full w-[90%] rounded-2xl lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[320px] lg:w-[75%] lg:-translate-x-1/2 lg:-translate-y-1/2"
             >
               <Link
                 target="_blank"
                 href="https://x.com/dave_degeen/status/1780644927258423775"
-                className="flex h-fit w-full flex-col justify-between lg:h-[100%] lg:flex-row"
+                className="relative flex h-full w-full flex-col lg:flex-row"
               >
-                <div className="relative h-[400px] w-full lg:h-full lg:w-[50%]">
+                <div className="flex w-full justify-center lg:w-[50%]">
                   <Image
                     src="/tweet4.png"
                     alt="tweet4"
-                    fill
+                    width={400}
+                    height={400}
                     objectFit="contain"
                     className="p-3"
                   />
                 </div>
 
-                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-4 p-8 text-center lg:w-full">
+                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
                   <h2 className="font-bold italic">Degen_Dave.stark</h2>
 
                   <p className="font-light">
