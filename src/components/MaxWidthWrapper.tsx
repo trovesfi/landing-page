@@ -13,7 +13,7 @@ const MaxWidthWrapper: React.FC<MaxWidthWrapperProps> = ({
   return (
     <div
       className={cn(
-        "h-full mx-auto w-full max-w-[80rem] px-5 md:px-20",
+        "h-full mx-auto w-full max-w-[85rem] px-5 md:px-20",
         className
       )}
     >
