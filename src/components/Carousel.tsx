@@ -39,16 +39,10 @@ const Carousel: React.FC = () => {
       <div ref={sliderRef} className="keen-slider -z-50">
         <div className="keen-slider__slide number-slide1 flex items-center justify-center">
           <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
-            <div
-              style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
-              }}
-              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
-            ></div>
+            <div className="light-purple-gradient hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"></div>
 
             <div
               style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -58,7 +52,7 @@ const Carousel: React.FC = () => {
               <Link
                 target="_blank"
                 href="https://x.com/IamEnergyI/status/1827746502514544777"
-                className="relative flex h-full w-full flex-col lg:flex-row"
+                className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
                 <div className="flex w-full justify-center">
                   <Image
@@ -72,7 +66,7 @@ const Carousel: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center text-white lg:w-full">
                   <h2 className="font-bold italic">IreofGod.web3</h2>
 
                   <p className="font-light">
@@ -93,16 +87,10 @@ const Carousel: React.FC = () => {
 
         <div className="keen-slider__slide number-slide2 flex items-center justify-center">
           <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
-            <div
-              style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
-              }}
-              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
-            ></div>
+            <div className="light-purple-gradient hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"></div>
 
             <div
               style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -112,7 +100,7 @@ const Carousel: React.FC = () => {
               <Link
                 target="_blank"
                 href="https://x.com/odin_free/status/1772202995997937850"
-                className="relative flex h-full w-full flex-col lg:flex-row"
+                className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
                 <div className="flex w-full justify-center">
                   <Image
@@ -126,7 +114,7 @@ const Carousel: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center text-white lg:w-full">
                   <h2 className="font-bold italic">br0th3r 0d1n</h2>
 
                   <p className="font-light">
@@ -141,16 +129,10 @@ const Carousel: React.FC = () => {
 
         <div className="keen-slider__slide number-slide3 flex items-center justify-center">
           <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
-            <div
-              style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
-              }}
-              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
-            ></div>
+            <div className="light-purple-gradient hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"></div>
 
             <div
               style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -160,7 +142,7 @@ const Carousel: React.FC = () => {
               <Link
                 target="_blank"
                 href="https://x.com/akashneelesh/status/1814705345555582980"
-                className="relative flex h-full w-full flex-col lg:flex-row"
+                className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
                 <div className="flex w-full justify-center">
                   <Image
@@ -173,7 +155,7 @@ const Carousel: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
+                <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center text-white lg:w-full">
                   <h2 className="font-bold italic">
                     Brother Akash Balasubramani
                   </h2>
@@ -192,16 +174,10 @@ const Carousel: React.FC = () => {
 
         <div className="keen-slider__slide number-slide4 flex items-center justify-center">
           <div className="relative flex h-full w-full items-center justify-center lg:h-[400px]">
-            <div
-              style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
-              }}
-              className="hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"
-            ></div>
+            <div className="light-purple-gradient hidden h-[250px] w-[89%] rounded-2xl opacity-50 sm:h-[300px] lg:block lg:h-[290px]"></div>
 
             <div
               style={{
-                background: `linear-gradient(0deg, #212121, #212121), linear-gradient(326.73deg, #9069F0 -541.23%, rgba(33, 33, 33, 0.8) 92.85%)`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -211,7 +187,7 @@ const Carousel: React.FC = () => {
               <Link
                 target="_blank"
                 href="https://x.com/dave_degeen/status/1780644927258423775"
-                className="relative flex h-full w-full flex-col lg:flex-row"
+                className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
                 <div className="flex w-full justify-center lg:w-[50%]">
                   <Image
@@ -224,7 +200,7 @@ const Carousel: React.FC = () => {
                   />
                 </div>
 
-                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-2 p-2 text-center lg:w-full">
+                <div className="flex h-full w-[100%] flex-col items-center justify-center gap-2 p-2 text-center text-white lg:w-full">
                   <h2 className="font-bold italic">Degen_Dave.stark</h2>
 
                   <p className="font-light">
