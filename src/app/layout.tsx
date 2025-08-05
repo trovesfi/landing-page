@@ -9,29 +9,29 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Troves | Yield Strategies on Starknet",
-  description: "Troves (Previously STRKFarm) provides automated DeFi Strategies on Starknet. Maximize your crypto earnings with Starknet's DeFi Spring, leveraging cutting-edge decentralized finance opportunities. Start growing your investments today and experience optimized returns this year.",
+  title: "Troves | One Click Yield Strategies on Starknet",
+  description: "Troves (formerly STRKFarm) offers one-click DeFi strategies on Starknet. Maximize returns, minimize risk — all automated. No active management needed.",
   keywords: [
     'starknet yield aggregator', 'defi strategies on starknet', 'automated crypto yield',
     'bitcoin yield optimizer', 'usdc yield optimizer', 'eth yield optimizer', 'passive income defi', 'starknet liquidity management',
     'ekubo liquidity management', 'vesu liquidity management', 'starknet yield farming', 'yield farming starknet',
     'yearn alternative', 'beefy finance alternative', 'web3 investing starknet',
     'high yield crypto strategies', 'strk token utility', 'crypto yield tools', 'bitcoin yield', 
-    'bitcoin defi strategies'
+    'bitcoin defi strategies', 'strkfarm troves', 'defi spring'
   ],
   openGraph: {
-    title: 'Troves | Yield strategies on Starknet',
+    title: 'Troves | One Click Yield Strategies on Starknet',
     description:
-      'Find and invest in high yield pools. Troves is the best Yield strategies on Starknet.',
+      'Troves (formerly STRKFarm) offers one-click DeFi strategies on Starknet. Maximize returns, minimize risk — all automated. No active management needed.',
     images: ['https://static-assets-8zct.onrender.com/troves/og-img-png.png'],
     url: 'https://troves.fi',
     type: 'website',
   },
   twitter: {
     creator: '@trovesfi',
-    title: 'Troves | Yield strategies on Starknet',
+    title: 'Troves | One Click Yield Strategies on Starknet',
     description:
-      'Find and invest in high yield pools. Troves is the best Yield strategies on Starknet.',
+      'Troves (formerly STRKFarm) offers one-click DeFi strategies on Starknet. Maximize returns, minimize risk — all automated. No active management needed.',
     card: 'player',
     images: ['https://static-assets-8zct.onrender.com/troves/og-img-png.png'],
   },
