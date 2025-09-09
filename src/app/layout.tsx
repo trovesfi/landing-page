@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     images: ['https://static-assets-8zct.onrender.com/troves/og-img-png.png'],
     url: 'https://troves.fi',
     type: 'website',
+    siteName: 'Troves.fi'
   },
   twitter: {
     creator: '@trovesfi',
