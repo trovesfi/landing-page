@@ -1,8 +1,5 @@
 'use client';
 
-import MaxWidthWrapper from '@/components/MaxWidthWrapper';
-import { TOKENS } from '@/constants';
-import { addressEq, getHosturl } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import 'keen-slider/keen-slider.min.css';
@@ -10,11 +7,17 @@ import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
+
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import { fadeVariants, TOKENS } from '@/constants';
+import { addressEq, getHosturl } from '@/lib/utils';
 
 export const animation = { duration: 40000, easing: (t: number) => t };
 
 const HeroSection: React.FC = () => {
   const [tickerApys, setTickerApys] = useState([
+    { token: 'BTC', apy: 0, href: '' },
     { token: 'STRK', apy: 0, href: '' },
     { token: 'USDC', apy: 0, href: '' },
     { token: 'ETH', apy: 0, href: '' },
@@ -72,6 +75,7 @@ const HeroSection: React.FC = () => {
   const strkTokenAddress = TOKENS.find((token) => token.name === 'STRK')?.token;
   const usdcTokenAddress = TOKENS.find((token) => token.name === 'USDC')?.token;
   const ethTokenAddress = TOKENS.find((token) => token.name === 'ETH')?.token;
+  const wBTCTokenAddress = TOKENS.find((token) => token.name === 'wBTC')?.token;
 
   useEffect(() => {
     if (data) {
@@ -99,7 +103,20 @@ const HeroSection: React.FC = () => {
           prev.apy > current.apy ? prev : current,
         );
 
+      let btcStrategy = data?.strategies
+        ?.filter((strategy: any) =>
+          addressEq(strategy.depositToken[0].address, wBTCTokenAddress!),
+        )
+        .reduce((prev: any, current: any) =>
+          prev.apy > current.apy ? prev : current,
+        );
+
       setTickerApys([
+        {
+          token: 'BTC',
+          apy: btcStrategy?.apy,
+          href: `https://app.${getHosturl()}/strategy/${btcStrategy?.id}`,
+        },
         {
           token: 'STRK',
           apy: strkStrategy?.apy,
@@ -117,7 +134,13 @@ const HeroSection: React.FC = () => {
         },
       ]);
     }
-  }, [data, ethTokenAddress, strkTokenAddress, usdcTokenAddress]);
+  }, [
+    data,
+    ethTokenAddress,
+    strkTokenAddress,
+    usdcTokenAddress,
+    wBTCTokenAddress,
+  ]);
 
   return (
     <MaxWidthWrapper className="relative grid-cols-5 pb-20 sm:pb-32 lg:grid lg:gap-x-8 lg:pb-52 lg:pt-32">
@@ -147,7 +170,22 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="absolute right-6 top-[10%] flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-2 rounded-lg border border-[#A1A1ED66] bg-[#A1A1ED1A] px-6 pb-1 pt-2 shadow-2xl backdrop-blur-md sm:hidden">
-          <div className="gradient-shadow right-1/2 top-0 h-[200%] w-[350%] lg:hidden"></div>
+          {/* fade out  */}
+          <motion.div
+            className="gradient-shadow right-1/2 top-0 h-[200%] w-[350%] lg:hidden"
+            variants={fadeVariants}
+            initial="fadeIn"
+            animate="fadeOut"
+          ></motion.div>
+
+          {/* fade in  */}
+          <motion.div
+            className="gradient-shadow-orange right-1/2 top-0 h-[200%] w-[350%] lg:hidden"
+            variants={fadeVariants}
+            initial="fadeOut"
+            animate="fadeIn"
+          ></motion.div>
+
           <div className="absolute -right-[4px] top-[20%] -translate-y-[50%]">
             <div className="relative h-[7.76px] w-[6.99px]">
               <Image src="/star.svg" fill objectFit="cover" alt="star" />
@@ -217,7 +255,21 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="relative col-span-full -ml-12 mb-7 mt-28 hidden sm:block lg:col-span-2 lg:ml-0 lg:mt-6">
-        <div className="gradient-shadow left-[-50px] top-[-100px] h-[100%] w-[100%]"></div>
+        {/* fade out  */}
+        <motion.div
+          className="gradient-shadow left-[-50px] top-[-100px] h-[100%] w-[100%]"
+          variants={fadeVariants}
+          initial="fadeIn"
+          animate="fadeOut"
+        ></motion.div>
+
+        {/* fade in  */}
+        <motion.div
+          className="gradient-shadow-orange left-[-50px] top-[-100px] h-[100%] w-[100%]"
+          variants={fadeVariants}
+          initial="fadeOut"
+          animate="fadeIn"
+        ></motion.div>
 
         <div className="grid-bg-boxes right-[-200px] top-[-60px] h-[150%] w-[100%] md:hidden lg:grid">
           {Array.from({ length: 200 }).map((_, i) => (
@@ -253,12 +305,12 @@ const HeroSection: React.FC = () => {
 
           <div className="absolute -right-6 -top-[10%] flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-5 rounded-xl border border-[#A1A1ED66] bg-[#A1A1ED1A] p-6 shadow-2xl backdrop-blur-md lg:-right-10 lg:p-10 xl:-right-12 xl:p-12">
             <div className="absolute -top-[18%] left-[69%] -translate-x-[50%] lg:-top-[30%] lg:left-[75%]">
-              <div className="relative h-[8.01px] w-[7.21px] lg:h-[14px] lg:w-[13px]">
+              <div className="relative h-[8.01px] w-[7.21px] lg:h-[16px] lg:w-[15px]">
                 <Image src="/star.svg" fill objectFit="cover" alt="star" />
               </div>
             </div>
 
-            <div className="absolute -top-[15%] left-[50%] -translate-x-[50%] lg:-top-[30%]">
+            <div className="absolute -top-[15%] left-[50%] -translate-x-[50%] lg:-top-[38%]">
               <div className="relative h-[42px] w-[42px] lg:h-[76px] lg:w-[76px]">
                 <Image src="/hero2.svg" fill objectFit="cover" alt="hero1" />
               </div>
@@ -302,7 +354,7 @@ const HeroSection: React.FC = () => {
             />
 
             <div className="relative h-[26px] w-[26px] lg:h-[48px] lg:w-[48px]">
-              <Image src="/hero3.svg" fill objectFit="cover" alt="hero1" />
+              <Image src="/hero3.svg" fill objectFit="cover" alt="hero3" />
             </div>
 
             <p className="mb-8 text-lg font-bold text-white lg:mb-0 lg:text-2xl">

@@ -2,12 +2,15 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { useState } from 'react';
-
-import { cn } from '@/lib/utils';
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'motion/react';
+
+import { cn } from '@/lib/utils';
+import { fadeVariants } from '@/constants';
+
 import MaxWidthWrapper from './MaxWidthWrapper';
 
 const Carousel: React.FC = () => {
@@ -33,8 +36,35 @@ const Carousel: React.FC = () => {
         What our community says?
       </h5>
 
-      <div className="gradient-shadow bottom-[-500px] left-[-300px] hidden h-[60%] w-[30%] lg:block"></div>
-      <div className="gradient-shadow bottom-[-200px] left-1/2 h-[50%] w-[50%] -translate-x-1/2 lg:hidden"></div>
+      {/* fade out  */}
+      <motion.div
+        className="gradient-shadow bottom-[-500px] left-[-300px] hidden h-[60%] w-[30%] lg:block"
+        variants={fadeVariants}
+        initial="fadeIn"
+        animate="fadeOut"
+      ></motion.div>
+
+      <motion.div
+        className="gradient-shadow bottom-[-200px] left-1/2 h-[50%] w-[50%] -translate-x-1/2 lg:hidden"
+        variants={fadeVariants}
+        initial="fadeIn"
+        animate="fadeOut"
+      ></motion.div>
+
+      {/* fade in  */}
+      <motion.div
+        className="gradient-shadow-orange bottom-[-500px] left-[-300px] hidden h-[60%] w-[30%] lg:block"
+        variants={fadeVariants}
+        initial="fadeOut"
+        animate="fadeIn"
+      ></motion.div>
+
+      <motion.div
+        className="gradient-shadow-orange bottom-[-200px] left-1/2 h-[50%] w-[50%] -translate-x-1/2 lg:hidden"
+        variants={fadeVariants}
+        initial="fadeOut"
+        animate="fadeIn"
+      ></motion.div>
 
       <div ref={sliderRef} className="keen-slider -z-50">
         <div className="keen-slider__slide number-slide1 flex items-center justify-center">
@@ -54,7 +84,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/IamEnergyI/status/1827746502514544777"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-full justify-center">
+                <div className="flex w-fit justify-center">
                   <Image
                     src="/tweet1.png"
                     alt="tweet1"
@@ -65,6 +95,15 @@ const Carousel: React.FC = () => {
                     sizes="(max-width: 1024px) 400px, 500px"
                   />
                 </div>
+
+                {/* <div className="relative flex h-[320px] w-full justify-center">
+                  <Image
+                    src="/tweet1.png"
+                    alt="tweet1"
+                    fill
+                    className="object-contain p-3"
+                  />
+                </div> */}
 
                 <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-2 text-center text-white lg:w-full">
                   <h2 className="font-bold italic">IreofGod.web3</h2>
@@ -102,7 +141,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/odin_free/status/1772202995997937850"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-full justify-center">
+                <div className="flex w-fit justify-center">
                   <Image
                     src="/tweet2.png"
                     alt="tweet2"
@@ -144,7 +183,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/akashneelesh/status/1814705345555582980"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-full justify-center">
+                <div className="flex w-fit justify-center">
                   <Image
                     src="/tweet3.png"
                     alt="tweet3"
@@ -189,7 +228,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/dave_degeen/status/1780644927258423775"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-full justify-center lg:w-[50%]">
+                <div className="flex w-fit justify-center lg:w-[50%]">
                   <Image
                     src="/tweet4.png"
                     alt="tweet4"
