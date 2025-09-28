@@ -1,8 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
-import MaxWidthWrapper from '@/components/MaxWidthWrapper';
-import { TOKENS } from '@/constants';
-import { addressEq, getHosturl } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import 'keen-slider/keen-slider.min.css';
@@ -10,11 +8,75 @@ import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { motion, type Variants } from 'motion/react';
+
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import { fadeVariants, TOKENS } from '@/constants';
+import { addressEq, getHosturl } from '@/lib/utils';
 
 export const animation = { duration: 40000, easing: (t: number) => t };
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const textVariants: Variants = {
+  hidden: { x: -100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: 'easeOut', delay: 0.8 },
+  },
+};
+
+const textVariant2: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.8, ease: 'easeOut', delay: 2 },
+  },
+};
+
+const imageVariants: Variants = {
+  hidden: { x: -100, opacity: 0, rotate: -180 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    rotate: 0,
+    transition: {
+      x: { duration: 0.8, ease: 'easeOut', delay: 0.3 }, // Reduced delay
+      rotate: { duration: 1.5, ease: 'easeOut', delay: 0.3 }, // Reduced delay
+      opacity: { duration: 0.8, delay: 0.3 }, // Reduced delay
+    },
+  },
+};
+
+const gradientVariants: Variants = {
+  hidden: {
+    background: 'linear-gradient(to right, transparent, transparent)',
+    opacity: 0,
+  },
+  visible: {
+    background: 'linear-gradient(to right, #754813, #050302)',
+    opacity: 1,
+    transition: {
+      duration: 1.2,
+      ease: 'easeOut',
+      delay: 1,
+    },
+  },
+};
+
 const HeroSection: React.FC = () => {
   const [tickerApys, setTickerApys] = useState([
+    { token: 'BTC', apy: 0, href: '' },
     { token: 'STRK', apy: 0, href: '' },
     { token: 'USDC', apy: 0, href: '' },
     { token: 'ETH', apy: 0, href: '' },
@@ -72,6 +134,7 @@ const HeroSection: React.FC = () => {
   const strkTokenAddress = TOKENS.find((token) => token.name === 'STRK')?.token;
   const usdcTokenAddress = TOKENS.find((token) => token.name === 'USDC')?.token;
   const ethTokenAddress = TOKENS.find((token) => token.name === 'ETH')?.token;
+  const wBTCTokenAddress = TOKENS.find((token) => token.name === 'wBTC')?.token;
 
   useEffect(() => {
     if (data) {
@@ -99,7 +162,20 @@ const HeroSection: React.FC = () => {
           prev.apy > current.apy ? prev : current,
         );
 
+      let btcStrategy = data?.strategies
+        ?.filter((strategy: any) =>
+          addressEq(strategy.depositToken[0].address, wBTCTokenAddress!),
+        )
+        .reduce((prev: any, current: any) =>
+          prev.apy > current.apy ? prev : current,
+        );
+
       setTickerApys([
+        {
+          token: 'BTC',
+          apy: btcStrategy?.apy,
+          href: `https://app.${getHosturl()}/strategy/${btcStrategy?.id}`,
+        },
         {
           token: 'STRK',
           apy: strkStrategy?.apy,
@@ -117,7 +193,13 @@ const HeroSection: React.FC = () => {
         },
       ]);
     }
-  }, [data, ethTokenAddress, strkTokenAddress, usdcTokenAddress]);
+  }, [
+    data,
+    ethTokenAddress,
+    strkTokenAddress,
+    usdcTokenAddress,
+    wBTCTokenAddress,
+  ]);
 
   return (
     <MaxWidthWrapper className="relative grid-cols-5 pb-20 sm:pb-32 lg:grid lg:gap-x-8 lg:pb-52 lg:pt-32">
@@ -133,7 +215,7 @@ const HeroSection: React.FC = () => {
 
           <div className="absolute -top-[25%] left-[50%] -translate-x-[50%]">
             <div className="relative h-[29px] w-[29px]">
-              <Image src="/hero2.svg" fill objectFit="cover" alt="hero1" />
+              <Image src="/hero3.svg" fill objectFit="cover" alt="hero1" />
             </div>
           </div>
 
@@ -147,7 +229,22 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="absolute right-6 top-[10%] flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-2 rounded-lg border border-[#A1A1ED66] bg-[#A1A1ED1A] px-6 pb-1 pt-2 shadow-2xl backdrop-blur-md sm:hidden">
-          <div className="gradient-shadow right-1/2 top-0 h-[200%] w-[350%] lg:hidden"></div>
+          {/* fade out  */}
+          <motion.div
+            className="gradient-shadow right-1/2 top-0 h-[200%] w-[350%] lg:hidden"
+            variants={fadeVariants}
+            initial="fadeIn"
+            animate="fadeOut"
+          ></motion.div>
+
+          {/* fade in  */}
+          <motion.div
+            className="gradient-shadow-orange right-1/2 top-[200%] h-[200%] w-[350%] lg:top-0 lg:hidden"
+            variants={fadeVariants}
+            initial="fadeOut"
+            animate="fadeIn"
+          ></motion.div>
+
           <div className="absolute -right-[4px] top-[20%] -translate-y-[50%]">
             <div className="relative h-[7.76px] w-[6.99px]">
               <Image src="/star.svg" fill objectFit="cover" alt="star" />
@@ -174,6 +271,43 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="mx-auto flex flex-col items-center text-center lg:items-start lg:text-left">
+          <motion.div
+            className="mb-3 flex w-full items-center justify-center lg:justify-start"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.img
+              src="/hero2.svg"
+              alt="btc_token_tilted"
+              className="z-10 size-[40px] rounded-full border-[2.5px] border-black lg:size-[64px]"
+              variants={imageVariants}
+            />
+
+            <motion.div
+              className="-ml-3 flex h-[38px] items-center text-nowrap px-4 text-xs text-[#D3D3D3] lg:-ml-2 lg:h-[41px] lg:text-base"
+              variants={gradientVariants}
+              style={{
+                background:
+                  'linear-gradient(to right, transparent, transparent)',
+              }}
+            >
+              <motion.span variants={textVariants}>
+                Introducing BTCfi strategies on troves
+              </motion.span>
+            </motion.div>
+
+            <motion.div variants={textVariant2}>
+              <Link
+                href="#"
+                target="_blank"
+                className="-ml-2 text-nowrap text-[10px] text-[#D3D3D3] underline lg:block lg:text-base"
+              >
+                Try now.
+              </Link>
+            </motion.div>
+          </motion.div>
+
           <h1 className="z-20 w-fit text-balance bg-gradient-to-r from-[#9069F0] via-[white] to-[white] bg-clip-text text-[2rem] font-bold leading-9 tracking-tight text-transparent md:text-6xl lg:text-7xl">
             Starknet&#8217;s Yield Powerhouse
           </h1>
@@ -217,7 +351,21 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="relative col-span-full -ml-12 mb-7 mt-28 hidden sm:block lg:col-span-2 lg:ml-0 lg:mt-6">
-        <div className="gradient-shadow left-[-50px] top-[-100px] h-[100%] w-[100%]"></div>
+        {/* fade out  */}
+        <motion.div
+          className="gradient-shadow left-[-50px] top-[-100px] h-[100%] w-[100%]"
+          variants={fadeVariants}
+          initial="fadeIn"
+          animate="fadeOut"
+        ></motion.div>
+
+        {/* fade in  */}
+        <motion.div
+          className="gradient-shadow-orange -left-[18%] -top-[90%] h-[787px] w-[793px]"
+          variants={fadeVariants}
+          initial="fadeOut"
+          animate="fadeIn"
+        ></motion.div>
 
         <div className="grid-bg-boxes right-[-200px] top-[-60px] h-[150%] w-[100%] md:hidden lg:grid">
           {Array.from({ length: 200 }).map((_, i) => (
@@ -253,12 +401,12 @@ const HeroSection: React.FC = () => {
 
           <div className="absolute -right-6 -top-[10%] flex animate-[bounce_4s_infinite] flex-col items-center justify-center gap-5 rounded-xl border border-[#A1A1ED66] bg-[#A1A1ED1A] p-6 shadow-2xl backdrop-blur-md lg:-right-10 lg:p-10 xl:-right-12 xl:p-12">
             <div className="absolute -top-[18%] left-[69%] -translate-x-[50%] lg:-top-[30%] lg:left-[75%]">
-              <div className="relative h-[8.01px] w-[7.21px] lg:h-[14px] lg:w-[13px]">
+              <div className="relative h-[8.01px] w-[7.21px] lg:h-[16px] lg:w-[15px]">
                 <Image src="/star.svg" fill objectFit="cover" alt="star" />
               </div>
             </div>
 
-            <div className="absolute -top-[15%] left-[50%] -translate-x-[50%] lg:-top-[30%]">
+            <div className="absolute -top-[15%] left-[50%] -translate-x-[50%] lg:-top-[38%]">
               <div className="relative h-[42px] w-[42px] lg:h-[76px] lg:w-[76px]">
                 <Image src="/hero2.svg" fill objectFit="cover" alt="hero1" />
               </div>
@@ -302,7 +450,7 @@ const HeroSection: React.FC = () => {
             />
 
             <div className="relative h-[26px] w-[26px] lg:h-[48px] lg:w-[48px]">
-              <Image src="/hero3.svg" fill objectFit="cover" alt="hero1" />
+              <Image src="/hero3.svg" fill objectFit="cover" alt="hero3" />
             </div>
 
             <p className="mb-8 text-lg font-bold text-white lg:mb-0 lg:text-2xl">

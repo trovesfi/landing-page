@@ -1,7 +1,13 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+'use client';
+
 import Image from 'next/image';
+
 import Link from 'next/link';
 import React from 'react';
+import { motion } from 'motion/react';
+
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import { fadeVariants } from '@/constants';
 
 const Updates = () => {
   return (
@@ -22,8 +28,35 @@ const Updates = () => {
         ))}
       </div>
 
-      <div className="gradient-shadow absolute left-[-200px] top-[50px] hidden h-[40%] w-[30%] lg:block"></div>
-      <div className="gradient-shadow absolute right-[-200px] top-[900px] h-[40%] w-[40%] lg:hidden"></div>
+      {/* fade out  */}
+      <motion.div
+        className="gradient-shadow absolute left-[-200px] top-[50px] hidden h-[40%] w-[30%] lg:block"
+        variants={fadeVariants}
+        initial="fadeIn"
+        animate="fadeOut"
+      ></motion.div>
+
+      <motion.div
+        className="gradient-shadow absolute right-[-200px] top-[900px] h-[40%] w-[40%] lg:hidden"
+        variants={fadeVariants}
+        initial="fadeIn"
+        animate="fadeOut"
+      ></motion.div>
+
+      {/* fade in  */}
+      <motion.div
+        className="gradient-shadow-orange absolute left-[-30%] top-[-60%] hidden h-[936px] w-[943px] lg:block"
+        variants={fadeVariants}
+        initial="fadeOut"
+        animate="fadeIn"
+      ></motion.div>
+
+      <motion.div
+        className="gradient-shadow-orange absolute right-[-200px] top-[900px] h-[40%] w-[40%] lg:hidden"
+        variants={fadeVariants}
+        initial="fadeOut"
+        animate="fadeIn"
+      ></motion.div>
 
       <div className="mt-12 flex w-full flex-col items-center justify-center gap-6 md:flex-row md:gap-8">
         <Link
@@ -39,9 +72,9 @@ const Updates = () => {
             className="ml-auto mr-auto rounded-lg"
           />
           <p className="mt-5 text-center text-lg text-white/90">
-            EKUBO XSTRK/STRK
+            Leveraged liquid staking
           </p>
-          <p className="text-center text-lg text-white/90">Managed LP Vault</p>
+          <p className="text-center text-lg text-white/90">on Endur</p>
 
           <div className="absolute -left-[7px] top-[25%]">
             <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
@@ -62,8 +95,10 @@ const Updates = () => {
             alt="og-farmer"
             className="ml-auto mr-auto rounded-lg bg-black"
           />
-          <p className="mt-5 text-center text-lg text-white/90">Vesu fusion</p>
-          <p className="text-center text-lg text-white/90">Vaults</p>
+          <p className="mt-5 text-center text-lg text-white/90">
+            Liquid staking
+          </p>
+          <p className="text-center text-lg text-white/90">Ekubo vaults</p>
 
           <div className="absolute -top-2 left-[50%]">
             <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">
@@ -84,10 +119,12 @@ const Updates = () => {
             width={320}
             height={300}
             alt="og-farmer"
-            className="ml-auto mr-auto rounded-lg bg-black blur-[12px] filter"
+            className="ml-auto mr-auto rounded-lg bg-black"
           />
-          <p className="mt-5 text-center text-lg text-white/90">Great news</p>
-          <p className="text-center text-lg text-white/90">coming soon!</p>
+          <p className="mt-5 text-center text-lg text-white/90">
+            Curated strategies
+          </p>
+          <p className="text-center text-lg text-white/90">by RE7</p>
 
           <div className="absolute -right-[7px] bottom-[25%]">
             <div className="relative h-[15px] w-[13px] lg:h-[14px] lg:w-[13px]">

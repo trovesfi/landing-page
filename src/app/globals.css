@@ -119,6 +119,16 @@ body {
   border-radius: inherit;
 }
 
+.gradient-shadow-orange {
+  position: absolute;
+  /* background: radial-gradient(circle at 50% 50%, #f29427 10%, #111119 100%); */
+  background: radial-gradient(circle at 50% 50%, #221507 10%, #111119 100%);
+  filter: blur(200px);
+  /* opacity: 40%; */
+  z-index: -50;
+  border-radius: inherit;
+}
+
 /* .gradient-shadow::before {
   content: '';
   position: absolute;
