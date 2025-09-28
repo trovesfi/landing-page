@@ -53,7 +53,7 @@ const Carousel: React.FC = () => {
 
       {/* fade in  */}
       <motion.div
-        className="gradient-shadow-orange bottom-[-500px] left-[-300px] hidden h-[60%] w-[30%] lg:block"
+        className="gradient-shadow-orange -left-[40%] -top-[30%] hidden h-[936px] w-[943px] lg:block"
         variants={fadeVariants}
         initial="fadeOut"
         animate="fadeIn"
@@ -84,7 +84,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/IamEnergyI/status/1827746502514544777"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-fit justify-center">
+                <div className="mx-auto flex w-fit justify-center lg:mx-0">
                   <Image
                     src="/tweet1.png"
                     alt="tweet1"
@@ -141,7 +141,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/odin_free/status/1772202995997937850"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-fit justify-center">
+                <div className="mx-auto flex w-fit justify-center lg:mx-0">
                   <Image
                     src="/tweet2.png"
                     alt="tweet2"
@@ -183,7 +183,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/akashneelesh/status/1814705345555582980"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-fit justify-center">
+                <div className="mx-auto flex w-fit justify-center lg:mx-0">
                   <Image
                     src="/tweet3.png"
                     alt="tweet3"
@@ -228,7 +228,7 @@ const Carousel: React.FC = () => {
                 href="https://x.com/dave_degeen/status/1780644927258423775"
                 className="light-purple-gradient relative flex h-full w-full flex-col rounded-2xl lg:flex-row"
               >
-                <div className="flex w-fit justify-center lg:w-[50%]">
+                <div className="mx-auto flex w-fit justify-center lg:mx-0 lg:w-[50%]">
                   <Image
                     src="/tweet4.png"
                     alt="tweet4"

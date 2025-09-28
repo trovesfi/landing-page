@@ -45,7 +45,7 @@ const Updates = () => {
 
       {/* fade in  */}
       <motion.div
-        className="gradient-shadow-orange absolute left-[-200px] top-[50px] hidden h-[40%] w-[30%] lg:block"
+        className="gradient-shadow-orange absolute left-[-30%] top-[-60%] hidden h-[936px] w-[943px] lg:block"
         variants={fadeVariants}
         initial="fadeOut"
         animate="fadeIn"

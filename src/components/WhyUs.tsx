@@ -34,7 +34,7 @@ const WhyUs: React.FC = () => {
 
         {/* fade in  */}
         <motion.div
-          className="gradient-shadow-orange bottom-[-600px] right-[-400px] hidden h-[100%] w-[30%] lg:block"
+          className="gradient-shadow-orange -right-[60%] -top-[70%] hidden h-[1202px] w-[1210px] lg:block"
           variants={fadeVariants}
           initial="fadeOut"
           animate="fadeIn"

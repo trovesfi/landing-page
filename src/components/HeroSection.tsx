@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
@@ -7,13 +8,55 @@ import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, type Variants } from 'motion/react';
 
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { fadeVariants, TOKENS } from '@/constants';
 import { addressEq, getHosturl } from '@/lib/utils';
 
 export const animation = { duration: 40000, easing: (t: number) => t };
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const textVariants: Variants = {
+  hidden: { x: -100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: 'easeOut', delay: 0.2 },
+  },
+};
+
+const imageVariants: Variants = {
+  hidden: { x: -100, opacity: 0, rotate: -180 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    rotate: 0,
+    transition: {
+      x: { duration: 0.8, ease: 'easeOut', delay: 0.5 },
+      rotate: { duration: 1.5, ease: 'easeOut', delay: 0.5 },
+      opacity: { duration: 0.8, delay: 0.5 },
+    },
+  },
+};
+
+const gradientVariants: Variants = {
+  hidden: { background: 'linear-gradient(to right, transparent, transparent)' },
+  visible: {
+    background: 'linear-gradient(to right, #754813, #050302)',
+    transition: { duration: 1.2, ease: 'easeOut', delay: 1.5 },
+  },
+};
 
 const HeroSection: React.FC = () => {
   const [tickerApys, setTickerApys] = useState([
@@ -180,7 +223,7 @@ const HeroSection: React.FC = () => {
 
           {/* fade in  */}
           <motion.div
-            className="gradient-shadow-orange right-1/2 top-0 h-[200%] w-[350%] lg:hidden"
+            className="gradient-shadow-orange right-1/2 top-[200%] h-[200%] w-[350%] lg:top-0 lg:hidden"
             variants={fadeVariants}
             initial="fadeOut"
             animate="fadeIn"
@@ -212,6 +255,43 @@ const HeroSection: React.FC = () => {
         </div>
 
         <div className="mx-auto flex flex-col items-center text-center lg:items-start lg:text-left">
+          <motion.div
+            className="mb-3 flex w-full items-center justify-center lg:justify-start"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.img
+              src="/hero2.svg"
+              alt="btc_token_tilted"
+              className="z-10 size-[40px] rounded-full border-[2.5px] border-black lg:size-[64px]"
+              variants={imageVariants}
+            />
+
+            <motion.div
+              className="-ml-3 flex h-[38px] items-center text-nowrap px-4 text-xs text-[#D3D3D3] lg:-ml-2 lg:h-[41px] lg:text-base"
+              variants={gradientVariants}
+              style={{
+                background:
+                  'linear-gradient(to right, transparent, transparent)',
+              }}
+            >
+              <motion.span variants={textVariants}>
+                Introducing BTCfi strategies on troves
+              </motion.span>
+            </motion.div>
+
+            <motion.div variants={textVariants}>
+              <Link
+                href="#"
+                target="_blank"
+                className="-ml-2 text-nowrap text-[10px] text-[#D3D3D3] underline lg:block lg:text-base"
+              >
+                Try now.
+              </Link>
+            </motion.div>
+          </motion.div>
+
           <h1 className="z-20 w-fit text-balance bg-gradient-to-r from-[#9069F0] via-[white] to-[white] bg-clip-text text-[2rem] font-bold leading-9 tracking-tight text-transparent md:text-6xl lg:text-7xl">
             Starknet&#8217;s Yield Powerhouse
           </h1>
@@ -265,7 +345,7 @@ const HeroSection: React.FC = () => {
 
         {/* fade in  */}
         <motion.div
-          className="gradient-shadow-orange left-[-50px] top-[-100px] h-[100%] w-[100%]"
+          className="gradient-shadow-orange -left-[18%] -top-[90%] h-[787px] w-[793px]"
           variants={fadeVariants}
           initial="fadeOut"
           animate="fadeIn"
