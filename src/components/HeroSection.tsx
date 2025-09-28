@@ -297,9 +297,9 @@ const HeroSection: React.FC = () => {
               </motion.span>
             </motion.div>
 
-            <motion.div variants={textVariant2}>
+            <motion.div variants={textVariant2} className="mb-[4.5px] lg:mb-0">
               <Link
-                href="#"
+                href="https://app.troves.fi/?tab=btc"
                 target="_blank"
                 className="-ml-2 text-nowrap text-[10px] text-[#D3D3D3] underline lg:block lg:text-base"
               >
