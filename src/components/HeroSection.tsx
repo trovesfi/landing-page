@@ -22,7 +22,7 @@ const containerVariants: Variants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.3,
-      delayChildren: 0.1,
+      delayChildren: 0.2,
     },
   },
 };
@@ -32,7 +32,15 @@ const textVariants: Variants = {
   visible: {
     x: 0,
     opacity: 1,
-    transition: { duration: 0.8, ease: 'easeOut', delay: 0.2 },
+    transition: { duration: 0.8, ease: 'easeOut', delay: 0.8 },
+  },
+};
+
+const textVariant2: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.8, ease: 'easeOut', delay: 2 },
   },
 };
 
@@ -43,18 +51,26 @@ const imageVariants: Variants = {
     opacity: 1,
     rotate: 0,
     transition: {
-      x: { duration: 0.8, ease: 'easeOut', delay: 0.5 },
-      rotate: { duration: 1.5, ease: 'easeOut', delay: 0.5 },
-      opacity: { duration: 0.8, delay: 0.5 },
+      x: { duration: 0.8, ease: 'easeOut', delay: 0.3 }, // Reduced delay
+      rotate: { duration: 1.5, ease: 'easeOut', delay: 0.3 }, // Reduced delay
+      opacity: { duration: 0.8, delay: 0.3 }, // Reduced delay
     },
   },
 };
 
 const gradientVariants: Variants = {
-  hidden: { background: 'linear-gradient(to right, transparent, transparent)' },
+  hidden: {
+    background: 'linear-gradient(to right, transparent, transparent)',
+    opacity: 0,
+  },
   visible: {
     background: 'linear-gradient(to right, #754813, #050302)',
-    transition: { duration: 1.2, ease: 'easeOut', delay: 1.5 },
+    opacity: 1,
+    transition: {
+      duration: 1.2,
+      ease: 'easeOut',
+      delay: 1,
+    },
   },
 };
 
@@ -199,7 +215,7 @@ const HeroSection: React.FC = () => {
 
           <div className="absolute -top-[25%] left-[50%] -translate-x-[50%]">
             <div className="relative h-[29px] w-[29px]">
-              <Image src="/hero2.svg" fill objectFit="cover" alt="hero1" />
+              <Image src="/hero3.svg" fill objectFit="cover" alt="hero1" />
             </div>
           </div>
 
@@ -281,7 +297,7 @@ const HeroSection: React.FC = () => {
               </motion.span>
             </motion.div>
 
-            <motion.div variants={textVariants}>
+            <motion.div variants={textVariant2}>
               <Link
                 href="#"
                 target="_blank"
