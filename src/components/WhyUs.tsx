@@ -1,8 +1,13 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper';
-import { getHosturl } from '@/lib/utils';
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'motion/react';
 import React from 'react';
+
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import { getHosturl } from '@/lib/utils';
+import { fadeVariants } from '@/constants';
 
 const WhyUs: React.FC = () => {
   return (
@@ -12,8 +17,35 @@ const WhyUs: React.FC = () => {
       </h5>
 
       <div className="relative flex w-full grid-cols-2 flex-col items-center gap-10 lg:grid">
-        <div className="gradient-shadow bottom-[-600px] right-[-400px] hidden h-[100%] w-[30%] lg:block"></div>
-        <div className="gradient-shadow left-[-200px] top-[300px] h-[100%] w-[50%] lg:hidden"></div>
+        {/* fade out  */}
+        <motion.div
+          className="gradient-shadow bottom-[-600px] right-[-400px] hidden h-[100%] w-[30%] lg:block"
+          variants={fadeVariants}
+          initial="fadeIn"
+          animate="fadeOut"
+        ></motion.div>
+
+        <motion.div
+          className="gradient-shadow left-[-200px] top-[300px] h-[100%] w-[50%] lg:hidden"
+          variants={fadeVariants}
+          initial="fadeIn"
+          animate="fadeOut"
+        ></motion.div>
+
+        {/* fade in  */}
+        <motion.div
+          className="gradient-shadow-orange -right-[60%] -top-[70%] hidden h-[1202px] w-[1210px] lg:block"
+          variants={fadeVariants}
+          initial="fadeOut"
+          animate="fadeIn"
+        ></motion.div>
+
+        <motion.div
+          className="gradient-shadow-orange left-[-200px] top-[300px] h-[100%] w-[50%] lg:hidden"
+          variants={fadeVariants}
+          initial="fadeOut"
+          animate="fadeIn"
+        ></motion.div>
 
         <div className="light-purple-gradient flex h-full w-full flex-col items-center gap-7 rounded-xl p-7 shadow-xl md:flex-row">
           <Image

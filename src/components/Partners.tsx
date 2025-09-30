@@ -38,13 +38,13 @@ const Partners: React.FC = () => {
         >
           <Image src="/vesu.png" alt="Vesu" fill objectFit="contain" />
         </Link>
-        {/* <Link
-          href="https://re7labs.xyz/"
+        <Link
+          href="https://re7.capital/"
           className="relative h-[24px] w-[190px] lg:h-[34px] lg:w-[190px]"
           target="_blank"
         >
           <Image src="/re7.svg" alt="re7" fill objectFit="contain" />
-        </Link> */}
+        </Link>
         <Link
           href="https://nostra.finance/"
           className="relative h-[34px] w-[152px] lg:h-[44px] lg:w-[165px]"
