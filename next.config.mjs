@@ -9,7 +9,7 @@ const nextConfig = {
           },
           {
             source: '/tg',
-            destination: 'https://t.me/+iWxPIzKAaswyMWQ1',
+            destination: 'https://t.me/%2BiWxPIzKAaswyMWQ1',
             permanent: true,
           },
           {
