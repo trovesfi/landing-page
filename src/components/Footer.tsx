@@ -62,6 +62,10 @@ const navLinks = [
     category: 'Community',
     links: [
       {
+        label: 'Discord',
+        href: '/discord',
+      },
+      {
         label: 'Telegram',
         href: '/tg',
       },
@@ -149,7 +153,7 @@ const Footer: React.FC = () => {
               Terms and Conditions
             </Link>
 
-            <Link target="_blank" href="https://discord.gg/RSkDDyfC4G">
+            <Link target="_blank" href="/discord">
               <Icons.discord />
               <span className="sr-only">Discord</span>
             </Link>
@@ -161,7 +165,7 @@ const Footer: React.FC = () => {
 
             <Link
               target="_blank"
-              href="https://x.com/trovesfi"
+              href="/x"
               className="padding-[5px] rounded-full bg-[#9069F0]"
             >
               <Icons.x />
