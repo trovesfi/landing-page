@@ -2,14 +2,14 @@
 const nextConfig = {
     async redirects() {
         return [
-          // {
-          //   source: '/discord',
-          //   destination: 'https://discord.gg/JA8UnuaZSw',
-          //   permanent: true,
-          // },
+           {
+            source: '/discord',
+            destination: 'https://discord.gg/RSkDDyfC4G',
+            permanent: true,
+          },
           {
             source: '/tg',
-            destination: 'https://t.me/+iWxPIzKAaswyMWQ1',
+            destination: 'https://t.me/%2BiWxPIzKAaswyMWQ1',
             permanent: true,
           },
           {

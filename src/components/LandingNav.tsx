@@ -54,10 +54,9 @@ const LandingNav: React.FC = () => {
 
           <div className="hidden h-full items-center space-x-4 lg:flex">
             <div className="flex items-center gap-1">
-              {/* <Link target="_blank" href="https://discord.gg/JA8UnuaZSw">
+              <Link target="_blank" href="/discord" className="text-sm text-white opacity-80">
               <Icons.discord className='size-7' />
-              <span className="sr-only">Discord</span>
-            </Link> */}
+            </Link>
 
               <Link
                 href="/tg"
