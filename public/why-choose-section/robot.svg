@@ -1,0 +1,33 @@
+<svg width="224" height="224" viewBox="0 0 224 224" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.5" filter="url(#filter0_f_3510_8256)">
+        <path
+            d="M80 112C80 94.3269 94.3269 80 112 80C129.673 80 144 94.3269 144 112C144 129.673 129.673 144 112 144C94.3269 144 80 129.673 80 112Z"
+            fill="#9069F1" />
+    </g>
+    <mask id="path-2-inside-1_3510_8256" fill="white">
+        <path
+            d="M80 96C80 87.1634 87.1634 80 96 80H128C136.837 80 144 87.1634 144 96V128C144 136.837 136.837 144 128 144H96C87.1634 144 80 136.837 80 128V96Z" />
+    </mask>
+    <path
+        d="M96 80V81H128V80V79H96V80ZM144 96H143V128H144H145V96H144ZM128 144V143H96V144V145H128V144ZM80 128H81V96H80H79V128H80ZM96 144V143C87.7157 143 81 136.284 81 128H80H79C79 137.389 86.6112 145 96 145V144ZM144 128H143C143 136.284 136.284 143 128 143V144V145C137.389 145 145 137.389 145 128H144ZM128 80V81C136.284 81 143 87.7157 143 96H144H145C145 86.6112 137.389 79 128 79V80ZM96 80V79C86.6112 79 79 86.6112 79 96H80H81C81 87.7157 87.7157 81 96 81V80Z"
+        fill="#6F61FF" fill-opacity="0.4" mask="url(#path-2-inside-1_3510_8256)" />
+    <path d="M112 106.665V101.332H106.667" stroke="#9187FF" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    <path
+        d="M120 106.668H104C102.527 106.668 101.333 107.862 101.333 109.335V120.001C101.333 121.474 102.527 122.668 104 122.668H120C121.473 122.668 122.667 121.474 122.667 120.001V109.335C122.667 107.862 121.473 106.668 120 106.668Z"
+        stroke="#9187FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M98.6666 114.668H101.333" stroke="#9187FF" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    <path d="M122.667 114.668H125.333" stroke="#9187FF" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    <path d="M116 113.332V115.999" stroke="#9187FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M108 113.332V115.999" stroke="#9187FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <defs>
+        <filter id="filter0_f_3510_8256" x="0" y="0" width="224" height="224" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="40" result="effect1_foregroundBlur_3510_8256" />
+        </filter>
+    </defs>
+</svg>
