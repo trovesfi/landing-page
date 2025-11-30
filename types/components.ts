@@ -1,12 +1,8 @@
-/**
- * Component prop type definitions
- * All component prop interfaces should be defined here for reusability
- */
-
 import type React from "react";
+
 import type { Strategy } from "./api";
 
-// Common shared types
+// common shared types
 export interface ImageInfo {
   src: string;
   alt: string;
@@ -27,7 +23,7 @@ export interface StatInfo {
   value: string;
 }
 
-// Animation & UI Component Props
+// animation & ui component props
 export interface FadeInProps {
   children: React.ReactNode;
   className?: string;
@@ -46,7 +42,7 @@ export interface InteractiveNebulaShaderProps {
   interactive?: boolean;
 }
 
-// Card Component Props
+// card component props
 export interface VaultCardProps {
   tokens: ImageInfo[];
   pairName: string;
@@ -94,7 +90,7 @@ export interface StatBadgeProps {
   className?: string;
 }
 
-// Button & Interactive Component Props
+// button & interactive component props
 export interface TokenButtonProps {
   token: string;
   icon: string;
@@ -114,7 +110,7 @@ export interface MobileMenuLinkProps {
   index?: number;
 }
 
-// Layout Component Props
+// layout component props
 export interface MainHeadingProps {
   title: string;
   description?: React.ReactNode;
@@ -146,7 +142,7 @@ export interface PlatformCardProps {
   delay?: number;
 }
 
-// Animation Component Props
+// animation component props
 export interface VaultDot {
   id: string;
   position: {
@@ -170,7 +166,7 @@ export interface HowItWorksAnimationProps {
   vaults?: Pick<Strategy, "name" | "apy" | "tvlUsd" | "curator">[];
 }
 
-// Provider Props
+// provider props
 export interface ProvidersProps {
   children: React.ReactNode;
 }
