@@ -37,6 +37,7 @@ const Stats = () => {
     data: generatedRewardsData,
     isLoading,
     error,
+    isError,
   } = useQuery({
     queryKey: ['total-rewards-generated'],
     queryFn: async () => {
@@ -47,7 +48,12 @@ const Stats = () => {
     },
   });
 
-  const { data: tvlData, isLoading: tvlLoading } = useQuery({
+  const {
+    data: tvlData,
+    isLoading: tvlLoading,
+    error: tvlError,
+    isError: tvlIsError,
+  } = useQuery({
     queryKey: ['tvl'],
     queryFn: async () => {
       const { data } = await axios.get(`https://app.${getHosturl()}/api/stats`);
@@ -55,11 +61,12 @@ const Stats = () => {
     },
   });
 
-  if (error) {
-    console.error(error);
-  }
-
   function formatCurrency(amount: number) {
+    // Guard against invalid values
+    if (amount === null || amount === undefined || isNaN(amount)) {
+      return '$0';
+    }
+
     // if < 1k, show as is
     // if < 1m, show as k
     // else show as m
@@ -79,6 +86,8 @@ const Stats = () => {
 
         {tvlLoading ? (
           <div className="h-12 w-32 animate-pulse rounded-lg bg-gradient-to-r from-[#9069F0] to-[#9069F0]" />
+        ) : tvlIsError || tvlData === null || tvlData === undefined || isNaN(tvlData) ? (
+          <span className="text-5xl font-bold text-[#9069F0]">-</span>
         ) : (
           <span className="text-5xl font-bold text-[#9069F0]">
             {formatCurrency(tvlData)}
@@ -91,6 +100,8 @@ const Stats = () => {
 
         {isLoading ? (
           <div className="h-12 w-28 animate-pulse rounded-lg bg-gradient-to-r from-[#9069F0] to-[#9069F0]" />
+        ) : isError || generatedRewardsData?.totalStrkHarvested?.USDValue === null || generatedRewardsData?.totalStrkHarvested?.USDValue === undefined || isNaN(generatedRewardsData?.totalStrkHarvested?.USDValue) ? (
+          <span className="text-5xl font-bold text-[#9069F0]">-</span>
         ) : (
           <span className="text-5xl font-bold text-[#9069F0]">
             $
