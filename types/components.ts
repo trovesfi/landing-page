@@ -146,8 +146,12 @@ export interface PlatformCardProps {
 export interface VaultDot {
   id: string;
   position: {
-    xPercent: number;
-    yPercent: number;
+    /** Radius in px from ring center */
+    radiusPx: number;
+    /** Angle in degrees: 0=right, 90=down, 180=left, 270=top */
+    angleDeg: number;
+    /** Ring index (0=inner, 3=outer) for wrapper placement */
+    ringIndex: number;
   };
   size: number;
   token: TokenInfo;

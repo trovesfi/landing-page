@@ -77,8 +77,8 @@ export function InteractiveNebulaShader({
       }
 
       void mainImage(out vec4 O, in vec2 fragCoord) {
-        vec2 uv = fragCoord / min(iResolution.x, iResolution.y) - vec2(.9, .5);
-        uv.x += .4;
+        // Aspect-correct UV: zoom in so nebula appears larger across screen
+        vec2 uv = (fragCoord - 0.5 * iResolution.xy) / min(iResolution.x, iResolution.y) * 0.5;
         vec3 col = vec3(0.0);
         float d = 2.5;
 
@@ -94,7 +94,7 @@ export function InteractiveNebulaShader({
             ? vec3(0.05,0.3,0.1) + vec3(2.0,5.0,1.0)*f
             : vec3(0.1,0.3,0.4) + vec3(5.0,2.5,3.0)*f;
 
-          col = col * base + smoothstep(2.5, 0.0, rz) * 0.7 * base;
+          col = col * base + smoothstep(2.5, 0.0, rz) * 1.0 * base;
           d += min(rz, 1.0);
         }
 
@@ -105,7 +105,7 @@ export function InteractiveNebulaShader({
                      ? 1.0
                      : smoothstep(radius*0.3, radius*0.5, dist);
 
-        col = mix(baseColor, col, 0.85);
+        col = mix(baseColor, col, 0.95);
         O = vec4(col, 0.85);
         if (!disableCenterDimming) {
           O.rgb = mix(O.rgb * 0.3, O.rgb, dim);
@@ -138,8 +138,8 @@ export function InteractiveNebulaShader({
 
     // Resize & mouse
     const onResize = () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || window.innerHeight;
       renderer.setSize(w, h);
       uniforms.iResolution.value.set(w, h);
     };
@@ -184,7 +184,7 @@ export function InteractiveNebulaShader({
       className={cn(
         "fixed inset-0 bg-transparent",
         interactive ? "" : "pointer-events-none",
-        className,
+        className
       )}
       aria-label={
         interactive ? "Interactive nebula background" : "Nebula background"

@@ -59,32 +59,67 @@ const HowItWorksAnimation = ({
   const [activeDotId, setActiveDotId] = React.useState<string | null>(null);
   const hideTooltipTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  // Generate vault dots positioned on circles (two per circle)
+  const [isDesktop, setIsDesktop] = React.useState(true);
+  React.useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const handler = () => setIsDesktop(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // Ring radii (half of circle sizes): mobile / desktop
+  const RING_RADII = [
+    [49, 73.5],
+    [69, 103.5],
+    [90, 135],
+    [116, 174],
+  ] as const;
+
+  // Ring wrapper classes - must match circle divs exactly (position + size)
+  const RING_WRAPPER_CLASSES = [
+    "absolute -bottom-[50px] left-1/2 size-[98px] -translate-x-1/2 md:-bottom-[75px] md:size-[147px]",
+    "absolute -bottom-[65px] left-1/2 size-[138px] -translate-x-1/2 md:-bottom-[100px] md:size-[207px]",
+    "absolute -bottom-[80px] left-1/2 size-[180px] -translate-x-1/2 md:-bottom-[120px] md:size-[270px]",
+    "absolute -bottom-[105px] left-1/2 size-[232px] -translate-x-1/2 md:-bottom-[160px] md:size-[348px]",
+  ] as const;
+
+  // Scale animation for each ring - staggered pulse, must match circle animations
+  const RING_SCALE_ANIMATION: number[][] = [
+    [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1],
+    [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1],
+    [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1],
+  ];
+
+  // Generate vault dots positioned on ring paths (orbital alignment)
   const vaultDots = React.useMemo<VaultDot[]>(() => {
     if (resolvedTokens.length === 0 || resolvedVaults.length === 0) return [];
 
-    const DOT_LAYOUT: Array<{ xPercent: number; yPercent: number }> = [
-      { xPercent: 59.2, yPercent: 57.7 },
-      { xPercent: 40.8, yPercent: 57.7 },
-      { xPercent: 47.1, yPercent: 66.7 },
-      { xPercent: 33.3, yPercent: 52.9 },
-      { xPercent: 69, yPercent: 50.9 },
-      { xPercent: 59.3, yPercent: 69.9 },
-      { xPercent: 37.4, yPercent: 68 },
-      { xPercent: 39, yPercent: 26.4 },
-      { xPercent: 43.3, yPercent: 75.1 },
+    // Polar positions: (radiusIndex, angleDeg) - scattered across upper semicircle
+    // Angles span 180°–360° for varied vertical & horizontal placement on each ring
+    const ORBITAL_LAYOUT: Array<{ ringIndex: number; angleDeg: number }> = [
+      { ringIndex: 0, angleDeg: 185 },
+      { ringIndex: 0, angleDeg: 270 },
+      { ringIndex: 1, angleDeg: 220 },
+      { ringIndex: 1, angleDeg: 310 },
+      { ringIndex: 2, angleDeg: 255 },
+      { ringIndex: 2, angleDeg: 335 },
+      { ringIndex: 3, angleDeg: 285 },
+      { ringIndex: 3, angleDeg: 355 },
     ];
-    const maxDots = Math.min(DOT_LAYOUT.length, resolvedVaults.length);
+    const maxDots = Math.min(ORBITAL_LAYOUT.length, resolvedVaults.length);
 
     const dots: VaultDot[] = [];
     for (let i = 0; i < maxDots; i++) {
-      const layout = DOT_LAYOUT[i];
+      const { ringIndex, angleDeg } = ORBITAL_LAYOUT[i];
+      const radiusPx = RING_RADII[ringIndex][isDesktop ? 1 : 0];
       const vault = resolvedVaults[i];
       const token = resolvedTokens[i % resolvedTokens.length];
 
       dots.push({
         id: `dot-${i}`,
-        position: layout,
+        position: { radiusPx, angleDeg, ringIndex },
         size: 12,
         token: {
           token: token.token,
@@ -102,7 +137,7 @@ const HowItWorksAnimation = ({
     }
 
     return dots;
-  }, [resolvedTokens, resolvedVaults]);
+  }, [resolvedTokens, resolvedVaults, isDesktop]);
 
   const TOOLTIP_INTERVAL = 3000;
   const TOOLTIP_VISIBLE_TIME = 2000;
@@ -165,13 +200,13 @@ const HowItWorksAnimation = ({
   ];
 
   const tokenPositions = connectorPathData.map(
-    (connector) => (connector.startX / 200) * 100,
+    (connector) => (connector.startX / 200) * 100
   );
 
   return (
-    <div className={cn("relative h-[250px] w-full md:h-[350px]", className)}>
+    <div className={cn("relative h-[250px] w-full md:h-[400px]", className)}>
       <motion.div
-        className="relative flex h-[250px] w-full flex-col items-center md:h-[350px]"
+        className="relative flex h-[250px] w-full flex-col items-center md:h-[400px]"
         initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, amount: 0.2 }}
@@ -287,7 +322,7 @@ const HowItWorksAnimation = ({
                   <div
                     key={`${token.token}-${index}`}
                     className={cn(
-                      "pointer-events-auto absolute top-[8%] -translate-x-1/2",
+                      "pointer-events-auto absolute top-[8%] -translate-x-1/2"
                     )}
                     style={{ left: `${leftPercent}%` }}
                   >
@@ -315,133 +350,157 @@ const HowItWorksAnimation = ({
           </div>
 
           {/* box content */}
-          <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative z-10 flex h-[150px] w-full items-center justify-center overflow-hidden rounded-xl border shadow-md md:h-[229px]">
-            {/* Circles */}
+          <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative z-10 flex h-[200px] w-full items-center justify-center overflow-hidden rounded-xl border shadow-md md:h-[229px]">
+            {/* Circles - centered at bottom of container */}
             <motion.div
-              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[50px] z-40 size-[98px] rounded-full border-t md:-bottom-[75px] md:size-[147px]"
+              className={cn(
+                "border-app-flow-panel-border border-[1.51px] bg-app-flow-panel-bg absolute -bottom-[50px] left-1/2 z-40 size-[98px] -translate-x-1/2 rounded-full border md:-bottom-[75px] md:size-[147px]",
+                "[box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
+              )}
               animate={{
                 scale: [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div
-              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[65px] z-30 size-[138px] rounded-full border-t opacity-85 md:-bottom-[100px] md:size-[207px]"
+              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[65px] left-1/2 z-30 size-[138px] -translate-x-1/2 rounded-full border opacity-85 md:-bottom-[100px] md:size-[207px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
               animate={{
                 scale: [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div
-              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[80px] z-20 size-[180px] rounded-full border-t opacity-70 md:-bottom-[120px] md:size-[270px]"
+              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[80px] left-1/2 z-20 size-[180px] -translate-x-1/2 rounded-full border opacity-70 md:-bottom-[120px] md:size-[270px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
               animate={{
                 scale: [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div
-              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[105px] z-10 size-[232px] rounded-full border-t opacity-55 md:-bottom-[160px] md:size-[348px]"
+              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[105px] left-1/2 z-10 size-[232px] -translate-x-1/2 rounded-full border opacity-55 md:-bottom-[160px] md:size-[348px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
               animate={{
                 scale: [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             />
 
-            {vaultDots.map((dot) => {
-              const position = dot.position;
-              const isActive = dot.id === activeDotId;
-              const baseSize = dot.size;
-              const activeSize = baseSize * 1.3;
+            {/* Ring wrappers - same position/size as circles so dots share coordinate system */}
+            {RING_WRAPPER_CLASSES.map((wrapperClass, ringIndex) => {
+              const ringDots = vaultDots.filter(
+                (d) => d.position.ringIndex === ringIndex
+              );
+              if (ringDots.length === 0) return null;
 
               return (
-                <div
-                  key={dot.id}
-                  className={cn("absolute z-40", {
-                    "left-[50%]!": dot.token.icon.includes("eth-black"),
-                  })}
-                  style={{
-                    left: `${position.xPercent}%`,
-                    top: `${position.yPercent}%`,
-                    transform: "translate(-50%, -50%)",
-                  }}
+                <motion.div
+                  key={`ring-${ringIndex}`}
+                  className={cn(
+                    wrapperClass,
+                    "z-40 pointer-events-none [&>*]:pointer-events-auto"
+                  )}
+                  animate={{ scale: RING_SCALE_ANIMATION[ringIndex] }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <motion.div
-                    animate={{
-                      scale: isActive ? activeSize / baseSize : 1,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 20,
-                    }}
-                    className="relative"
-                  >
-                    <div
-                      className={cn(
-                        "bg-app-flow-panel-bg relative rounded-full border",
-                        {
-                          "border-app-flow-node-border": isActive,
-                          "border-transparent": !isActive,
-                        },
-                      )}
-                    >
-                      <Image
-                        src={dot.token.icon}
-                        alt={dot.token.alt}
-                        width={isActive ? activeSize : baseSize}
-                        height={isActive ? activeSize : baseSize}
-                        className="size-2 rounded-full md:size-3"
-                      />
-                    </div>
+                  {ringDots.map((dot) => {
+                    const { radiusPx, angleDeg } = dot.position;
+                    const angleRad = (angleDeg * Math.PI) / 180;
+                    const offsetX = radiusPx * Math.cos(angleRad);
+                    const offsetY = radiusPx * Math.sin(angleRad);
+                    const isActive = dot.id === activeDotId;
+                    const baseSize = dot.size;
+                    const activeSize = baseSize * 1.3;
+                    const isLeftOfCenter = angleDeg > 90 && angleDeg < 270;
+                    const isUpperHalf = angleDeg > 180 && angleDeg < 360;
 
-                    {/* Tooltip */}
-                    <AnimatePresence>
-                      {isActive && (
+                    return (
+                      <div
+                        key={dot.id}
+                        className="absolute left-1/2 top-1/2"
+                        style={{
+                          transform: `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`,
+                        }}
+                      >
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                          transition={{ duration: 0.2 }}
-                          className={cn(
-                            "border-app-flow-tooltip-border bg-app-flow-tooltip-bg absolute z-9999 max-w-[120px] min-w-[100px] rounded-md border px-1.5 py-1 text-left shadow-lg",
-                            position.xPercent < 50
-                              ? "left-full ml-2"
-                              : "right-full mr-2",
-                            position.yPercent < 50 ? "top-0" : "bottom-0",
-                          )}
+                          animate={{
+                            scale: isActive ? activeSize / baseSize : 1,
+                          }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20,
+                          }}
+                          className="relative"
                         >
-                          <div className="space-y-0.5">
-                            <p className="text-app-text-primary truncate text-[10px] font-semibold">
-                              {dot.vault.name}
-                            </p>
-                            <div className="flex items-center gap-1">
-                              <span className="text-[10px] font-bold text-green-500">
-                                {(dot.vault.apy * 100).toFixed(2)}%
-                              </span>
-                              <span className="text-app-text-muted text-[8px]">
-                                APY
-                              </span>
-                            </div>
-                            {dot.vault.tvl && (
-                              <p className="text-app-text-muted text-[8px]">
-                                ${(dot.vault.tvl / 1e6).toFixed(1)}M
-                              </p>
-                            )}
-                          </div>
-
-                          {/* Tooltip arrow */}
                           <div
                             className={cn(
-                              "border-app-flow-tooltip-border bg-app-flow-tooltip-bg absolute top-1/2 hidden h-1.5 w-1.5 rotate-45 border",
-                              position.xPercent < 50
-                                ? "-left-0.5 border-r-0 border-b-0"
-                                : "-right-0.5 border-t-0 border-l-0",
+                              "bg-app-flow-panel-bg relative rounded-full border",
+                              {
+                                "border-app-flow-node-border": isActive,
+                                "border-transparent": !isActive,
+                              }
                             )}
-                          />
+                          >
+                            <Image
+                              src={dot.token.icon}
+                              alt={dot.token.alt}
+                              width={isActive ? activeSize : baseSize}
+                              height={isActive ? activeSize : baseSize}
+                              className="size-2 rounded-full md:size-3"
+                            />
+                          </div>
+
+                          {/* Tooltip */}
+                          <AnimatePresence>
+                            {isActive && (
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                                transition={{ duration: 0.2 }}
+                                className={cn(
+                                  "border-app-flow-tooltip-border bg-app-flow-tooltip-bg absolute z-9999 max-w-[120px] min-w-[100px] rounded-md border px-1.5 py-1 text-left shadow-lg",
+                                  isLeftOfCenter
+                                    ? "left-full ml-2"
+                                    : "right-full mr-2",
+                                  isUpperHalf ? "top-0" : "bottom-0"
+                                )}
+                              >
+                                <div className="space-y-0.5">
+                                  <p className="text-app-text-primary truncate text-[10px] font-semibold">
+                                    {dot.vault.name}
+                                  </p>
+                                  <div className="flex items-center gap-1">
+                                    <span className="text-[10px] font-bold text-green-500">
+                                      {(dot.vault.apy * 100).toFixed(2)}%
+                                    </span>
+                                    <span className="text-app-text-muted text-[8px]">
+                                      APY
+                                    </span>
+                                  </div>
+                                  {dot.vault.tvl && (
+                                    <p className="text-app-text-muted text-[8px]">
+                                      ${(dot.vault.tvl / 1e6).toFixed(1)}M
+                                    </p>
+                                  )}
+                                </div>
+
+                                {/* Tooltip arrow */}
+                                <div
+                                  className={cn(
+                                    "border-app-flow-tooltip-border bg-app-flow-tooltip-bg absolute top-1/2 hidden h-1.5 w-1.5 rotate-45 border",
+                                    isLeftOfCenter
+                                      ? "-left-0.5 border-r-0 border-b-0"
+                                      : "-right-0.5 border-t-0 border-l-0"
+                                  )}
+                                />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                </div>
+                      </div>
+                    );
+                  })}
+                </motion.div>
               );
             })}
           </div>
