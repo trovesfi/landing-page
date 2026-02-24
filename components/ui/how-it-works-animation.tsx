@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 
 import TokenButton from "@/components/ui/token-button";
@@ -58,6 +59,14 @@ const HowItWorksAnimation = ({
   const resolvedVaults = vaults.length > 0 ? vaults : FALLBACK_VAULTS;
   const [activeDotId, setActiveDotId] = React.useState<string | null>(null);
   const hideTooltipTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const activeDotRef = React.useRef<HTMLDivElement | null>(null);
+  const [tooltipPlacement, setTooltipPlacement] = React.useState<{
+    dot: VaultDot;
+    left: number;
+    top: number;
+    isLeftOfCenter: boolean;
+    isUpperHalf: boolean;
+  } | null>(null);
 
   const [isDesktop, setIsDesktop] = React.useState(true);
   React.useEffect(() => {
@@ -138,6 +147,32 @@ const HowItWorksAnimation = ({
 
     return dots;
   }, [resolvedTokens, resolvedVaults, isDesktop]);
+
+  // Update tooltip position when active dot changes (for portal) - use rAF to ensure ref is set
+  React.useEffect(() => {
+    if (!activeDotId) {
+      setTooltipPlacement(null);
+      return;
+    }
+    const raf = requestAnimationFrame(() => {
+      if (!activeDotRef.current || typeof document === "undefined") return;
+      const dot = vaultDots.find((d) => d.id === activeDotId);
+      if (!dot) return;
+      const rect = activeDotRef.current.getBoundingClientRect();
+      const { angleDeg } = dot.position;
+      const isLeftOfCenter = angleDeg > 90 && angleDeg < 270;
+      const isUpperHalf = angleDeg > 180 && angleDeg < 360;
+      const TOOLTIP_WIDTH = 180;
+      const TOOLTIP_HEIGHT = 80;
+      const GAP = 8;
+      const left = isLeftOfCenter
+        ? rect.right + GAP
+        : rect.left - TOOLTIP_WIDTH - GAP;
+      const top = isUpperHalf ? rect.top : rect.bottom - TOOLTIP_HEIGHT;
+      setTooltipPlacement({ dot, left, top, isLeftOfCenter, isUpperHalf });
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [activeDotId, vaultDots]);
 
   const TOOLTIP_INTERVAL = 3000;
   const TOOLTIP_VISIBLE_TIME = 2000;
@@ -350,39 +385,41 @@ const HowItWorksAnimation = ({
           </div>
 
           {/* box content */}
-          <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative z-10 flex h-[200px] w-full items-center justify-center overflow-hidden rounded-xl border shadow-md md:h-[229px]">
-            {/* Circles - centered at bottom of container */}
-            <motion.div
-              className={cn(
-                "border-app-flow-panel-border border-[1.51px] bg-app-flow-panel-bg absolute -bottom-[50px] left-1/2 z-40 size-[98px] -translate-x-1/2 rounded-full border md:-bottom-[75px] md:size-[147px]",
-                "[box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
-              )}
-              animate={{
-                scale: [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <motion.div
-              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[65px] left-1/2 z-30 size-[138px] -translate-x-1/2 rounded-full border opacity-85 md:-bottom-[100px] md:size-[207px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
-              animate={{
-                scale: [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <motion.div
-              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[80px] left-1/2 z-20 size-[180px] -translate-x-1/2 rounded-full border opacity-70 md:-bottom-[120px] md:size-[270px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
-              animate={{
-                scale: [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <motion.div
-              className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[105px] left-1/2 z-10 size-[232px] -translate-x-1/2 rounded-full border opacity-55 md:-bottom-[160px] md:size-[348px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
-              animate={{
-                scale: [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+          <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative z-10 flex h-[200px] w-full items-center justify-center rounded-xl border shadow-md md:h-[229px]">
+            {/* Circles - clipped to rounded box */}
+            <div className="absolute inset-0 overflow-hidden rounded-xl">
+              <motion.div
+                className={cn(
+                  "border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[50px] left-1/2 z-40 size-[98px] -translate-x-1/2 rounded-full border md:-bottom-[75px] md:size-[147px]",
+                  "[box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
+                )}
+                animate={{
+                  scale: [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[65px] left-1/2 z-30 size-[138px] -translate-x-1/2 rounded-full border opacity-85 md:-bottom-[100px] md:size-[207px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
+                animate={{
+                  scale: [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[80px] left-1/2 z-20 size-[180px] -translate-x-1/2 rounded-full border opacity-70 md:-bottom-[120px] md:size-[270px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
+                animate={{
+                  scale: [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="border-app-flow-panel-border bg-app-flow-panel-bg absolute -bottom-[105px] left-1/2 z-10 size-[232px] -translate-x-1/2 rounded-full border opacity-55 md:-bottom-[160px] md:size-[348px] [box-shadow:0px_3.02px_2.26px_-0.75px_#00000014,0px_3.02px_4.52px_0px_#FFFFFF08_inset]"
+                animate={{
+                  scale: [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </div>
 
             {/* Ring wrappers - same position/size as circles so dots share coordinate system */}
             {RING_WRAPPER_CLASSES.map((wrapperClass, ringIndex) => {
@@ -415,6 +452,13 @@ const HowItWorksAnimation = ({
                     return (
                       <div
                         key={dot.id}
+                        ref={
+                          isActive
+                            ? (el) => {
+                                activeDotRef.current = el;
+                              }
+                            : undefined
+                        }
                         className="absolute left-1/2 top-1/2"
                         style={{
                           transform: `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`,
@@ -448,54 +492,6 @@ const HowItWorksAnimation = ({
                               className="rounded-full"
                             />
                           </div>
-
-                          {/* Tooltip */}
-                          <AnimatePresence>
-                            {isActive && (
-                              <motion.div
-                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                                transition={{ duration: 0.2 }}
-                                className={cn(
-                                  "border-app-flow-tooltip-border bg-app-flow-tooltip-bg absolute z-9999 max-w-[120px] min-w-[100px] rounded-md border px-1.5 py-1 text-left shadow-lg",
-                                  isLeftOfCenter
-                                    ? "left-full ml-2"
-                                    : "right-full mr-2",
-                                  isUpperHalf ? "top-0" : "bottom-0"
-                                )}
-                              >
-                                <div className="space-y-0.5">
-                                  <p className="text-app-text-primary truncate text-[10px] font-semibold">
-                                    {dot.vault.name}
-                                  </p>
-                                  <div className="flex items-center gap-1">
-                                    <span className="text-[10px] font-bold text-green-500">
-                                      {(dot.vault.apy * 100).toFixed(2)}%
-                                    </span>
-                                    <span className="text-app-text-muted text-[8px]">
-                                      APY
-                                    </span>
-                                  </div>
-                                  {dot.vault.tvl && (
-                                    <p className="text-app-text-muted text-[8px]">
-                                      ${(dot.vault.tvl / 1e6).toFixed(1)}M
-                                    </p>
-                                  )}
-                                </div>
-
-                                {/* Tooltip arrow */}
-                                <div
-                                  className={cn(
-                                    "border-app-flow-tooltip-border bg-app-flow-tooltip-bg absolute top-1/2 hidden h-1.5 w-1.5 rotate-45 border",
-                                    isLeftOfCenter
-                                      ? "-left-0.5 border-r-0 border-b-0"
-                                      : "-right-0.5 border-t-0 border-l-0"
-                                  )}
-                                />
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
                         </motion.div>
                       </div>
                     );
@@ -517,6 +513,52 @@ const HowItWorksAnimation = ({
           className="size-full"
         />
       </div>
+
+      {/* Tooltip portal - renders above everything including Troves logo */}
+      {typeof document !== "undefined" &&
+        tooltipPlacement &&
+        createPortal(
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="border-app-flow-tooltip-border bg-app-flow-tooltip-bg fixed z-[99999] max-w-[180px] min-w-[140px] rounded-lg border px-3 py-2 text-left shadow-lg"
+              style={{
+                left: tooltipPlacement.left,
+                top: tooltipPlacement.top,
+              }}
+            >
+              <div className="space-y-1">
+                <p className="text-app-text-primary truncate text-sm font-semibold">
+                  {tooltipPlacement.dot.vault.name}
+                </p>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-green-500">
+                    {(tooltipPlacement.dot.vault.apy * 100).toFixed(2)}%
+                  </span>
+                  <span className="text-app-text-muted text-[10px]">APY</span>
+                </div>
+                {tooltipPlacement.dot.vault.tvl && (
+                  <p className="text-app-text-muted text-[10px]">
+                    ${(tooltipPlacement.dot.vault.tvl / 1e6).toFixed(1)}M
+                  </p>
+                )}
+              </div>
+              <div
+                className={cn(
+                  "border-app-flow-tooltip-border bg-app-flow-tooltip-bg absolute top-1/2 hidden h-2 w-2 rotate-45 border",
+                  tooltipPlacement.isLeftOfCenter
+                    ? "-left-0.5 border-r-0 border-b-0"
+                    : "-right-0.5 border-t-0 border-l-0"
+                )}
+              />
+            </motion.div>
+          </AnimatePresence>,
+          document.body,
+          "tooltip-portal"
+        )}
     </div>
   );
 };

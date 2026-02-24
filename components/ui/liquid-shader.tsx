@@ -16,6 +16,7 @@ export function InteractiveNebulaShader({
   disableCenterDimming = false,
   className = "",
   interactive = true,
+  contained = false,
 }: InteractiveNebulaShaderProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   // @ts-expect-error - THREE.ShaderMaterial is not typed
@@ -148,6 +149,8 @@ export function InteractiveNebulaShader({
         uniforms.iMouse.value.set(e.clientX, window.innerHeight - e.clientY);
       }
     };
+    const resizeObserver = new ResizeObserver(onResize);
+    resizeObserver.observe(container);
     window.addEventListener("resize", onResize);
     if (interactive) {
       window.addEventListener("mousemove", onMouseMove);
@@ -161,6 +164,7 @@ export function InteractiveNebulaShader({
     });
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener("resize", onResize);
       if (interactive) {
         window.removeEventListener("mousemove", onMouseMove);
@@ -182,7 +186,8 @@ export function InteractiveNebulaShader({
     <div
       ref={containerRef}
       className={cn(
-        "fixed inset-0 bg-transparent",
+        "bg-transparent",
+        contained ? "absolute inset-0 size-full" : "fixed inset-0",
         interactive ? "" : "pointer-events-none",
         className
       )}

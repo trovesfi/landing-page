@@ -40,6 +40,8 @@ export interface InteractiveNebulaShaderProps {
   disableCenterDimming?: boolean;
   className?: string;
   interactive?: boolean;
+  /** When true, fills the parent container instead of the viewport */
+  contained?: boolean;
 }
 
 // card component props
