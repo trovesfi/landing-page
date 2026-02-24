@@ -120,7 +120,7 @@ const HowItWorksAnimation = ({
       dots.push({
         id: `dot-${i}`,
         position: { radiusPx, angleDeg, ringIndex },
-        size: 12,
+        size: 20,
         token: {
           token: token.token,
           icon: token.icon,
@@ -445,7 +445,7 @@ const HowItWorksAnimation = ({
                               alt={dot.token.alt}
                               width={isActive ? activeSize : baseSize}
                               height={isActive ? activeSize : baseSize}
-                              className="size-2 rounded-full md:size-3"
+                              className="rounded-full"
                             />
                           </div>
 
