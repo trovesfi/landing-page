@@ -126,7 +126,7 @@ const Navbar = () => {
                     >
                       <Button
                         variant="primary"
-                        className="mt-4 h-9 w-full px-7"
+                        className="mt-4 h-9 w-full px-7 btn-glow-shimmer"
                         aria-label="Launch Troves Dapp"
                       >
                         Launch Dapp
@@ -180,7 +180,7 @@ const Navbar = () => {
             >
               <Button
                 variant="primary"
-                className="h-9 px-7"
+                className="h-9 px-7 btn-glow-shimmer"
                 aria-label="Launch Troves Dapp"
               >
                 Launch Dapp
