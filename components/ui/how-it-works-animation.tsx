@@ -108,7 +108,7 @@ const HowItWorksAnimation = ({
     // Polar positions: (radiusIndex, angleDeg) - scattered across upper semicircle
     // Angles span 180°–360° for varied vertical & horizontal placement on each ring
     const ORBITAL_LAYOUT: Array<{ ringIndex: number; angleDeg: number }> = [
-      { ringIndex: 0, angleDeg: 185 },
+      { ringIndex: 0, angleDeg: 190 },
       { ringIndex: 0, angleDeg: 270 },
       { ringIndex: 1, angleDeg: 220 },
       { ringIndex: 1, angleDeg: 310 },
