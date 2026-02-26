@@ -17,6 +17,7 @@ import { APP_ROUTES } from "@/constants/links";
 import { useStats } from "@/hooks/use-stats";
 import { useStrategies } from "@/hooks/use-strategies";
 import { formatCurrency, formatNumber, formatPercentage } from "@/lib/format";
+import { InteractiveNebulaShader } from "./ui/liquid-shader";
 
 const heroEase = [0.25, 0.1, 0.25, 1] as const;
 
@@ -61,19 +62,19 @@ const HeroSection = () => {
     const active = strategies.filter(
       (strategy) =>
         strategy.status?.value.toLowerCase() !== "retired" &&
-        (strategy.tvlUsd ?? 0) > 0,
+        (strategy.tvlUsd ?? 0) > 0
     );
 
     const totalTvl = active.reduce(
       (sum, strategy) => sum + (strategy.tvlUsd ?? 0),
-      0,
+      0
     );
     const weightedAverage =
       totalTvl > 0
         ? active.reduce(
             (sum, strategy) =>
               sum + (strategy.apy ?? 0) * (strategy.tvlUsd ?? 0),
-            0,
+            0
           ) / totalTvl
         : null;
 
@@ -99,10 +100,20 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="hero" aria-label="Hero section">
-      <MaxWidthWrapper>
+    <section
+      id="hero"
+      aria-label="Hero section"
+      className="relative overflow-hidden"
+      style={{ width: "100vw", marginLeft: "calc(50% - 50vw)" }}
+    >
+      <InteractiveNebulaShader
+        interactive
+        contained
+        className="pointer-events-none z-0 opacity-60 mix-blend-screen"
+      />
+      <MaxWidthWrapper className="relative z-10">
         <motion.div
-          className="flex flex-col items-center gap-3 py-24 lg:gap-5"
+          className="flex flex-col items-center gap-3 py-36 lg:gap-5"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
