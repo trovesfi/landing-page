@@ -242,13 +242,19 @@ const HowItWorksAnimation = ({
     (connector) => (connector.startX / 200) * 100
   );
 
+  const hasMobileTokens = resolvedTokens.length > 0;
+  const mobileHeight = hasMobileTokens ? "h-[280px]" : "h-[250px]";
+
   return (
     <div
       ref={containerRef}
-      className={cn("relative h-[250px] w-full md:h-[400px]", className)}
+      className={cn("relative w-full md:h-[350px]", mobileHeight, className)}
     >
       <motion.div
-        className="relative flex h-[250px] w-full flex-col items-center md:h-[400px]"
+        className={cn(
+          "relative flex w-full flex-col items-center md:h-[350px]",
+          mobileHeight
+        )}
         initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, amount: 0.2 }}
@@ -330,11 +336,11 @@ const HowItWorksAnimation = ({
         </svg>
 
         {/* Mobile shimmer bar - simple flow indicator */}
-        <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative mt-16 h-12 w-full rounded-2xl border md:hidden">
+        {/* <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative mt-16 h-12 w-full rounded-2xl border md:hidden">
           <div className="flex h-full items-center justify-center gap-3">
             <div className="h-1 w-20 animate-pulse rounded-full bg-linear-to-r from-transparent via-blue-400 to-transparent opacity-60" />
           </div>
-        </div>
+        </div> */}
 
         {resolvedTokens.length > 0 && (
           <>
