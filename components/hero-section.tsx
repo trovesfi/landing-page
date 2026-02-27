@@ -164,28 +164,6 @@ const HeroSection = () => {
                 Start Earning
               </Button>
             </Link>
-
-            <Link
-              href={APP_ROUTES.STRATEGIES}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="secondary"
-                className="w-[260px] lg:w-fit lg:px-20"
-                rightIcon={
-                  <Image
-                    src="/icons/strategies.svg"
-                    className="mt-0.5"
-                    alt="strategies"
-                    width={13}
-                    height={13}
-                  />
-                }
-              >
-                View Strategies
-              </Button>
-            </Link>
           </motion.div>
 
           <motion.div
