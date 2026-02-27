@@ -65,7 +65,7 @@ const PreFooter = () => {
             </FadeIn>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-7">
+          {/* <div className="mt-10 flex flex-wrap items-center justify-center gap-7">
             {STATS.map((stat, index) => (
               <FadeIn
                 key={stat.label}
@@ -80,7 +80,7 @@ const PreFooter = () => {
                 </span>
               </FadeIn>
             ))}
-          </div>
+          </div> */}
         </FadeIn>
       </MaxWidthWrapper>
     </section>
