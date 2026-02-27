@@ -109,6 +109,7 @@ const HeroSection = () => {
       <InteractiveNebulaShader
         interactive
         contained
+        scale={2}
         className="pointer-events-none z-0 opacity-60 mix-blend-screen"
       />
       <MaxWidthWrapper className="relative z-10">

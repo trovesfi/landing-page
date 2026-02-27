@@ -42,6 +42,8 @@ export interface InteractiveNebulaShaderProps {
   interactive?: boolean;
   /** When true, fills the parent container instead of the viewport */
   contained?: boolean;
+  /** Scale of the nebula (default 1). Higher values make it appear smaller. */
+  scale?: number;
 }
 
 // card component props
