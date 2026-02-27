@@ -1,11 +1,27 @@
 export const INTEGRATIONS = [
-  { logo: "/logos/dapps/endur.svg", name: "Endur", alt: "Endur logo" },
-  { logo: "/logos/dapps/vesu.svg", name: "Vesu", alt: "Vesu logo" },
-  { logo: "/logos/dapps/ekubo.svg", name: "Ekubo", alt: "Ekubo logo" },
+  {
+    logo: "/logos/dapps/endur.svg",
+    name: "Endur",
+    alt: "Endur logo",
+    href: "https://endur.fi/",
+  },
+  {
+    logo: "/logos/dapps/vesu.svg",
+    name: "Vesu",
+    alt: "Vesu logo",
+    href: "https://vesu.xyz/",
+  },
+  {
+    logo: "/logos/dapps/ekubo.svg",
+    name: "Ekubo",
+    alt: "Ekubo logo",
+    href: "https://ekubo.org/",
+  },
   {
     logo: "/logos/dapps/extended.svg",
     name: "Extended",
     alt: "Extended logo",
+    href: "https://extended.exchange/",
   },
 ];
 

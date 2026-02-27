@@ -245,6 +245,7 @@ const HeroSection = () => {
                   <PlatformCard
                     logo={integration.logo}
                     name={integration.name}
+                    href={integration.href}
                     alt={integration.alt}
                   />
                 </motion.div>

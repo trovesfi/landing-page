@@ -139,6 +139,7 @@ export interface MaxWidthWrapperProps extends React.HTMLProps<HTMLDivElement> {
 export interface PlatformCardProps {
   logo: string;
   name: string;
+  href?: string;
   alt: string;
   className?: string;
   delay?: number;
