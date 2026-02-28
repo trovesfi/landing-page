@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
-      <div className="flex justify-center pt-4 lg:pt-10">
+      <div className="flex justify-center pt-4 lg:pt-[24px]">
         <motion.header
           initial={{ opacity: 0, y: -20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
