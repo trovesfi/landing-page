@@ -114,7 +114,7 @@ const HeroSection = () => {
       />
       <MaxWidthWrapper className="relative z-10">
         <motion.div
-          className="flex flex-col items-center gap-3 py-36 lg:gap-5"
+          className="flex flex-col items-center gap-3 pt-[128px] pb-[64px] lg:gap-5"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
@@ -217,7 +217,7 @@ const HeroSection = () => {
 
             <motion.div
               variants={containerVariants}
-              className="flex flex-wrap items-center justify-center gap-3 lg:flex-nowrap lg:gap-5"
+              className="flex flex-wrap items-center justify-center gap-3 lg:flex-nowrap lg:gap-5 lg:py-[32px] w-full"
             >
               {INTEGRATIONS.map((integration) => (
                 <motion.div key={integration.name} variants={subtleFade}>

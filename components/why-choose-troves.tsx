@@ -49,7 +49,7 @@ const WhyChooseTroves = () => {
   return (
     <section
       aria-label="Why choose Troves"
-      className="bg-app-section-purple-gradient bg-app-section-bg-dark w-full py-24"
+      className="bg-app-section-purple-gradient bg-app-section-bg-dark w-full lg:py-[120px] py-[40px] lg:px-[71.5px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn>

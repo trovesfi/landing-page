@@ -65,7 +65,7 @@ const HowItWorks = () => {
   return (
     <section
       aria-label="How it works"
-      className="bg-app-section-bg h-full min-h-screen w-full py-24"
+      className="bg-app-section-bg h-full min-h-screen w-full lg:py-[64px] lg:px-[120px] py-[40px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn>
@@ -88,7 +88,7 @@ const HowItWorks = () => {
           />
         </FadeIn>
 
-        <div className="w-full max-w-[763px]">
+        <div className="mt-8 w-full max-w-[763px] lg:mt-12">
           <HowItWorksAnimation
             tokens={TOKENS}
             vaults={vaults}
@@ -96,7 +96,7 @@ const HowItWorks = () => {
           />
           <FadeIn
             delay={0.1}
-            className="border-app-flow-feature-border bg-app-flow-feature-bg relative z-0 mt-9 flex h-full w-full flex-col items-start justify-between gap-10 overflow-hidden rounded-xl border px-7 py-8 shadow-md lg:h-[150px] lg:flex-row lg:items-center lg:gap-0 lg:py-0"
+            className="border-app-flow-feature-border bg-app-flow-feature-bg relative z-0 mt-4 flex h-full w-full flex-col items-center justify-between gap-10 overflow-hidden rounded-xl border px-7 py-8 shadow-md md:mt-9 md:flex-row md:items-center md:gap-0 md:py-0 lg:h-[150px]"
           >
             {FEATURE_CARDS.map((card) => (
               <article

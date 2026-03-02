@@ -31,12 +31,12 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
-      <div className="flex justify-center pt-4 lg:pt-[24px]">
+      <div className="flex p-4 lg:pt-[24px] lg:pb-0">
         <motion.header
           initial={{ opacity: 0, y: -20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="border-app-border from-app-navbar-bg-start to-app-navbar-bg-end flex w-[95%] flex-col overflow-hidden rounded-3xl border bg-linear-to-b px-6 shadow-md lg:h-16 lg:w-[97%] lg:flex-row lg:items-center lg:justify-between"
+          className="border-app-border from-app-navbar-bg-start to-app-navbar-bg-end flex w-full flex-col overflow-hidden rounded-3xl border bg-linear-to-b px-[24px] shadow-md lg:h-16  lg:flex-row lg:items-center lg:justify-between"
         >
           {/* Top bar: logo + menu button (mobile) or full nav (desktop) - same structure as original */}
           <div className="flex h-16 min-h-16 shrink-0 items-center justify-between lg:contents">

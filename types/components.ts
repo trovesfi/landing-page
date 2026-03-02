@@ -102,6 +102,7 @@ export interface TokenButtonProps {
   className?: string;
   iconClassName?: string;
   isActive?: boolean;
+  showToken?: boolean;
   onClick?: () => void;
 }
 

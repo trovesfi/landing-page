@@ -10,6 +10,7 @@ const TokenButton = ({
   alt,
   className,
   iconClassName,
+  showToken = true,
 }: TokenButtonProps) => {
   return (
     <Button
@@ -23,7 +24,7 @@ const TokenButton = ({
         height={18}
         className={iconClassName}
       />
-      {token}
+      {showToken && token}
     </Button>
   );
 };

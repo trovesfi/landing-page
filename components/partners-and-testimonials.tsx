@@ -31,7 +31,7 @@ const PartnersAndTestimonials = () => {
   return (
     <section
       aria-label="Partners and testimonials"
-      className="bg-app-testimonial-bg w-full pt-12 pb-24"
+      className="bg-app-testimonial-bg w-full py-[40px] lg:pt[24px] lg:pb-[48px] lg:px-[120px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn className="flex w-full flex-col items-center justify-center text-center">
@@ -53,7 +53,7 @@ const PartnersAndTestimonials = () => {
           </div>
         </FadeIn>
 
-        <FadeIn className="mt-32 flex w-full flex-col items-center justify-center">
+        <FadeIn className="mt-[40px] lg:mt-[72px] flex w-full flex-col items-center justify-center">
           <HeadingTag text="Testimonials" />
 
           <MainHeading

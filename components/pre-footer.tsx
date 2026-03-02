@@ -16,7 +16,7 @@ const PreFooter = () => {
   return (
     <section
       aria-label="Call to action"
-      className="w-full py-12 lg:px-6 lg:py-24"
+      className="w-full lg:py-[48px] lg:px-[120px] py-[40px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn className="bg-pre-footer-gradient flex h-[450px] w-full flex-col items-center justify-center rounded-3xl px-6 text-center lg:px-0">
