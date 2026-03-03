@@ -210,45 +210,52 @@ const HowItWorksAnimation = ({
     };
   }, [vaultDots]);
 
+  // Path start Y – lines start at token bottom (tokens at top 8% + ~10% height)
+  const pathStartY = 15;
   const connectorPathData = [
     {
       id: "conn-1",
-      startX: 30,
-      path: "M 25 10 v 15 q 0 5 5 5 h 65 q 5 0 5 5 v 10",
+      path: `M 25 ${pathStartY} v 15 q 0 5 5 5 h 65 q 5 0 5 5 v 10`,
     },
     {
       id: "conn-2",
-      startX: 63,
-      path: "M 60 10 v 10 q 0 5 5 5 h 30 q 5 0 5 5 v 10",
+      path: `M 60 ${pathStartY} v 10 q 0 5 5 5 h 30 q 5 0 5 5 v 10`,
     },
     {
       id: "conn-3",
-      startX: 100,
-      path: "M 100 10 v 25 q 0 5 0 5 v 10",
+      path: `M 100 ${pathStartY} v 25 q 0 5 0 5 v 10`,
     },
     {
       id: "conn-4",
-      startX: 135,
-      path: "M 140 10 v 10 q 0 5 -5 5 h -30 q -5 0 -5 5 v 10",
+      path: `M 140 ${pathStartY} v 10 q 0 5 -5 5 h -30 q -5 0 -5 5 v 10`,
     },
     {
       id: "conn-5",
-      startX: 170,
-      path: "M 175 10 v 15 q 0 5 -5 5 h -65 q -5 0 -5 5 v 10",
+      path: `M 175 ${pathStartY} v 15 q 0 5 -5 5 h -65 q -5 0 -5 5 v 10`,
     },
   ];
 
-  const tokenPositions = connectorPathData.map(
-    (connector) => (connector.startX / 200) * 100
-  );
+  // Derive token positions from path start X (the "M x y" coordinate in each path)
+  const viewBoxWidth = 200;
+  const tokenPositions = connectorPathData.map((connector) => {
+    const match = connector.path.match(/^M\s*([\d.]+)/);
+    const pathStartX = match ? parseFloat(match[1]) : 100;
+    return (pathStartX / viewBoxWidth) * 100;
+  });
+
+  const hasMobileTokens = resolvedTokens.length > 0;
+  const mobileHeight = hasMobileTokens ? "h-[280px]" : "h-[250px]";
 
   return (
     <div
       ref={containerRef}
-      className={cn("relative h-[250px] w-full md:h-[400px]", className)}
+      className={cn("relative w-full md:h-[350px]", mobileHeight, className)}
     >
       <motion.div
-        className="relative flex h-[250px] w-full flex-col items-center md:h-[400px]"
+        className={cn(
+          "relative flex w-full flex-col items-center md:h-[350px]",
+          mobileHeight
+        )}
         initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, amount: 0.2 }}
@@ -256,10 +263,11 @@ const HowItWorksAnimation = ({
       >
         {/* SVG Paths  */}
         <svg
-          className="hidden h-full w-full md:block"
+          className=" h-full w-full md:block"
           width="100%"
           height="100%"
           viewBox="0 0 200 100"
+          preserveAspectRatio="xMidYMin meet"
         >
           <defs>
             {connectorPathData.map((connector, index) => (
@@ -330,27 +338,36 @@ const HowItWorksAnimation = ({
         </svg>
 
         {/* Mobile shimmer bar - simple flow indicator */}
-        <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative mt-16 h-12 w-full rounded-2xl border md:hidden">
+        {/* <div className="border-app-flow-panel-border bg-app-flow-panel-bg relative mt-16 h-12 w-full rounded-2xl border md:hidden">
           <div className="flex h-full items-center justify-center gap-3">
             <div className="h-1 w-20 animate-pulse rounded-full bg-linear-to-r from-transparent via-blue-400 to-transparent opacity-60" />
           </div>
-        </div>
+        </div> */}
 
         {resolvedTokens.length > 0 && (
           <>
-            {/* Mobile: Token buttons in a row at the top */}
-            <div className="pointer-events-none absolute top-0 right-0 left-0 z-10 flex flex-wrap items-center justify-center gap-2 px-4 py-3 md:hidden">
-              {resolvedTokens.map((token) => (
-                <div key={token.token} className="pointer-events-auto">
-                  <TokenButton
-                    token={token.token}
-                    icon={token.icon}
-                    alt={token.alt}
-                    className="h-7 cursor-default gap-1 rounded-sm px-2 text-[10px]"
-                    iconClassName="size-3"
-                  />
-                </div>
-              ))}
+            {/* Mobile: Token buttons positioned to align with connector paths (same % as desktop) */}
+            <div className="pointer-events-none absolute top-0 right-0 left-0 z-10 md:hidden">
+              {tokenPositions.map((leftPercent, index) => {
+                const token = resolvedTokens[index];
+                if (!token) return null;
+                return (
+                  <div
+                    key={`mobile-${token.token}-${index}`}
+                    className="pointer-events-auto absolute top-[8%] -translate-x-1/2"
+                    style={{ left: `${leftPercent}%` }}
+                  >
+                    <TokenButton
+                      token={token.token}
+                      showToken={false}
+                      icon={token.icon}
+                      alt={token.alt}
+                      className="h-7 cursor-default gap-1 rounded-sm px-2 text-[10px]"
+                      iconClassName="size-3"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             {/* Desktop: Token buttons positioned along SVG paths */}
@@ -383,7 +400,7 @@ const HowItWorksAnimation = ({
         )}
 
         {/* Main Box */}
-        <div className="absolute -bottom-4 z-50 flex w-full flex-col items-center md:-bottom-7">
+        <div className="absolute -bottom-2 z-50 flex w-full flex-col items-center md:-bottom-7">
           {/* box title */}
           <div className="border-app-flow-panel-border bg-app-box-bg absolute -top-2 z-20 flex items-center justify-center rounded-lg border px-2 py-1 text-center md:-top-3 md:px-4 md:py-1.5">
             <span className="text-app-text-primary text-[9px] leading-tight font-medium md:ml-2 md:text-xs md:leading-normal">
@@ -511,7 +528,7 @@ const HowItWorksAnimation = ({
       </motion.div>
 
       {/* Troves Logo */}
-      <div className="border-app-flow-panel-border bg-app-circle-bg absolute -bottom-10 left-1/2 z-9999 grid size-[50px] -translate-x-1/2 place-items-center rounded-full border-t text-xs font-semibold md:-bottom-14 md:size-[60px] lg:-bottom-18 lg:size-[90px]">
+      <div className="border-app-flow-panel-border bg-app-circle-bg absolute -bottom-8 left-1/2 z-9999 grid size-[50px] -translate-x-1/2 place-items-center rounded-full border-t text-xs font-semibold md:-bottom-14 md:size-[60px] lg:-bottom-18 lg:size-[90px]">
         <Image
           src="/logos/dapps/troves-gradient.svg"
           alt="troves"

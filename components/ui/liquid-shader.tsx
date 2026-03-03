@@ -17,6 +17,7 @@ export function InteractiveNebulaShader({
   className = "",
   interactive = true,
   contained = false,
+  scale = 1,
 }: InteractiveNebulaShaderProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   // @ts-expect-error - THREE.ShaderMaterial is not typed
@@ -25,12 +26,12 @@ export function InteractiveNebulaShader({
   // Sync props into uniforms
   React.useEffect(() => {
     const mat = materialRef.current;
-    if (mat) {
-      mat.uniforms.hasActiveReminders.value = hasActiveReminders;
-      mat.uniforms.hasUpcomingReminders.value = hasUpcomingReminders;
-      mat.uniforms.disableCenterDimming.value = disableCenterDimming;
-    }
-  }, [hasActiveReminders, hasUpcomingReminders, disableCenterDimming]);
+    if (!mat?.uniforms) return;
+    mat.uniforms.hasActiveReminders.value = hasActiveReminders;
+    mat.uniforms.hasUpcomingReminders.value = hasUpcomingReminders;
+    mat.uniforms.disableCenterDimming.value = disableCenterDimming;
+    if (mat.uniforms.iScale) mat.uniforms.iScale.value = scale;
+  }, [hasActiveReminders, hasUpcomingReminders, disableCenterDimming, scale]);
 
   React.useEffect(() => {
     const container = containerRef.current;
@@ -64,6 +65,7 @@ export function InteractiveNebulaShader({
       uniform bool hasActiveReminders;
       uniform bool hasUpcomingReminders;
       uniform bool disableCenterDimming;
+      uniform float iScale;
       varying vec2 vUv;
       const vec3 baseColor = vec3(0.094, 0.094, 0.094); // #181818
 
@@ -79,7 +81,7 @@ export function InteractiveNebulaShader({
 
       void mainImage(out vec4 O, in vec2 fragCoord) {
         // Aspect-correct UV: zoom in so nebula appears larger across screen
-        vec2 uv = (fragCoord - 0.5 * iResolution.xy) / min(iResolution.x, iResolution.y) * 0.5;
+        vec2 uv = (fragCoord - 0.5 * iResolution.xy) / min(iResolution.x, iResolution.y) * 0.5 * iScale;
         vec3 col = vec3(0.0);
         float d = 2.5;
 
@@ -126,6 +128,7 @@ export function InteractiveNebulaShader({
       hasActiveReminders: { value: hasActiveReminders },
       hasUpcomingReminders: { value: hasUpcomingReminders },
       disableCenterDimming: { value: disableCenterDimming },
+      iScale: { value: scale },
     };
 
     const material = new THREE.ShaderMaterial({
@@ -180,6 +183,7 @@ export function InteractiveNebulaShader({
     hasActiveReminders,
     hasUpcomingReminders,
     disableCenterDimming,
+    scale,
   ]);
 
   return (

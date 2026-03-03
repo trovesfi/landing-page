@@ -42,6 +42,8 @@ export interface InteractiveNebulaShaderProps {
   interactive?: boolean;
   /** When true, fills the parent container instead of the viewport */
   contained?: boolean;
+  /** Scale of the nebula (default 1). Higher values make it appear smaller. */
+  scale?: number;
 }
 
 // card component props
@@ -100,6 +102,7 @@ export interface TokenButtonProps {
   className?: string;
   iconClassName?: string;
   isActive?: boolean;
+  showToken?: boolean;
   onClick?: () => void;
 }
 
@@ -139,6 +142,7 @@ export interface MaxWidthWrapperProps extends React.HTMLProps<HTMLDivElement> {
 export interface PlatformCardProps {
   logo: string;
   name: string;
+  href?: string;
   alt: string;
   className?: string;
   delay?: number;

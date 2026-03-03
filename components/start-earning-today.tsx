@@ -48,7 +48,7 @@ const StartEarningToday = () => {
     const strategies = strategiesData?.strategies ?? [];
 
     const activeStrategies = strategies.filter(
-      (strategy) => strategy.status?.value.toLowerCase() !== "retired",
+      (strategy) => strategy.status?.value.toLowerCase() !== "retired"
     );
 
     const top = [...activeStrategies]
@@ -65,7 +65,7 @@ const StartEarningToday = () => {
     <section
       id="strategies"
       aria-label="Start earning today"
-      className="bg-app-section-solid w-full py-24"
+      className="bg-app-section-solid w-full py-[40px] lg:py-[48px] lg:px-[120px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn>

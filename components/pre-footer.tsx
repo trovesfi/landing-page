@@ -16,7 +16,7 @@ const PreFooter = () => {
   return (
     <section
       aria-label="Call to action"
-      className="w-full py-12 lg:px-6 lg:py-24"
+      className="w-full lg:py-[48px] lg:px-[120px] py-[40px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn className="bg-pre-footer-gradient flex h-[450px] w-full flex-col items-center justify-center rounded-3xl px-6 text-center lg:px-0">
@@ -65,7 +65,7 @@ const PreFooter = () => {
             </FadeIn>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-7">
+          {/* <div className="mt-10 flex flex-wrap items-center justify-center gap-7">
             {STATS.map((stat, index) => (
               <FadeIn
                 key={stat.label}
@@ -80,7 +80,7 @@ const PreFooter = () => {
                 </span>
               </FadeIn>
             ))}
-          </div>
+          </div> */}
         </FadeIn>
       </MaxWidthWrapper>
     </section>

@@ -307,6 +307,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  *:focus {
+    @apply outline-none;
+  }
   body {
     /* @apply; */
   }
@@ -323,6 +326,9 @@ html,
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  *:focus {
+    @apply outline-none;
   }
   body {
     @apply bg-background text-foreground;
