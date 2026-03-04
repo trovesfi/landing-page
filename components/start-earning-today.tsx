@@ -79,8 +79,8 @@ const StartEarningToday = () => {
             as="h2"
             description={
               <>
-                Choose from our curated selection of high-performing vaults,
-                each optimized for different risk profiles
+                Curated automated vaults across BTC, STRK, ETH and USDC on
+                Starknet. Pick your risk level and let the strategy run.
               </>
             }
           />

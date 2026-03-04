@@ -48,12 +48,12 @@ const Footer = () => {
           <div className="col-span-2 flex flex-col items-center gap-4 xl:items-start">
             <FullLogo />
             <p className="text-app-footer-text text-center text-sm xl:text-start">
-              Discover and invest in high-yield strategies across DeFi protocols
-              on Starknet.
+              Discover Starknet&apos;s automated DeFi vaults and yield
+              strategies. Built to compound.
             </p>
             <p className="text-app-footer-text text-sm">
-              Copyright © <br className="hidden xl:block" /> Troves{" "}
-              {currentYear}
+              Copyright © <br className="hidden xl:block" /> Troves {currentYear}{" "}
+              · Built by Unwrap Labs
             </p>
           </div>
 

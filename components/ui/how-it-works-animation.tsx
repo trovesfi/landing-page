@@ -404,7 +404,7 @@ const HowItWorksAnimation = ({
           {/* box title */}
           <div className="border-app-flow-panel-border bg-app-box-bg absolute -top-2 z-20 flex items-center justify-center rounded-lg border px-2 py-1 text-center md:-top-3 md:px-4 md:py-1.5">
             <span className="text-app-text-primary text-[9px] leading-tight font-medium md:ml-2 md:text-xs md:leading-normal">
-              {title ? title : "Sending your assets to Troves vaults"}
+              {title ? title : "You deposit into a Troves vault"}
             </span>
           </div>
 

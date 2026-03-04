@@ -87,15 +87,15 @@ const HeroSection = () => {
   const heroStats = [
     {
       value: statsLoading ? "—" : formatCurrency(statsData?.tvl ?? 0),
-      label: "Total value locked",
+      label: "Total Value Locked on Starknet",
     },
     {
       value: strategiesLoading ? "—" : formatPercentage(weightedApy),
-      label: "Average APY",
+      label: "Average APY Across All Vaults",
     },
     {
       value: strategiesLoading ? "—" : formatNumber(activeVaults ?? 0),
-      label: "Active vaults",
+      label: "Active Yield Vaults",
     },
   ];
 
@@ -127,16 +127,17 @@ const HeroSection = () => {
             />
           </motion.div>
           <motion.div variants={fadeUp}>
-            <MainHeading title="The Yield Powerhouse" as="h1" />
+            <MainHeading title="The Starknet Yield Engine" as="h1" />
           </motion.div>
           <motion.p
             variants={fadeUp}
             className="text-app-text-muted mt-1.5 w-full max-w-md text-center text-sm font-medium lg:max-w-none lg:text-lg"
           >
-            Maximise your crypto returns with automated yield strategies.{" "}
+            Your BTC. Your USDC. Your STRK.
             <br className="hidden lg:block" />
-            Troves optimises your assets across Starknet&apos;s top protocols
-            while you sleep.
+            All earning real yield on Starknet, automatically.
+            <br className="hidden lg:block" />
+            Deposit once. Let Troves handle the rest.
           </motion.p>
 
           <motion.div
@@ -185,10 +186,9 @@ const HeroSection = () => {
             <p className="text-app-text-muted-dark text-sm font-semibold">
               Trusted by{" "}
               <span className="text-app-text-muted-light font-bold">
-                {" "}
-                15000+{" "}
+                15,000+
               </span>{" "}
-              DeFi users
+              Starknet maxis
             </p>
           </motion.div>
 
@@ -212,8 +212,14 @@ const HeroSection = () => {
               variants={fadeUp}
               className="text-app-text-primary text-base font-medium lg:text-2xl"
             >
-              Supported Integration
+              Built on Starknet&apos;s Core DeFi Stack
             </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="text-app-text-muted -mt-2 text-center text-sm"
+            >
+              Every strategy runs through audited, battle-tested protocols
+            </motion.p>
 
             <motion.div
               variants={containerVariants}

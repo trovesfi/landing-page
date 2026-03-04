@@ -40,19 +40,21 @@ const TOKENS = [
 const FEATURE_CARDS = [
   {
     title: "Automated Rebalancing",
-    description: "Smart portfolio optimization",
+    description:
+      "Your positions stay optimised around the clock. No babysitting required.",
     icon: "/how-it-works-section/refresh.svg",
     alt: "Automated rebalancing icon",
   },
   {
     title: "Risk Management",
-    description: "Protected strategies",
+    description:
+      "Every strategy is risk-assessed and curated. You choose your level. We manage the rest.",
     icon: "/how-it-works-section/shield.svg",
     alt: "Shield icon",
   },
   {
-    title: "Up to 34% APY",
-    description: "Optimized returns",
+    title: "Up to 62% APY",
+    description: "Structured compounding",
     icon: "/how-it-works-section/stonks.svg",
     alt: "Growth arrow icon",
   },
@@ -75,14 +77,13 @@ const HowItWorks = () => {
         <FadeIn>
           <MainHeading
             className="mt-3 gap-2 lg:mt-7 lg:gap-5"
-            title="From Seed to Harvest"
+            title="How Automated Yield Works on Troves"
             as="h2"
             description={
               <>
-                Watch your assets transform through our yield optimisation
-                system. Click on any asset to see the journey:{" "}
-                <br className="hidden lg:block" /> Deposit → Vault Plants →
-                Strategies Branch → Compounding Growth → Yield Returns
+                Pick your asset. Drop it in. Troves routes it across
+                Starknet&apos;s top protocols, auto-compounds the returns, and
+                sends yield back to your wallet. No manual moves. Just yield.
               </>
             }
           />

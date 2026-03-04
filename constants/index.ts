@@ -26,13 +26,25 @@ export const INTEGRATIONS = [
 ];
 
 export const PARTNERS = [
-  { logo: "/tokens/strk.svg", name: "Starknet", alt: "STRK logo" },
-  { logo: "/logos/dapps/re7.svg", name: "RE7 Labs", alt: "RE7 Labs logo" },
-  { logo: "/logos/dapps/endur.svg", name: "Endur", alt: "Endur logo" },
+  {
+    logo: "/tokens/strk.svg",
+    name: "Starknet",
+    alt: "— Ethereum ZK-rollup Layer 2",
+  },
+  {
+    logo: "/logos/dapps/re7.svg",
+    name: "RE7 Labs",
+    alt: "— institutional DeFi strategy curation",
+  },
+  {
+    logo: "/logos/dapps/endur.svg",
+    name: "Endur",
+    alt: "— Starknet liquid staking protocol",
+  },
   {
     logo: "/logos/dapps/vesu.svg",
     name: "Vesu",
-    alt: "Vesu logo",
+    alt: "— Starknet lending protocol",
   },
 ];
 

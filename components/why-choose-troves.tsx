@@ -14,29 +14,20 @@ const WhyChooseTroves = () => {
       iconAlt: "Auto-Compounding",
       title: "Auto-Compounding",
       description:
-        "Set it and forget it. Your yields are automatically harvested and reinvested for maximum growth.",
+        "Starknet DeFi yield, auto-compounded for you. Rewards get harvested, reinvested, and stacked. You do nothing.",
     },
     {
       icon: "/why-choose-section/audited.svg",
       iconAlt: "Audited",
       title: "Audited & Secure",
-      description: (
-        <>
-          Battle-tested smart contracts audited <br /> by leading security
-          firms.
-        </>
-      ),
+      description: "Audit reports and security details are fully transparent.",
     },
     {
       icon: "/why-choose-section/low-fees.svg",
       iconAlt: "Low Fees",
       title: "Low Fees",
-      description: (
-        <>
-          Competitive fee structure ensures <br /> more earnings stay in your
-          pocket.
-        </>
-      ),
+      description:
+        "Capital-efficient vault execution on Starknet. Lower costs. Higher retained yield.",
     },
     {
       icon: "/why-choose-section/non-custodial.svg",
@@ -53,11 +44,7 @@ const WhyChooseTroves = () => {
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn>
-          <HeadingTag
-            text="Powered by"
-            icon="/tokens/strk.svg"
-            text2="Starknet"
-          />
+          <HeadingTag text="ZK-Secured Infrastructure" />
         </FadeIn>
         <FadeIn>
           <MainHeading
@@ -66,8 +53,8 @@ const WhyChooseTroves = () => {
             className="mt-3 gap-2 lg:mt-7 lg:gap-5"
             description={
               <span className="text-app-text-feature">
-                Everything you need to grow your crypto portfolio, built on the
-                security and speed of Starknet
+                Curated Starknet yield strategies built for liquid staking,
+                lending loops and auto-compounding vaults.
               </span>
             }
           />
@@ -98,12 +85,11 @@ const WhyChooseTroves = () => {
 
               <article className="space-y-1 lg:space-y-2">
                 <h3 className="text-app-text-primary text-base font-medium lg:text-xl">
-                  Something related to contracts
+                  Built on Cairo
                 </h3>
                 <p className="text-app-text-feature-alt text-[11px] lg:text-[13px]">
-                  Advanced contracts continuously analyze and optimize your
-                  yield strategies <br className="hidden lg:block" /> across
-                  multiple protocols.
+                  Native Starknet smart contracts written in Cairo. Purpose-built
+                  for low-cost execution and automated yield strategies.
                 </p>
               </article>
             </FadeIn>
@@ -156,8 +142,9 @@ const WhyChooseTroves = () => {
                   High-Yield Strategies
                 </h3>
                 <p className="text-app-text-feature-alt text-[11px] lg:text-[13px]">
-                  Access curated strategies with APYs up to 40%+ across DeFi
-                  blue-chip protocols.
+                  Yield generated through liquid staking, lending loops and
+                  auto-compounding across Starknet. Structured strategies. Not
+                  random farms.
                 </p>
               </article>
             </div>

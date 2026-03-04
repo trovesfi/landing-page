@@ -22,12 +22,12 @@ const geistMono = Geist_Mono({
 const siteUrl = BASE_URLS.SITE;
 const siteName = "Troves";
 const siteDescription =
-  "Maximise your crypto returns with automated yield strategies. Troves optimises your assets across Starknet's top protocols while you sleep. Earn passive income with high-yield DeFi strategies.";
+  "Troves automates DeFi yield on Starknet. Earn yield on BTC, ETH, STRK and USDC across 30+ curated vaults. Non-custodial, audited, one click.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} - The Yield Powerhouse | DeFi Yield Strategies on Starknet`,
+    default: `${siteName} | Starknet Yield Aggregator, Automated DeFi Vaults`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -69,20 +69,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName,
-    title: `${siteName} - The Yield Powerhouse | DeFi Yield Strategies on Starknet`,
-    description: siteDescription,
+    title: `${siteName} | The #1 Starknet Yield Aggregator`,
+    description:
+      "Earn real DeFi yield on Starknet. 30+ curated vaults across BTC, ETH, STRK and USDC. Automated, non-custodial, audited. Your BTC. Your Yield. Your Troves.",
     images: [
       {
         url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `${siteName} - The Yield Powerhouse`,
+        alt: `${siteName} | The #1 Starknet Yield Aggregator`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} - The Yield Powerhouse`,
+    title: `${siteName} | The #1 Starknet Yield Aggregator`,
     description: siteDescription,
     images: [`${siteUrl}/og-image.jpg`],
     creator: "@troves",
