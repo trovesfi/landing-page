@@ -23,7 +23,7 @@ const PreFooter = () => {
           <h2 className="text-app-text-primary text-xl font-medium lg:text-5xl">
             Why are you still farming manually?
           </h2>
-          <p className="text-app-text-primary mt-5 text-xs lg:text-base">
+          <p className="text-app-text-primary mt-5 text-xs lg:text-base max-w-[700px]">
             Don&apos;t let manual lending loops, constant LP rebalancing and
             liquidation risks kill your gains. Bring your native assets or LSTs
             to Troves. Higher automated yield on Starknet, no liquidation risk,
