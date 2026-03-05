@@ -83,6 +83,7 @@ export interface FeatureCardProps {
 export interface StatCardProps {
   value: string | number;
   label: string;
+  size?: "large" | "default";
   className?: string;
   delay?: number;
 }
