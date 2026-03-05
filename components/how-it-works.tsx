@@ -97,12 +97,12 @@ const HowItWorks = () => {
           />
           <FadeIn
             delay={0.1}
-            className="border-app-flow-feature-border bg-app-flow-feature-bg relative z-0 mt-4 flex h-full w-full flex-col items-center justify-between gap-10 overflow-hidden rounded-xl border px-7 py-8 shadow-md md:mt-9 md:flex-row md:items-center md:gap-0 md:py-0 lg:h-[150px]"
+            className="border-app-flow-feature-border bg-app-flow-feature-bg relative z-0 mt-4 flex h-full w-full flex-col items-start justify-between gap-10 overflow-hidden rounded-xl border px-7 py-8 shadow-md md:mt-9 md:flex-row md:items-center md:gap-0 md:py-0 lg:h-[150px]"
           >
             {FEATURE_CARDS.map((card) => (
               <article
                 key={card.title}
-                className="flex items-center gap-3 text-left"
+                className="flex min-w-0 items-center gap-3 text-left md:flex-1"
                 aria-label={card.title}
               >
                 <span className="border-app-flow-feature-border/40 bg-app-flow-feature-chip-bg rounded-[12px] border p-2">
