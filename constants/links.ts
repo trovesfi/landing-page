@@ -35,21 +35,18 @@ export const EXTERNAL_LINKS = {
 
 export const FOOTER_LINKS = {
   COMPANY: {
-    ABOUT: ANCHOR_LINKS.DEFAULT,
-    CAREERS: ANCHOR_LINKS.DEFAULT,
-    BLOGS: ANCHOR_LINKS.DEFAULT,
-    PRESS: ANCHOR_LINKS.DEFAULT,
+    ABOUT: "https://unwraplabs.com/",
+    CAREERS: "https://unwraplabs.jobspage.co/",
+    BLOGS: "https://blog.troves.fi/",
   },
   RESOURCES: {
-    DOCUMENTATION: ANCHOR_LINKS.DEFAULT,
-    RESEARCH: ANCHOR_LINKS.DEFAULT,
+    DOCUMENTATION: ANCHOR_LINKS.DOCS,
     GITHUB: EXTERNAL_LINKS.GITHUB_REPO,
-    BRAND_KIT: ANCHOR_LINKS.DEFAULT,
+    BRAND_KIT:
+      "https://drive.google.com/drive/folders/1-D6uizWgdH2XwbP0f3Fc22wQgxhr_RUY",
   },
   INFO: {
-    PRIVACY_POLICY: ANCHOR_LINKS.DEFAULT,
-    TERMS_OF_USE: ANCHOR_LINKS.DEFAULT,
-    LICENSE: ANCHOR_LINKS.DEFAULT,
-    BECOME_CURATOR: ANCHOR_LINKS.DEFAULT,
+    TERMS_OF_USE: "https://app.troves.fi/tnc/v2",
+    BECOME_CURATOR: "https://docs.troves.fi/p/developers/become-a-curator",
   },
 } as const;

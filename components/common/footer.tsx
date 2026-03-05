@@ -15,14 +15,12 @@ const footerSections = [
       { label: "About us", href: FOOTER_LINKS.COMPANY.ABOUT },
       { label: "Careers", href: FOOTER_LINKS.COMPANY.CAREERS },
       { label: "Blogs", href: FOOTER_LINKS.COMPANY.BLOGS },
-      { label: "Press", href: FOOTER_LINKS.COMPANY.PRESS },
     ],
   },
   {
     title: "Resources",
     links: [
       { label: "Documentation", href: FOOTER_LINKS.RESOURCES.DOCUMENTATION },
-      { label: "Research", href: FOOTER_LINKS.RESOURCES.RESEARCH },
       { label: "Github", href: FOOTER_LINKS.RESOURCES.GITHUB },
       { label: "Brand Kit", href: FOOTER_LINKS.RESOURCES.BRAND_KIT },
     ],
@@ -30,9 +28,7 @@ const footerSections = [
   {
     title: "Info",
     links: [
-      { label: "Privacy Policy", href: FOOTER_LINKS.INFO.PRIVACY_POLICY },
       { label: "Terms of Use", href: FOOTER_LINKS.INFO.TERMS_OF_USE },
-      { label: "License", href: FOOTER_LINKS.INFO.LICENSE },
       { label: "Become a Curator", href: FOOTER_LINKS.INFO.BECOME_CURATOR },
     ],
   },
@@ -52,8 +48,8 @@ const Footer = () => {
               strategies. Built to compound.
             </p>
             <p className="text-app-footer-text text-sm">
-              Copyright © <br className="hidden xl:block" /> Troves {currentYear}{" "}
-              · Built by Unwrap Labs
+              Copyright © <br className="hidden xl:block" /> Troves{" "}
+              {currentYear} · Built by Unwrap Labs
             </p>
           </div>
 
@@ -111,7 +107,7 @@ const Footer = () => {
                       loading="lazy"
                     />
                   </Link>
-                ),
+                )
               )}
             </nav>
           </div>
