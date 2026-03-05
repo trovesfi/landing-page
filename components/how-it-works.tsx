@@ -67,16 +67,16 @@ const HowItWorks = () => {
   return (
     <section
       aria-label="How it works"
-      className="bg-app-section-bg h-full min-h-screen w-full lg:py-[64px] lg:px-[120px] py-[40px]"
+      className="bg-app-section-bg h-full min-h-screen w-full overflow-x-hidden py-[40px] lg:py-[64px] lg:px-[120px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn>
           <HeadingTag text="How it works" />
         </FadeIn>
 
-        <FadeIn>
+        <FadeIn className="w-full px-6">
           <MainHeading
-            className="mt-3 gap-2 lg:mt-7 lg:gap-5"
+            className="mt-3 w-full gap-2 lg:mt-7 lg:gap-5"
             title="How Automated Yield Works on Troves"
             as="h2"
             description={
