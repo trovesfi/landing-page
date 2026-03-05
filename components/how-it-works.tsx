@@ -40,19 +40,21 @@ const TOKENS = [
 const FEATURE_CARDS = [
   {
     title: "Automated Rebalancing",
-    description: "Smart portfolio optimization",
+    description:
+      "Your positions stay optimised around the clock. No babysitting required.",
     icon: "/how-it-works-section/refresh.svg",
     alt: "Automated rebalancing icon",
   },
   {
     title: "Risk Management",
-    description: "Protected strategies",
+    description:
+      "Every strategy is risk-assessed and curated. You choose your level. We manage the rest.",
     icon: "/how-it-works-section/shield.svg",
     alt: "Shield icon",
   },
   {
-    title: "Up to 34% APY",
-    description: "Optimized returns",
+    title: "Up to 62% APY",
+    description: "Structured compounding",
     icon: "/how-it-works-section/stonks.svg",
     alt: "Growth arrow icon",
   },
@@ -60,29 +62,33 @@ const FEATURE_CARDS = [
 
 const HowItWorks = () => {
   const { data: strategiesData } = useStrategies();
-  const vaults = strategiesData?.strategies?.slice(0, 12) ?? [];
+  const vaults =
+    strategiesData?.strategies?.filter(
+      (s) =>
+        !(s.isRetired ?? s.status?.value?.toLowerCase() === "retired") &&
+        !(s.isDeprecated ?? s.status?.value?.toLowerCase() === "deprecated")
+    )?.slice(0, 12) ?? [];
 
   return (
     <section
       aria-label="How it works"
-      className="bg-app-section-bg h-full min-h-screen w-full lg:py-[64px] lg:px-[120px] py-[40px]"
+      className="bg-app-section-bg h-full min-h-screen w-full overflow-x-hidden py-[40px] lg:py-[64px] lg:px-[120px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn>
           <HeadingTag text="How it works" />
         </FadeIn>
 
-        <FadeIn>
+        <FadeIn className="w-full px-6">
           <MainHeading
-            className="mt-3 gap-2 lg:mt-7 lg:gap-5"
-            title="From Seed to Harvest"
+            className="mt-3 w-full gap-2 lg:mt-7 lg:gap-5"
+            title="How Automated Yield Works on Troves"
             as="h2"
             description={
               <>
-                Watch your assets transform through our yield optimisation
-                system. Click on any asset to see the journey:{" "}
-                <br className="hidden lg:block" /> Deposit → Vault Plants →
-                Strategies Branch → Compounding Growth → Yield Returns
+                Pick your asset. Drop it in. Troves routes it across
+                Starknet&apos;s top protocols, auto-compounds the returns, and
+                sends yield back to your wallet. No manual moves. Just yield.
               </>
             }
           />
@@ -96,12 +102,12 @@ const HowItWorks = () => {
           />
           <FadeIn
             delay={0.1}
-            className="border-app-flow-feature-border bg-app-flow-feature-bg relative z-0 mt-4 flex h-full w-full flex-col items-center justify-between gap-10 overflow-hidden rounded-xl border px-7 py-8 shadow-md md:mt-9 md:flex-row md:items-center md:gap-0 md:py-0 lg:h-[150px]"
+            className="border-app-flow-feature-border bg-app-flow-feature-bg relative z-0 mt-4 flex h-full w-full flex-col items-start justify-between gap-10 overflow-hidden rounded-xl border px-7 py-8 shadow-md md:mt-9 md:flex-row md:items-center md:gap-0 md:py-0 lg:h-[150px]"
           >
             {FEATURE_CARDS.map((card) => (
               <article
                 key={card.title}
-                className="flex items-center gap-3 text-left"
+                className="flex min-w-0 items-center gap-3 text-left md:flex-1"
                 aria-label={card.title}
               >
                 <span className="border-app-flow-feature-border/40 bg-app-flow-feature-chip-bg rounded-[12px] border p-2">

@@ -21,11 +21,13 @@ const PreFooter = () => {
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn className="bg-pre-footer-gradient flex h-[450px] w-full flex-col items-center justify-center rounded-3xl px-6 text-center lg:px-0">
           <h2 className="text-app-text-primary text-xl font-medium lg:text-5xl">
-            Ready to Maximize Your Yields?
+            Why are you still farming manually?
           </h2>
-          <p className="text-app-text-primary mt-5 text-xs lg:text-base">
-            Join thousands of DeFi users earning passive income with Troves.
-            Start with <br className="hidden lg:block" /> as little as $10.
+          <p className="text-app-text-primary mt-5 text-xs lg:text-base max-w-[700px]">
+            Don&apos;t let manual lending loops, constant LP rebalancing and
+            liquidation risks kill your gains. Bring your native assets or LSTs
+            to Troves. Higher automated yield on Starknet, no liquidation risk,
+            zero position management.
           </p>
 
           <div className="mt-7 flex w-full flex-col items-center justify-center gap-3 lg:flex-row">
@@ -43,7 +45,7 @@ const PreFooter = () => {
                     <ArrowRightIcon className="text-app-prefooter-btn-primary-text mt-1 size-4 transition-all duration-300 group-hover:translate-x-1 lg:size-5" />
                   }
                 >
-                  Launch dapp
+                  Start Earning
                 </Button>
               </Link>
             </FadeIn>

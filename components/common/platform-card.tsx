@@ -22,7 +22,11 @@ const PlatformCard = ({
       )}
     >
       {href ? (
-        <Link href={href} target="_blank">
+        <Link
+          href={href}
+          target="_blank"
+          className="flex flex-row items-center justify-center gap-2"
+        >
           <Image
             className="rounded-full"
             src={logo}
@@ -33,7 +37,7 @@ const PlatformCard = ({
           {name}
         </Link>
       ) : (
-        <>
+        <span className="flex flex-row items-center justify-center gap-2">
           <Image
             className="rounded-full"
             src={logo}
@@ -42,7 +46,7 @@ const PlatformCard = ({
             height={20}
           />
           {name}
-        </>
+        </span>
       )}
     </FadeIn>
   );

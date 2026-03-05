@@ -25,10 +25,16 @@ export interface StrategyApySplit {
   rewardsApy?: number;
 }
 
+export interface StrategyVaultType {
+  type?: string;
+  description?: string;
+}
+
 export interface Strategy {
   id: string;
   name: string;
-  apy: number;
+  /** APY as number (0-1) or display string (e.g. "YOLO" for accumulation vaults) */
+  apy: number | string;
   apyMethodology?: string;
   apySplit?: StrategyApySplit;
   tvlUsd?: number;
@@ -39,6 +45,15 @@ export interface Strategy {
   riskFactor?: number;
   isAudited?: boolean;
   leverage?: number;
+  vaultType?: StrategyVaultType;
+  isRetired?: boolean;
+  isDeprecated?: boolean;
+  realizedApy?: number;
+  realizedApyMethodology?: string;
+  tags?: string[];
+  assets?: string[];
+  protocols?: string[];
+  auditUrl?: string;
 }
 
 export interface StrategiesResponse {

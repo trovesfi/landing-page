@@ -83,6 +83,7 @@ export interface FeatureCardProps {
 export interface StatCardProps {
   value: string | number;
   label: string;
+  size?: "large" | "default";
   className?: string;
   delay?: number;
 }
@@ -163,7 +164,7 @@ export interface VaultDot {
   token: TokenInfo;
   vault: {
     name: string;
-    apy: number;
+    apy: number | string;
     tvl?: number;
     curator?: string;
   };

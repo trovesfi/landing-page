@@ -1,43 +1,23 @@
 import MaxWidthWrapper from "@/components/common/max-width-wrapper";
-import HeadingTag from "@/components/common/header-tag";
-import MainHeading from "@/components/common/main-heading";
 import PlatformCard from "@/components/common/platform-card";
 import { PARTNERS } from "@/constants";
-import TestimonialCard from "@/components/ui/testimonial-card";
 import { FadeIn } from "@/components/ui/fade-in";
-
-const testimonials = [
-  {
-    quote:
-      "Troves has completely transformed how I manage my crypto portfolio. The auto-compounding feature alone has increased my returns by 15%.",
-    author: "Alex Chen",
-    role: "DeFi Trader",
-  },
-  {
-    quote:
-      "Best yield aggregator on Starknet. The UI is clean, strategies are transparent, and the returns speak for themselves.",
-    author: "Sarah Martinez",
-    role: "Yield Farmer",
-  },
-  {
-    quote:
-      "Finally, a platform that makes DeFi accessible. I can earn competitive yields without worrying about complex strategies.",
-    author: "Michael Wong",
-    role: "Crypto Investor",
-  },
-];
 
 const PartnersAndTestimonials = () => {
   return (
     <section
-      aria-label="Partners and testimonials"
+      aria-label="Partners"
       className="bg-app-testimonial-bg w-full py-[40px] lg:pt[24px] lg:pb-[48px] lg:px-[120px]"
     >
       <MaxWidthWrapper className="flex flex-col items-center justify-center">
         <FadeIn className="flex w-full flex-col items-center justify-center text-center">
           <h2 className="text-app-text-primary text-2xl font-semibold">
-            Our Partners
+            Built with Starknet&apos;s Best
           </h2>
+          <p className="text-app-text-muted mt-3 text-sm lg:text-base">
+            Every Troves strategy runs through protocols curated, secured and
+            trusted by the Starknet ecosystem.
+          </p>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
             {PARTNERS.map((partner, index) => (
@@ -52,30 +32,6 @@ const PartnersAndTestimonials = () => {
             ))}
           </div>
         </FadeIn>
-
-        <FadeIn className="mt-[40px] lg:mt-[72px] flex w-full flex-col items-center justify-center">
-          <HeadingTag text="Testimonials" />
-
-          <MainHeading
-            className="mt-3 gap-2 lg:mt-7 lg:gap-5"
-            title="Trusted by thousands"
-            as="h2"
-            description={
-              <>
-                See what our community has to say about their experience with
-                Troves
-              </>
-            }
-          />
-        </FadeIn>
-
-        <div className="mt-16 grid w-full gap-5 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <FadeIn key={testimonial.author} delay={index * 0.08}>
-              <TestimonialCard {...testimonial} />
-            </FadeIn>
-          ))}
-        </div>
       </MaxWidthWrapper>
     </section>
   );

@@ -16,7 +16,12 @@ import { INTEGRATIONS } from "@/constants";
 import { APP_ROUTES } from "@/constants/links";
 import { useStats } from "@/hooks/use-stats";
 import { useStrategies } from "@/hooks/use-strategies";
-import { formatCurrency, formatNumber, formatPercentage } from "@/lib/format";
+import {
+  formatCurrency,
+  formatNumber,
+  formatPercentage,
+  getNumericApy,
+} from "@/lib/format";
 import { InteractiveNebulaShader } from "./ui/liquid-shader";
 
 const heroEase = [0.25, 0.1, 0.25, 1] as const;
@@ -59,9 +64,19 @@ const HeroSection = () => {
 
   const { weightedApy, activeVaults } = React.useMemo(() => {
     const strategies = strategiesData?.strategies ?? [];
+    const isRetired = (s: {
+      isRetired?: boolean;
+      status?: { value?: string };
+    }) => s.isRetired ?? s.status?.value?.toLowerCase() === "retired";
+    const isDeprecated = (s: {
+      isDeprecated?: boolean;
+      status?: { value?: string };
+    }) => s.isDeprecated ?? s.status?.value?.toLowerCase() === "deprecated";
+
     const active = strategies.filter(
       (strategy) =>
-        strategy.status?.value.toLowerCase() !== "retired" &&
+        !isRetired(strategy) &&
+        !isDeprecated(strategy) &&
         (strategy.tvlUsd ?? 0) > 0
     );
 
@@ -73,7 +88,7 @@ const HeroSection = () => {
       totalTvl > 0
         ? active.reduce(
             (sum, strategy) =>
-              sum + (strategy.apy ?? 0) * (strategy.tvlUsd ?? 0),
+              sum + getNumericApy(strategy.apy) * (strategy.tvlUsd ?? 0),
             0
           ) / totalTvl
         : null;
@@ -88,14 +103,17 @@ const HeroSection = () => {
     {
       value: statsLoading ? "—" : formatCurrency(statsData?.tvl ?? 0),
       label: "Total value locked",
+      size: "large" as const,
     },
     {
       value: strategiesLoading ? "—" : formatPercentage(weightedApy),
       label: "Average APY",
+      size: "default" as const,
     },
     {
       value: strategiesLoading ? "—" : formatNumber(activeVaults ?? 0),
       label: "Active vaults",
+      size: "default" as const,
     },
   ];
 
@@ -127,16 +145,17 @@ const HeroSection = () => {
             />
           </motion.div>
           <motion.div variants={fadeUp}>
-            <MainHeading title="The Yield Powerhouse" as="h1" />
+            <MainHeading title="The Starknet Yield Engine" as="h1" />
           </motion.div>
           <motion.p
             variants={fadeUp}
             className="text-app-text-muted mt-1.5 w-full max-w-md text-center text-sm font-medium lg:max-w-none lg:text-lg"
           >
-            Maximise your crypto returns with automated yield strategies.{" "}
+            Your BTC. Your USDC. Your STRK.
             <br className="hidden lg:block" />
-            Troves optimises your assets across Starknet&apos;s top protocols
-            while you sleep.
+            All earning real yield on Starknet, automatically.
+            <br className="hidden lg:block" />
+            Deposit once. Let Troves handle the rest.
           </motion.p>
 
           <motion.div
@@ -185,47 +204,74 @@ const HeroSection = () => {
             <p className="text-app-text-muted-dark text-sm font-semibold">
               Trusted by{" "}
               <span className="text-app-text-muted-light font-bold">
-                {" "}
-                15000+{" "}
+                15,000+
               </span>{" "}
-              DeFi users
+              Starknet maxis
             </p>
           </motion.div>
 
           <motion.div
             variants={containerVariants}
-            className="mt-10 flex flex-col items-center justify-center gap-5 lg:flex-row"
+            className="mt-10 flex w-full flex-col items-stretch justify-center gap-3 md:flex-row md:items-center md:gap-5"
           >
-            {heroStats.map((stat) => (
-              <motion.div key={stat.label} variants={subtleFade}>
-                <StatCard value={stat.value} label={stat.label} />
-              </motion.div>
-            ))}
+            <motion.div
+              variants={subtleFade}
+              className="w-full min-w-0 md:w-[200px] md:shrink-0"
+            >
+              <StatCard
+                value={heroStats[0].value}
+                label={heroStats[0].label}
+                size={heroStats[0].size}
+              />
+            </motion.div>
+            <motion.div
+              variants={containerVariants}
+              className="flex w-full flex-row flex-wrap items-stretch justify-center gap-2 md:contents"
+            >
+              {heroStats.slice(1).map((stat) => (
+                <motion.div
+                  key={stat.label}
+                  variants={subtleFade}
+                  className="min-w-0 flex-1 md:w-[200px] md:flex-none md:shrink-0"
+                >
+                  <StatCard
+                    value={stat.value}
+                    label={stat.label}
+                    size={stat.size}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
 
           <motion.section
             variants={subtleFade}
             aria-label="Supported integrations"
-            className="mt-10 flex flex-col items-center gap-4 lg:gap-7"
+            className="mt-10 flex w-full flex-col items-center gap-4"
           >
             <motion.h2
               variants={fadeUp}
-              className="text-app-text-primary text-base font-medium lg:text-2xl"
+              className="text-app-text-primary text-base font-medium md:text-xl"
             >
-              Supported Integration
+              Supported integrations
             </motion.h2>
 
             <motion.div
               variants={containerVariants}
-              className="flex flex-wrap items-center justify-center gap-3 lg:flex-nowrap lg:gap-5 lg:py-[32px] w-full"
+              className="grid w-full grid-cols-2 gap-2 md:flex md:flex-row md:flex-wrap md:justify-center md:gap-4"
             >
               {INTEGRATIONS.map((integration) => (
-                <motion.div key={integration.name} variants={subtleFade}>
+                <motion.div
+                  key={integration.name}
+                  variants={subtleFade}
+                  className="w-full md:w-auto"
+                >
                   <PlatformCard
                     logo={integration.logo}
                     name={integration.name}
                     href={integration.href}
                     alt={integration.alt}
+                    className="w-full md:w-[140px] md:shrink-0"
                   />
                 </motion.div>
               ))}

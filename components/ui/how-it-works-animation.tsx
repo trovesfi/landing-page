@@ -5,6 +5,7 @@ import React from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 import TokenButton from "@/components/ui/token-button";
+import { formatPercentage } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type {
   HowItWorksAnimationProps,
@@ -404,7 +405,7 @@ const HowItWorksAnimation = ({
           {/* box title */}
           <div className="border-app-flow-panel-border bg-app-box-bg absolute -top-2 z-20 flex items-center justify-center rounded-lg border px-2 py-1 text-center md:-top-3 md:px-4 md:py-1.5">
             <span className="text-app-text-primary text-[9px] leading-tight font-medium md:ml-2 md:text-xs md:leading-normal">
-              {title ? title : "Sending your assets to Troves vaults"}
+              {title ? title : "You deposit into a Troves vault"}
             </span>
           </div>
 
@@ -559,7 +560,7 @@ const HowItWorksAnimation = ({
               </p>
               <div className="flex items-center gap-1.5">
                 <span className="text-xs font-bold text-green-500">
-                  {(tooltipPlacement.dot.vault.apy * 100).toFixed(2)}%
+                  {formatPercentage(tooltipPlacement.dot.vault.apy)}
                 </span>
                 <span className="text-app-text-muted text-[10px]">APY</span>
               </div>
