@@ -139,7 +139,7 @@ const Navbar = () => {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="border-app-mobile-menu-border overflow-hidden border-t lg:hidden"
               >
-                <div className="flex w-full flex-col items-start space-y-2 pb-5 pt-2">
+                <div className="flex w-full flex-col items-center space-y-2 pb-5 pt-2">
                   {NAV_ITEMS.map((item, index) => (
                     <MobileMenuLink
                       key={item.href}

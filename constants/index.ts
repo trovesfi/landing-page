@@ -48,15 +48,10 @@ export const PARTNERS = [
   },
 ];
 
-import { APP_ROUTES, ANCHOR_LINKS, DOCS_ROUTES } from "./links";
+import { ANCHOR_LINKS, DOCS_ROUTES } from "./links";
 
 export const NAV_ITEMS = [
   { label: "Home", href: ANCHOR_LINKS.HERO, isActive: true, isExternal: false },
-  {
-    label: "Strategies",
-    href: APP_ROUTES.STRATEGIES,
-    isExternal: true,
-  },
   { label: "Docs", href: DOCS_ROUTES.HOME, isExternal: true },
 ];
 
