@@ -5,6 +5,7 @@ import React from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 import TokenButton from "@/components/ui/token-button";
+import { formatPercentage } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type {
   HowItWorksAnimationProps,
@@ -559,7 +560,7 @@ const HowItWorksAnimation = ({
               </p>
               <div className="flex items-center gap-1.5">
                 <span className="text-xs font-bold text-green-500">
-                  {(tooltipPlacement.dot.vault.apy * 100).toFixed(2)}%
+                  {formatPercentage(tooltipPlacement.dot.vault.apy)}
                 </span>
                 <span className="text-app-text-muted text-[10px]">APY</span>
               </div>

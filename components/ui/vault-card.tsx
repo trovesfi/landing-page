@@ -21,7 +21,7 @@ const VaultCard = ({
   return (
     <article
       className={cn(
-        "border-app-card-border-strong bg-app-card-feature from-app-card-gradient-mid to-app-card-gradient-deep flex w-full max-w-[412px] flex-col space-y-5 rounded-2xl border bg-linear-to-b px-5 py-4 xl:rounded-4xl xl:px-7 xl:py-5",
+        "border-app-card-border-strong bg-app-card-feature from-app-card-gradient-mid to-app-card-gradient-deep flex h-full w-full max-w-[412px] flex-col space-y-5 rounded-2xl border bg-linear-to-b px-5 py-4 xl:rounded-4xl xl:px-7 xl:py-5",
         className,
       )}
       itemScope
@@ -76,7 +76,7 @@ const VaultCard = ({
       </header>
 
       <p
-        className="text-app-text-description-muted text-xs xl:text-sm"
+        className="text-app-text-description-muted line-clamp-3 min-h-0 flex-1 text-xs xl:text-sm"
         itemProp="description"
       >
         {description}

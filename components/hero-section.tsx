@@ -16,7 +16,12 @@ import { INTEGRATIONS } from "@/constants";
 import { APP_ROUTES } from "@/constants/links";
 import { useStats } from "@/hooks/use-stats";
 import { useStrategies } from "@/hooks/use-strategies";
-import { formatCurrency, formatNumber, formatPercentage } from "@/lib/format";
+import {
+  formatCurrency,
+  formatNumber,
+  formatPercentage,
+  getNumericApy,
+} from "@/lib/format";
 import { InteractiveNebulaShader } from "./ui/liquid-shader";
 
 const heroEase = [0.25, 0.1, 0.25, 1] as const;
@@ -59,9 +64,17 @@ const HeroSection = () => {
 
   const { weightedApy, activeVaults } = React.useMemo(() => {
     const strategies = strategiesData?.strategies ?? [];
+    const isRetired = (s: { isRetired?: boolean; status?: { value?: string } }) =>
+      s.isRetired ?? s.status?.value?.toLowerCase() === "retired";
+    const isDeprecated = (s: {
+      isDeprecated?: boolean;
+      status?: { value?: string };
+    }) => s.isDeprecated ?? s.status?.value?.toLowerCase() === "deprecated";
+
     const active = strategies.filter(
       (strategy) =>
-        strategy.status?.value.toLowerCase() !== "retired" &&
+        !isRetired(strategy) &&
+        !isDeprecated(strategy) &&
         (strategy.tvlUsd ?? 0) > 0
     );
 
@@ -73,7 +86,7 @@ const HeroSection = () => {
       totalTvl > 0
         ? active.reduce(
             (sum, strategy) =>
-              sum + (strategy.apy ?? 0) * (strategy.tvlUsd ?? 0),
+              sum + getNumericApy(strategy.apy) * (strategy.tvlUsd ?? 0),
             0
           ) / totalTvl
         : null;

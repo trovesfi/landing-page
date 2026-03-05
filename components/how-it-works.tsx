@@ -62,7 +62,12 @@ const FEATURE_CARDS = [
 
 const HowItWorks = () => {
   const { data: strategiesData } = useStrategies();
-  const vaults = strategiesData?.strategies?.slice(0, 12) ?? [];
+  const vaults =
+    strategiesData?.strategies?.filter(
+      (s) =>
+        !(s.isRetired ?? s.status?.value?.toLowerCase() === "retired") &&
+        !(s.isDeprecated ?? s.status?.value?.toLowerCase() === "deprecated")
+    )?.slice(0, 12) ?? [];
 
   return (
     <section

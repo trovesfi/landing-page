@@ -163,7 +163,7 @@ export interface VaultDot {
   token: TokenInfo;
   vault: {
     name: string;
-    apy: number;
+    apy: number | string;
     tvl?: number;
     curator?: string;
   };
