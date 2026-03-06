@@ -15,8 +15,9 @@ const PartnersAndTestimonials = () => {
             Built with Starknet&apos;s Best
           </h2>
           <p className="text-app-text-muted mt-3 text-sm lg:text-base">
-            Every Troves strategy runs through protocols curated, secured and
-            trusted by the Starknet ecosystem.
+            Troves strategies are curated with Starknet-native teams including
+            RE7 Labs and built by Unwrap Labs, then deployed across trusted
+            Starknet protocols.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">

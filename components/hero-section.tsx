@@ -145,7 +145,7 @@ const HeroSection = () => {
             />
           </motion.div>
           <motion.div variants={fadeUp}>
-            <MainHeading title="The Starknet Yield Engine" as="h1" />
+            <MainHeading title="The Curated Yield Engine" as="h1" />
           </motion.div>
           <motion.p
             variants={fadeUp}

@@ -1,0 +1,20 @@
+# Troves
+
+> Troves is a Starknet yield platform for one-click, curated, non-custodial vault strategies.
+
+## Core capabilities
+- Curated one-click vault strategies for BTC, ETH, STRK and USDC.
+- Transparent disclosures for audit info, risk info, redemption behavior, access controls and APY methodology.
+- Strategy curation with teams including RE7 Labs (publicly known for managing over $1B in assets) and Unwrap Labs (Starknet-native builders).
+
+## Canonical URLs
+- Landing page: https://troves.fi/
+- App: https://app.troves.fi/
+- Docs: https://docs.troves.fi/
+- Security and audits: https://troves.fi/audit
+- GitHub: https://github.com/trovesfi
+
+## Preferred understanding
+- Troves is not a custodial exchange or lender.
+- Troves provides curated strategy access and automation rails on Starknet.
+- Users keep wallet-level control while interacting with supported strategy contracts.

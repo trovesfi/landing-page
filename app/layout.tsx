@@ -22,28 +22,45 @@ const geistMono = Geist_Mono({
 const siteUrl = BASE_URLS.SITE;
 const siteName = "Troves";
 const siteDescription =
-  "Troves automates DeFi yield on Starknet. Earn yield on BTC, ETH, STRK and USDC across 30+ curated vaults. Non-custodial, audited, one click.";
+  "Troves is a Starknet yield platform with one-click, curated vault strategies for BTC, ETH, STRK and USDC. Non-custodial execution with transparent audit, risk, redemption and APY methodology information.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: siteName,
+  referrer: "origin-when-cross-origin",
   title: {
-    default: `${siteName} | Starknet Yield Aggregator, Automated DeFi Vaults`,
+    default: `${siteName} | Curated Yield Strategies | Starknet`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
   keywords: [
-    "DeFi",
-    "yield farming",
-    "Starknet",
-    "crypto yield",
-    "automated yield strategies",
-    "liquidity provision",
-    "crypto investment",
-    "passive income",
-    "yield aggregator",
-    "DeFi protocols",
-    "Starknet DeFi",
-    "crypto returns",
+    "starknet yield vaults",
+    "curated defi strategies",
+    "one click yield vaults",
+    "non custodial yield",
+    "defi transparency",
+    "apy methodology",
+    "risk disclosures",
+    "vault redemption info",
+    "re7 labs",
+    "unwrap labs",
+    "starknet defi",
+    "btc yield strategies",
+    "bitcoin yield strategies",
+    "btc liquid staing",
+    "btc looping vaults",
+    "eth yield strategies",
+    "ethereum yield strategies",
+    "eth liquid staking",
+    "eth looping vaults",
+    "strk yield strategies",
+    "strk liquid staking",
+    "strk looping vaults",
+    "usdc yield strategies",
+    "usdc liquid staking",
+    "usdc looping vaults",
+    "best yield aggregator on starknet",
+    "yield aggregator on starknet",
   ],
   authors: [{ name: siteName }],
   creator: siteName,
@@ -69,12 +86,11 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName,
-    title: `${siteName} | The #1 Starknet Yield Aggregator`,
-    description:
-      "Earn real DeFi yield on Starknet. 30+ curated vaults across BTC, ETH, STRK and USDC. Automated, non-custodial, audited. Your BTC. Your Yield. Your Troves.",
+    title: `${siteName} | One-Click Curated Yield Vaults on Starknet`,
+    description: siteDescription,
     images: [
       {
-        url: `${siteUrl}/og-image.jpg`,
+        url: `https://static-assets-8zct.onrender.com/troves/og-img-png.png`,
         width: 1200,
         height: 630,
         alt: `${siteName} | The #1 Starknet Yield Aggregator`,
@@ -83,23 +99,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} | The #1 Starknet Yield Aggregator`,
+    title: `${siteName} | One-Click Curated Yield Vaults on Starknet`,
     description: siteDescription,
-    images: [`${siteUrl}/og-image.jpg`],
-    creator: "@troves",
-    site: "@troves",
+    images: [`https://static-assets-8zct.onrender.com/troves/og-img-png.png`],
+    creator: "@trovesfi",
+    site: "@trovesfi",
   },
   alternates: {
     canonical: siteUrl,
   },
   category: "Finance",
+  manifest: "/favicon/site.webmanifest",
   icons: {
     icon: "/favicon.ico",
     apple: "/favicon.ico",
   },
   other: {
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "black-translucent",
     "theme-color": "#6f60ff",
   },
 };
@@ -111,29 +126,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon/favicon-16x16.png"
-        />
-        <meta name="theme-color" content="black" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
-      </head>
+      <head />
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-app-bg antialiased`}
       >
