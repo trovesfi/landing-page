@@ -71,7 +71,10 @@ const StartEarningToday = () => {
       s.isDeprecated ?? s.status?.value?.toLowerCase() === "deprecated";
 
     const activeStrategies = strategies.filter(
-      (s) => !isRetired(s) && !isDeprecated(s)
+      (s) =>
+        !isRetired(s) &&
+        !isDeprecated(s) &&
+        (s.tvlUsd ?? 0) > 0
     );
 
     // Pick one strategy per type (highest numeric APY within each type)
