@@ -174,7 +174,7 @@ export interface HowItWorksAnimationProps {
   className?: string;
   title?: string;
   tokens?: TokenInfo[];
-  vaults?: Pick<Strategy, "name" | "apy" | "tvlUsd" | "curator">[];
+  vaults?: Pick<Strategy, "name" | "apy" | "tvlUsd" | "curator" | "depositToken">[];
 }
 
 // provider props
