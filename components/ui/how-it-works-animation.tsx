@@ -49,6 +49,31 @@ const FALLBACK_VAULTS: MinimalVault[] = DEFAULT_TOKENS.map((token, index) => ({
   curator: { name: "Troves" },
 }));
 
+/** Maps vault deposit symbol to canonical token key (STRK, BTC, ETH, USDC, USDT) */
+function resolveTokenKeyFromVault(
+  vault: Pick<
+    { name: string; depositToken?: { symbol: string }[] },
+    "name" | "depositToken"
+  >
+): string {
+  const symbol = vault.depositToken?.[0]?.symbol?.toUpperCase();
+  if (symbol) {
+    if (symbol.includes("WBTC") || symbol.includes("BTC")) return "BTC";
+    if (symbol.includes("STRK") || symbol.includes("XSTRK")) return "STRK";
+    if (symbol.includes("ETH") || symbol.includes("WSTETH")) return "ETH";
+    if (symbol === "USDC") return "USDC";
+    if (symbol === "USDT") return "USDT";
+    return symbol;
+  }
+  const name = vault.name?.toUpperCase() ?? "";
+  if (name.includes("WBTC") || name.includes("BTC")) return "BTC";
+  if (name.includes("STRK")) return "STRK";
+  if (name.includes("ETH")) return "ETH";
+  if (name.includes("USDC")) return "USDC";
+  if (name.includes("USDT")) return "USDT";
+  return "STRK";
+}
+
 const HowItWorksAnimation = ({
   className,
   title,
@@ -125,7 +150,10 @@ const HowItWorksAnimation = ({
       const { ringIndex, angleDeg } = ORBITAL_LAYOUT[i];
       const radiusPx = RING_RADII[ringIndex][isDesktop ? 1 : 0];
       const vault = resolvedVaults[i];
-      const token = resolvedTokens[i % resolvedTokens.length];
+      const tokenKey = resolveTokenKeyFromVault(vault);
+      const token =
+        resolvedTokens.find((t) => t.token === tokenKey) ??
+        resolvedTokens[0];
 
       dots.push({
         id: `dot-${i}`,
