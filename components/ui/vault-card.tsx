@@ -22,13 +22,13 @@ const VaultCard = ({
     <article
       className={cn(
         "border-app-card-border-strong bg-app-card-feature from-app-card-gradient-mid to-app-card-gradient-deep flex h-full w-full max-w-[412px] flex-col space-y-5 rounded-2xl border bg-linear-to-b px-5 py-4 xl:rounded-4xl xl:px-7 xl:py-5",
-        className,
+        className
       )}
       itemScope
       itemType="https://schema.org/FinancialProduct"
     >
-      <header className="flex w-full flex-wrap items-center justify-between gap-3 xl:gap-6">
-        <div className="flex flex-1 items-center gap-3 text-nowrap">
+      <header className="flex w-full flex-nowrap items-center justify-between gap-3 xl:gap-6">
+        <div className="flex min-w-0 flex-1 items-center gap-3">
           <div
             className="flex shrink-0 items-center -space-x-3"
             aria-label={`${pairName} token pair`}
@@ -51,7 +51,7 @@ const VaultCard = ({
             >
               {pairName}
             </h3>
-            <p className="text-app-card-text-muted flex items-center gap-1 text-[10px] xl:text-xs">
+            <p className="text-app-card-text-muted flex shrink-0 items-center gap-1 text-nowrap text-[10px] xl:text-xs">
               Curated by:
               {curator.logo ? (
                 <Image
@@ -79,7 +79,7 @@ const VaultCard = ({
         className="text-app-text-description-muted line-clamp-3 min-h-0 flex-1 text-xs xl:text-sm"
         itemProp="description"
       >
-        {description}
+        Vault Type: <span className="text-app-text-primary">{description}</span>
       </p>
 
       <div className="flex w-full flex-wrap items-center gap-3">

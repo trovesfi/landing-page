@@ -19,13 +19,15 @@ import type { Strategy } from "@/types";
 const STRATEGY_TYPES = [
   "ekubo",
   "hyper-lst",
-  "vesu-rebalance",
-  "evergreen",
-  "sensei",
   "yolo-vault",
+  "evergreen",
+  "vesu-rebalance",
+  "sensei",
 ] as const;
 
-const getStrategyType = (id: string): (typeof STRATEGY_TYPES)[number] | null => {
+const getStrategyType = (
+  id: string
+): (typeof STRATEGY_TYPES)[number] | null => {
   if (id.startsWith("ekubo_cl_")) return "ekubo";
   if (id.startsWith("hyper_")) return "hyper-lst";
   if (id.startsWith("vesu_")) return "vesu-rebalance";
@@ -43,20 +45,9 @@ const getRiskLabel = (riskFactor?: number): string => {
   return "High Risk";
 };
 
-const createVaultDescription = (strategy: Strategy) => {
-  const vaultTypeDescription = strategy.vaultType?.description;
-  if (vaultTypeDescription) {
-    return <>{vaultTypeDescription}</>;
-  }
-  if (strategy.apyMethodology) {
-    return <>{strategy.apyMethodology}</>;
-  }
-  return (
-    <>
-      Managed by {strategy.curator?.name ?? "Troves"} across Starknet&apos;s{" "}
-      leading protocols.
-    </>
-  );
+const createVaultDescription = (strategy: Strategy): React.ReactNode => {
+  const vaultType = strategy.vaultType?.type;
+  return vaultType ? <>{vaultType}</> : null;
 };
 
 const StartEarningToday = () => {
@@ -71,10 +62,7 @@ const StartEarningToday = () => {
       s.isDeprecated ?? s.status?.value?.toLowerCase() === "deprecated";
 
     const activeStrategies = strategies.filter(
-      (s) =>
-        !isRetired(s) &&
-        !isDeprecated(s) &&
-        (s.tvlUsd ?? 0) > 0
+      (s) => !isRetired(s) && !isDeprecated(s) && (s.tvlUsd ?? 0) > 0
     );
 
     // Pick one strategy per type (highest numeric APY within each type)
