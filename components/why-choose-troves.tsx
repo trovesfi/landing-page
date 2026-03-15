@@ -78,11 +78,11 @@ const WhyChooseTroves = () => {
 
                 <div className="relative">
                   <Image
-                    src="/why-choose-section/stacked-container.svg"
-                    className="-mt-1 h-[75px] w-[75px] lg:h-[128px] lg:w-[128px]"
+                    src="/why-choose-section/curated.svg"
+                    className="-mt-1 h-[80px] w-[150px] lg:h-[208px] lg:w-[326px]"
                     alt="Stacked Container"
-                    width={128}
-                    height={128}
+                    width={326}
+                    height={208}
                   />
                 </div>
               </div>
@@ -92,9 +92,11 @@ const WhyChooseTroves = () => {
                   Curated, Transparent & Risk managed
                 </h3>
                 <p className="text-app-text-feature-alt text-[11px] lg:text-[13px]">
-                  Troves curates and transparently discloses strategies for BTC, ETH, STRK and USDC.
-                  Strategies are built by teams like RE7 Labs and Unwrap Labs, then deployed across trusted Starknet protocols.
-                  Several risks like liquidation risk, APY volatility and liquidity risk are managed by curators automatically.
+                  Troves curates and transparently discloses strategies for BTC,
+                  ETH, STRK and USDC. Strategies are built by teams like RE7
+                  Labs and Unwrap Labs, then deployed across trusted Starknet
+                  protocols. Several risks like liquidation risk, APY volatility
+                  and liquidity risk are managed by curators automatically.
                 </p>
               </article>
             </FadeIn>
