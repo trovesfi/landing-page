@@ -142,7 +142,9 @@ const StartEarningToday = () => {
                         strategy.depositToken?.[index]?.symbol ?? strategy.name,
                     }))
                   : (strategy.depositToken ?? []).map((token) => ({
-                      src: `/tokens/${token.symbol.toLowerCase()}.svg`,
+                      src:
+                        (token as any)?.logo ??
+                        `/tokens/${token.symbol.toLowerCase()}.svg`,
                       alt: token.symbol,
                     }));
 
