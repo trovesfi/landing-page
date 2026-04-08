@@ -44,9 +44,9 @@ const VaultCard = ({
               />
             ))}
           </div>
-          <div className="flex flex-col items-start gap-0.5">
+          <div className="flex min-w-0 flex-1 flex-col items-start gap-0.5">
             <h3
-              className="text-app-text-primary text-sm font-medium xl:text-base"
+              className="text-app-text-primary w-full max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium xl:text-base"
               itemProp="name"
             >
               {pairName}
