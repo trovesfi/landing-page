@@ -20,7 +20,9 @@ async function handleResponse<T>(response: Response) {
     throw new Error("Failed to fetch data");
   }
 
-  return (await response.json()) as T;
+  const json = (await response.json()) as T;
+
+  return json;
 }
 
 export async function fetchStats(): Promise<StatsResponse> {
