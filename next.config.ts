@@ -48,6 +48,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/github',
+        destination: 'https://github.com/trovesfi',
+        permanent: true,
+      },
+
+      {
         source: '/audit',
         destination: 'https://docs.troves.fi/p/security',
         permanent: true,
